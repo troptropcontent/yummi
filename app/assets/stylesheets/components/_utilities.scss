@@ -1,0 +1,13 @@
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.main-content {
+  flex-grow: 1;
+  height: calc(100vh - 80px);
+  overflow-y: auto;
+}
+  
