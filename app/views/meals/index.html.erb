@@ -1,0 +1,10 @@
+<h1>All meals</h1>
+
+<%= render 'shared/search_form' %>
+<%= @meals.count %>
+<% @meals.each do |meal| %>
+<%= meal.name %>
+<% end %>
+
+
+

@@ -1,0 +1,23 @@
+<%= form_tag meals_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "What would make you feel Yummi?"
+  %>
+
+  <%= text_field_tag :day,
+    params[:day],
+    class: "form-control datepicker",
+    placeholder: "When?"
+  %>
+
+   <%= text_field_tag :capacity,
+    params[:capacity],
+    class: "form-control",
+    placeholder: "How many guests (up to 50)"
+  %>
+
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
+<%= console  %>

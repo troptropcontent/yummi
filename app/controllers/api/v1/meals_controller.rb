@@ -37,7 +37,7 @@ class Api::V1::MealsController < Api::V1::BaseController
   private
 
   def meal_params
-    params.require(:meal).permit(:id, :name, :description, :cuisine, :user_id, :price_cents, :discount)
+    params.require(:meal).permit(:id, :name, :description, :speciality, :user_id, :price_cents, :discount)
   end
 
   def render_error
