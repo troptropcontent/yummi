@@ -3,5 +3,10 @@ class LinePolicy < ApplicationPolicy
     def resolve
       scope.all
     end
+
+    def create?
+      return true
+    end
+
   end
 end
