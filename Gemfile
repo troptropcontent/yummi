@@ -37,6 +37,10 @@ gem 'pundit'
 #API user's token
 gem 'simple_token_authentication'
 
+#cloudinary
+
+gem 'dotenv-rails', groups: [:development, :test]
+
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
