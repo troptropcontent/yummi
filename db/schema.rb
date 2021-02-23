@@ -10,12 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_22_162546) do
+ActiveRecord::Schema.define(version: 2021_02_23_104525) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "courses", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -40,11 +46,20 @@ ActiveRecord::Schema.define(version: 2021_02_22_162546) do
     t.index ["meal_id"], name: "index_meal_categories_on_meal_id"
   end
 
+  create_table "meal_courses", force: :cascade do |t|
+    t.bigint "meal_id", null: false
+    t.bigint "course_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_meal_courses_on_course_id"
+    t.index ["meal_id"], name: "index_meal_courses_on_meal_id"
+  end
+
   create_table "meals", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.bigint "user_id", null: false
-    t.string "speciality"
+    t.string "cuisine"
     t.integer "price_cents"
     t.integer "discount", default: 0
     t.datetime "created_at", precision: 6, null: false
@@ -105,6 +120,8 @@ ActiveRecord::Schema.define(version: 2021_02_22_162546) do
   add_foreign_key "lines", "orders"
   add_foreign_key "meal_categories", "categories"
   add_foreign_key "meal_categories", "meals"
+  add_foreign_key "meal_courses", "courses"
+  add_foreign_key "meal_courses", "meals"
   add_foreign_key "meals", "users"
   add_foreign_key "orders", "users"
   add_foreign_key "reviews", "meals"
