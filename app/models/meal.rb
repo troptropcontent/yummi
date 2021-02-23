@@ -1,4 +1,11 @@
 class Meal < ApplicationRecord
+  include PgSearch::Model
+  pg_search_scope :search_by_name,
+    against: [ :name ],
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
+
   belongs_to :user
   has_many :meal_categories
   has_many :meals, through: :meal_categories

@@ -37,6 +37,9 @@ gem 'pundit'
 #API user's token
 gem 'simple_token_authentication'
 
+#seach_form
+gem 'pg_search', '~> 2.3.0'
+
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'

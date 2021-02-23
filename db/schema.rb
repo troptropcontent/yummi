@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2021_02_23_104706) do
 
   # These are extensions that must be enabled in order to support this database
@@ -60,7 +59,7 @@ ActiveRecord::Schema.define(version: 2021_02_23_104706) do
     t.string "name"
     t.text "description"
     t.bigint "user_id", null: false
-    t.string "cuisine"
+    t.string "speciality"
     t.integer "price_cents"
     t.integer "discount", default: 0
     t.datetime "created_at", precision: 6, null: false
