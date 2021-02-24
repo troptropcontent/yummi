@@ -3,11 +3,24 @@ class MealsController < ApplicationController
 
   def index
     @meals = policy_scope(Meal).order(created_at: :desc)
+    @meals = Meal.all
+
     if params[:query].present?
-      sql_query = " \ meals.name @@ :query "
-      @meals = Meal.where(sql_query, query: "%#{params[:query]}%")
-    else
-      @meals = Meal.all
+      sql_query = " \ meals.name @@ :query OR \
+      meals.cuisine @@ :query OR \
+      users.first_name @@ :query OR \
+      users.last_name @@ :query \ "
+      @meals = @meals.joins(:user).where(sql_query, query: "%#{params[:query]}%")
+    end
+
+    if params[:chef].present?
+      sql_chef = " \ meals.user_id.first_name @@ :chef "
+      @meals = @meals.where(sql_chef, chef: "%#{params[:chef]}%")
+    end
+
+    if params[:cuisine].present?
+      sql_query = " \ meals.cuisine @@ :cuisine "
+      @meals = @meals.where(sql_query, cuisine: "%#{params[:cuisine]}%")
     end
   end
 

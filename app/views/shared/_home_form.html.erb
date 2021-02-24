@@ -1,5 +1,6 @@
 <%= form_tag meals_path, method: :get do %>
-  <%= text_field_tag :query,
+
+<%= text_field_tag :query,
     params[:query],
     class: "form-control",
     placeholder: "What would make you feel Yummi?"
@@ -11,13 +12,5 @@
     placeholder: "When?"
   %>
 
-     <%= text_field_tag :home_address,
-    params[:home_address],
-    class: "form-control",
-    placeholder: "What is your home address"
-  %>
-
-  <%= submit_tag "Search", class: "btn btn-primary" %>
+  <center><%= submit_tag "Find it!", class: "btn btn-primary" %></center>
 <% end %>
-
-<%= console  %>
