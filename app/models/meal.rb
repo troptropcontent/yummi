@@ -6,5 +6,6 @@ class Meal < ApplicationRecord
   has_many :courses, through: :meal_courses
   has_many :lines
   has_many :reviews
+  has_one_attached :photo
   validates :discount, inclusion: { in: 0..100 }
 end
