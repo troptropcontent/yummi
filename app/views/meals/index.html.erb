@@ -11,13 +11,11 @@
         <h2><strong><%= meal.name %></strong></h2>
         <p><%= meal.description %></p>
       </div>
-        <h2 class="card-suggestion-pricing">meal.price</h2>
         <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-suggestion-user avatar-bordered" />
+      <div class="card-suggestion-wrap">
+        <h2> <%= meal.price_cents %></h2>
+        <i class="fas fa-euro-sign"></i>
+      </div>
     </div>
-        <div class="icon">
-          <i class="fas fa-euro-sign"><%= meal.price_cents %></i>
-        </div>
-        <div class="meal-card-actions">
-        </div>
   </div>
 <% end %>
