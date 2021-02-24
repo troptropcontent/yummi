@@ -4,9 +4,9 @@ class LinePolicy < ApplicationPolicy
       scope.all
     end
 
-    def create?
-      return true
-    end
-
+    
+  end
+  def create?
+    return true
   end
 end
