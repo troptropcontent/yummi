@@ -17,4 +17,5 @@ class Meal < ApplicationRecord
   has_many :reviews
   has_one_attached :photo
   validates :discount, inclusion: { in: 0..100 }
+
 end
