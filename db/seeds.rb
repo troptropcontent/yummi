@@ -1,4 +1,4 @@
-require 'open-uri'
+
 require 'nokogiri'
 require "open-uri"
 require 'faker'
@@ -69,14 +69,20 @@ CUISINES.each do |cuisine|
         show =  scrap(url)
         description = show.search(".dek").text.strip
         photo = show.search(".photo-wrap").search("img").attribute("srcset").value
+        puts photo
   
         if tag == "recipe" && description.length > 0
-          new_meal = Meal.new({   
-            cuisine: cuisine,
-            name: name,
-            description: description,
-            price_cents: (1000+rand*1000).round,
-          })
+          new_meal = Meal.new
+          # ({   
+          #   cuisine: cuisine,
+          #   name: name,
+          #   description: description,
+          #   price_cents: (1000+rand*1000).round,
+          # })
+          new_meal.cuisine = cuisine
+          new_meal.name = name
+          new_meal.description = description
+          new_meal.price_cents = (1000+rand*1000).round
           # file = URI.open(photo)
           # new_meal.photo.attach(io: file, filename: Faker::Alphanumeric.alpha(number: 10), content_type: 'image/png')
           new_meal.courses = [course]
@@ -99,18 +105,37 @@ def scrap(url)
   return html_doc = Nokogiri::HTML(html_file) 
 end
 
+def random_restaurant
+  file      = File.open("#{pwd}/db/RestaurantsParis.xml")
+  document  = Nokogiri::XML(file)
+  restaurants = []
+  restaurant_list = document.root.xpath('Placemark')
+  restaurant_list.each do |restaurant|
+      loc = restaurant.xpath('Point').xpath('coordinates').text.strip.split(',').map{|num| num.to_f}
+      restaurants << {
+      longitude: loc[0],
+      latitude: loc[1],
+      }
+  end
+  return restaurants.sample
+end
+
+
 puts "Start seeding"
-meals = scrap_from_epicurious(5, 10, 5)
+meals = scrap_from_epicurious(1, 2, 1)
 
 CUISINES.each do |cuisine|
-  4.times do
+  1.times do
     puts "Creation of a chef for #{cuisine} cuisine"
+    place = random_restaurant()
     new_user = User.new
     new_user.first_name = Faker::Name.first_name 
     new_user.last_name = Faker::Name.last_name  
     new_user.email = Faker::Internet.safe_email(name: "#{new_user.first_name.downcase}#{new_user.last_name.downcase}")
     new_user.password = 'testpassword123456'
     new_user.password_confirmation = new_user.password
+    new_user.longitude = place[:longitude]
+    new_user.latitude =place[:latitude]
     new_user.save!
     puts "#{new_user.first_name} #{new_user.last_name} created"
     puts "saving to the chef 1 starter 2 main courses and 1 dessert"
