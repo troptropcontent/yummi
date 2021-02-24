@@ -2,7 +2,7 @@ import mapboxgl from 'mapbox-gl';
 
 const addressFinder = () => {
 
-  const profileKey = ENV['MAPBOX_API_KEY'];
+  const profileKey = "pk.eyJ1IjoicmFwaGFlbC12aWxhc2VjYSIsImEiOiJja2tpZTBkanQwazF4MnVrN2Y1Z3pscjFyIn0.-GqQsj9xbcgGsqzMZIOA1A";
   const btn = document.querySelector("#submit-button");
   const input = document.querySelector("#address");
   const results = document.querySelector("#results");
