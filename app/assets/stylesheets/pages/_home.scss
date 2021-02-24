@@ -10,12 +10,42 @@
       text-align: center;
       font-size: 64px;
       padding: 32px;
-  }
-
-  h2 {
+    }
+    
+    h2 {
       text-align: center;
       margin: 15px;
       font-size: 24px;
       font-family: 'Varela Round', sans-serif;
+    }
   }
+  
+h3 {
+  font-family: 'Lobster', cursive;
+  text-align: center;
+  font-size: 32px;
+  padding: 16px;
+  color: black;
 }
+
+h5{
+  color: black;
+  font-family: 'Lobster', cursive;
+}
+
+p{
+  color: black;
+  font-family: 'Varela Round', sans-serif;
+
+}
+
+.btn {
+  color: white;
+  width: 140px;
+  text-align: center;
+  border-radius: 32px;
+}
+
+.search-bar{
+  width: 335px;
+}  

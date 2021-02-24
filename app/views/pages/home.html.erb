@@ -2,16 +2,20 @@
   <h1>YUMMI !</h1>
   <h2>live a culinary experience thanks to your neighbors</h2>
   <div class="">
-  <%= text_field_tag :query,
+  <center><div class="search-bar">
+    <%= text_field_tag :query,
         params[:place],
         class: "form-control",
-        placeholder: "Which cuisine are you gonna try ?"
+        placeholder: "What are you yumming for ?"
       %>
-    
-    <center><%= submit_tag "find it !", class: "btn btn-primary" %></center>
+  </div></center> 
+      <br>
+    <center><%= submit_tag "find it", class: "btn btn-primary" %></center>
   </div>
 </div>
+<h3>Top moment offers ! </h3>
 <div class="card-flex">
+  
   <ul>
 
   <li><div class="card-suggestion">
@@ -21,7 +25,7 @@
         <h2>Title here</h2>
         <p>Short description here!</p>
       </div>
-      <h2 class="card-suggestion-pricing">£99.99</h2>
+      <h2 class="card-suggestion-pricing">price : £99.99</h2>
       <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-suggestion-user avatar-bordered" />
     </div>
   </div></li>
