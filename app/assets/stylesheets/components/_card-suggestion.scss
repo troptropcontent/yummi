@@ -33,13 +33,18 @@
 .card-suggestion h2 {
   font-size: 16px;
   font-weight: bold;
-  margin: 0;
+  margin: 0 4px;
 }
 
 .card-suggestion p {
   font-size: 12px;
   opacity: .7;
   margin: 0;
+}
+
+.card-suggestion-wrap {
+  display: flex;
+  justify-content: space-between;
 }
 
 
