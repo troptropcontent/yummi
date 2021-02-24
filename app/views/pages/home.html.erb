@@ -2,17 +2,9 @@
   <h1>YUMMI !</h1>
   <h2>live a culinary experience thanks to your neighbors</h2>
   <div class="">
-  <center><div class="search-bar">
-    <%= text_field_tag :query,
-        params[:place],
-        class: "form-control",
-        placeholder: "What are you yumming for ?"
-      %>
-  </div></center> 
-      <br>
-    <center><%= submit_tag "find it", class: "btn btn-primary" %></center>
-  <%= render 'shared/home_form' %>
-
+    <div class="search-bar">
+      <center><%= render 'shared/home_form' %></center>
+    </div>
   </div>
 </div>
 <h3>Top moment offers ! </h3>
