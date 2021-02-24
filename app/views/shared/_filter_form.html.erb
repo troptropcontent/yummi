@@ -1,0 +1,31 @@
+<%= form_tag meals_path, method: :get do %>
+
+  <%= text_field_tag :chef,
+    params[:chef],
+    class: "form-control",
+    placeholder: "Are you looking for a chef in particular?"
+  %>
+
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "What would make you feel Yummi?"
+  %>
+
+  <%= text_field_tag :cuisine,
+    params[:cuisine],
+    class: "form-control",
+    placeholder: "What type of food are you looking for?"
+  %>
+
+  <%= text_field_tag :day,
+    params[:day],
+    class: "form-control datepicker",
+    placeholder: "When?"
+  %>
+
+
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
+<%= console  %>
