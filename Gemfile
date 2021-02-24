@@ -37,12 +37,17 @@ gem 'pundit'
 #API user's token
 gem 'simple_token_authentication'
 
+
 #.env file 
 gem 'dotenv-rails', groups: [:development, :test]
 #cloudinary
 gem 'cloudinary', '~> 1.16.0'
 # faker
 gem 'faker'
+
+#seach_form
+gem 'pg_search', '~> 2.3.0'
+
 
 
 gem 'autoprefixer-rails'

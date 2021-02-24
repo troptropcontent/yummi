@@ -1,6 +1,14 @@
 class MealsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show, :filter]
+
   def index
-    @meals = Meal.all
+    @meals = policy_scope(Meal).order(created_at: :desc)
+    if params[:query].present?
+      sql_query = " \ meals.name @@ :query "
+      @meals = Meal.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @meals = Meal.all
+    end
   end
 
   def show
@@ -9,6 +17,7 @@ class MealsController < ApplicationController
 
   def new
     @meal = Meal.new
+    authorize @meal
   end
 
   def create
@@ -39,6 +48,6 @@ class MealsController < ApplicationController
    private
 
   def meal_params
-    params.require(:meal).permit(:id, :name, :description, :speciality, :user_id, :price_cents, :discount)
+    params.require(:meal).permit(:id, :name, :description, :cuisine, :user_id, :price_cents, :discount)
   end
 end
