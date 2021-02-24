@@ -11,7 +11,7 @@ require 'faker'
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# scrap data from epicurious 
+# scrap data from epicurious
   # cuisine : %w(Italian Mediterranean European Italian American Greek American Mexican French)
   # course : %w(Dinner  Lunch  Appetizer)
   #  10 dinner from each cuisine
@@ -21,7 +21,9 @@ require 'faker'
 # create cook
   # create 5 cook for each cuisine with 1 appetizer 2 dinner and 1 desserts
 
+
 # methods 
+
 CUISINES =  %w(italian mediterranean european american greek mexican french)
 COURSES = %w(dinner dessert appetizer)
 COURSES.each do |course| course = Course.new(name:course)
@@ -54,7 +56,9 @@ CUISINES.each do |cuisine|
       puts "Scrapping #{course.name}s of #{cuisine} cuisine."
       html_doc = scrap(epicurious_url(cuisine, course.name))
 
+
       html_doc.search('.recipe-content-card').each do |card|
+
 
         if scrap("https://www.epicurious.com#{card.search('a').attribute('href').value}").search(".photo-wrap").search("img").attribute("srcset")
           cards << card
@@ -73,18 +77,13 @@ CUISINES.each do |cuisine|
   
         if tag == "recipe" && description.length > 0
           new_meal = Meal.new
-          # ({   
-          #   cuisine: cuisine,
-          #   name: name,
-          #   description: description,
-          #   price_cents: (1000+rand*1000).round,
-          # })
           new_meal.cuisine = cuisine
           new_meal.name = name
           new_meal.description = description
           new_meal.price_cents = (1000+rand*1000).round
-          # file = URI.open(photo)
-          # new_meal.photo.attach(io: file, filename: Faker::Alphanumeric.alpha(number: 10), content_type: 'image/png')
+          file = URI.open(photo)
+          new_meal.photo.attach(io: file, filename: Faker::Alphanumeric.alpha(number: 10), content_type: 'image/png')
+
           new_meal.courses = [course]
           meals << new_meal
         end
@@ -102,7 +101,7 @@ end
 
 def scrap(url)
   html_file = open(url).read
-  return html_doc = Nokogiri::HTML(html_file) 
+  return html_doc = Nokogiri::HTML(html_file)
 end
 
 def random_restaurant
@@ -122,7 +121,9 @@ end
 
 
 puts "Start seeding"
+
 meals = scrap_from_epicurious(1, 2, 1)
+
 
 CUISINES.each do |cuisine|
   1.times do
@@ -131,6 +132,7 @@ CUISINES.each do |cuisine|
     new_user = User.new
     new_user.first_name = Faker::Name.first_name 
     new_user.last_name = Faker::Name.last_name  
+
     new_user.email = Faker::Internet.safe_email(name: "#{new_user.first_name.downcase}#{new_user.last_name.downcase}")
     new_user.password = 'testpassword123456'
     new_user.password_confirmation = new_user.password
