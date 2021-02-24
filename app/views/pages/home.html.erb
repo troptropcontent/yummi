@@ -2,13 +2,8 @@
   <h1>YUMMI !</h1>
   <h2>live a culinary experience thanks to your neighbors</h2>
   <div class="">
-  <%= text_field_tag :query,
-        params[:place],
-        class: "form-control",
-        placeholder: "Which cuisine are you gonna try ?"
-      %>
-    
-    <center><%= submit_tag "find it !", class: "btn btn-primary" %></center>
+  <%= render 'shared/home_form' %>
+
   </div>
 </div>
 <div class="card-flex">
@@ -49,6 +44,6 @@
   </div></li>
 
   </ul>
-  
+
 </div>
-  
+
