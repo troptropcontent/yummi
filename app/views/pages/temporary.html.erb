@@ -1,0 +1,42 @@
+<form>
+      <input type="text" placeholder="add an address" id= "address" style= "width: 50vw; padding: 10px; border-radius: 20px ">
+      <!-- <input type="submit" value="Submit" id= "submit-button"> -->
+  </form>
+
+    <ul id="results">
+    </ul>
+
+    <p class="display-coordinates"></p>
+    <div id="map" style="height: 300px; width: 600px"></div>
+
+
+    <style>
+
+      #results {
+          width: 50vw;
+          list-style: none;
+          padding: 0;
+      }
+
+      #results li:hover {
+        /*when hovering an item:*/
+        background-color: #e9e9e9;
+      }
+
+      #results li {
+        border-radius: 20px;
+        width: 50vw;
+        padding: 10px;
+        cursor: pointer;
+        background-color: #fff;
+        border-bottom: 1px solid #d4d4d4;
+      }
+
+      .autocomplete-active {
+        /*when navigating through the items using the arrow keys:*/
+        background-color: DodgerBlue !important;
+        color: #ffffff;
+      }
+
+    </style>
+
