@@ -2,6 +2,7 @@ class MealsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :filter]
 
   def index
+    
     @meals = policy_scope(Meal).order(created_at: :desc)
     @meals = Meal.all
 
@@ -22,6 +23,7 @@ class MealsController < ApplicationController
       sql_query = " \ meals.cuisine @@ :cuisine "
       @meals = @meals.where(sql_query, cuisine: "%#{params[:cuisine]}%")
     end
+  
   end
 
   def show
