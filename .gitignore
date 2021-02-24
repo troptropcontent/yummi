@@ -39,8 +39,6 @@ yarn-debug.log*
 # Ignore Mac and Linux file system files
 *.swp
 .DS_Store
-<<<<<<< HEAD
+
 .env*
-=======
-.env*
->>>>>>> 494fab7b6cadaa60d0a094dc88d50c6c9a907214
+
