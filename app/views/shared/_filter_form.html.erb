@@ -1,57 +1,55 @@
 <div id="myNav" class="overlay">
 
   <!-- Button to close the overlay navigation -->
-  <a href="javascript:void(0)" id="filter-close-btn">&times;</a>
+  <a href="javascript:void(0)" id="filter-close-btn"> &times; </a>
 
   <!-- Overlay content -->
   <div class="overlay-content">
-  <div class="container">
+    <div class="container">
 
-<%= form_tag meals_path, method: :get do %>
+      <%= form_tag meals_path, method: :get do %>
 
-  <%= text_field_tag :chef,
-    params[:chef],
-    class: "form-control",
-    placeholder: "Are you looking for a chef in particular?"
-  %>
-  <br>
+        <%= text_field_tag :chef,
+          params[:chef],
+          class: "form-control",
+          placeholder: "Are you looking for a chef in particular?"
+        %>
+        <br>
 
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "What would make you feel Yummi?"
-  %>
-<br>
-  <%= text_field_tag :cuisine,
-    params[:cuisine],
-    class: "form-control",
-    placeholder: "What type of food are you looking for?"
-  %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "What would make you feel Yummi?"
+        %>
+      <br>
+        <%= text_field_tag :cuisine,
+          params[:cuisine],
+          class: "form-control",
+          placeholder: "What type of food are you looking for?"
+        %>
 
-  <legend class="col-form-label pt-0">Tags</legend>
-    <% @courses.each do |course| %>
-      <div class="tag-item">
-        <%= check_box_tag "course[]", course.id,
-        params[:course].present? && params[:course].include?(course.id.to_s),
-          class: 'form-check-input check_boxes optional tag-selector',
-          id: "course-#{course.id}" %>
-        <label class="form-check-label collection_check_boxes" for="course-<%= course.id %>"><%= course.name %></label>
-      </div>
-    <% end %>
+        <legend class="col-form-label pt-0">Tags</legend>
+          <% @courses.each do |course| %>
+            <div class="tag-item">
+              <%= check_box_tag "course[]", course.id,
+              params[:course].present? && params[:course].include?(course.id.to_s),
+                class: 'form-check-input check_boxes optional tag-selector',
+                id: "course-#{course.id}" %>
+              <label class="form-check-label collection_check_boxes" for="course-<%= course.id %>"><%= course.name %></label>
+            </div>
+          <% end %>
 
-  <%= text_field_tag :day,
-    params[:day],
-    class: "form-control datepicker",
-    placeholder: "When?"
-  %>
-<br>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-  <br>
-<% end %>
-  </div>
+        <%= text_field_tag :day,
+          params[:day],
+          class: "form-control datepicker",
+          placeholder: "When?"
+        %>
+      <br>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+        <br>
+      <% end %>
+    </div>
   </div>
 
 </div>
-<a href="javascript:void(0)" id="filter-open-btn">filter</a>
-
 
