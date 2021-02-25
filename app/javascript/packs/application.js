@@ -36,6 +36,6 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   toggleFilters();
   initFlatpickr();
-  // addressFinder();
+  addressFinder();
 
 });
