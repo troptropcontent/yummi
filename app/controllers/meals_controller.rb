@@ -2,6 +2,7 @@ class MealsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :filter]
 
   def index
+    @cuisines = Meal.distinct.pluck(:cuisine)
     @courses = Course.all
     @meals = policy_scope(Meal).order(created_at: :desc)
 
@@ -28,8 +29,7 @@ class MealsController < ApplicationController
     end
 
     if params[:cuisine].present?
-      sql_query = " \ meals.cuisine @@ :cuisine "
-      @meals = @meals.where(sql_query, cuisine: "%#{params[:cuisine]}%")
+      @meals = @meals.where(cuisine: params[:cuisine])
     end
 
     if params[:category].present?
