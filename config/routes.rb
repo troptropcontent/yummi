@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :orders, only: [:show, :update]
   resources :reviews, only: [:create]
   get '/settings', to: 'pages#settings'
+  # routes for stripe
+  resources :charges, only: [:new, :create]
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
