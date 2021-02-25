@@ -96,13 +96,12 @@ GEM
       railties (>= 3.2)
     erubi (1.10.0)
     execjs (2.7.0)
-
     faker (2.15.1)
-
       i18n (>= 1.6, < 2)
     ffi (1.14.2)
     font-awesome-sass (5.15.1)
       sassc (>= 1.11)
+    geocoder (1.6.5)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     http-accept (1.7.0)
@@ -278,6 +277,7 @@ DEPENDENCIES
   dotenv-rails
   faker
   font-awesome-sass
+  geocoder
   jbuilder (~> 2.7)
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
@@ -304,4 +304,4 @@ RUBY VERSION
    ruby 2.6.6p146
 
 BUNDLED WITH
-   2.1.4
+   2.2.11

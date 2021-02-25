@@ -40,26 +40,25 @@ gem 'pundit'
 gem 'simple_token_authentication'
 
 
+#geocoder
+gem 'geocoder'
+
 #.env file 
 gem 'dotenv-rails', groups: [:development, :test]
-#cloudinary
-gem 'cloudinary', '~> 1.16.0'
-# faker
-gem 'faker'
+
 
 #seach_form
 gem 'pg_search', '~> 2.3.0'
 
 #faker
-
 gem 'faker'
-
-
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
-group :development, :test do  gem 'pry-byebug'
+
+group :development, :test do
+  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
 

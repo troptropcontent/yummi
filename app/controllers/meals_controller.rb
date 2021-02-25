@@ -2,6 +2,7 @@ class MealsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :filter]
 
   def index
+    
     @meals = policy_scope(Meal).order(created_at: :desc)
     @meals = Meal.all
 
@@ -22,6 +23,7 @@ class MealsController < ApplicationController
       sql_query = " \ meals.cuisine @@ :cuisine "
       @meals = @meals.where(sql_query, cuisine: "%#{params[:cuisine]}%")
     end
+  
   end
 
   def show
@@ -46,19 +48,13 @@ class MealsController < ApplicationController
     @meal = meal.find(params[:id])
   end
 
-   def update
+  def update
     @meal = meal.find(params[:id])
     @meal.update(meal_params)
     redirect_to meal_path(@meal)
   end
 
-  def destroy
-    @meal = meal.find(params[:id])
-    @meal.destroy
-    redirect_to meals_path
-  end
-
-   private
+  private
 
   def meal_params
     params.require(:meal).permit(:name, :description, :cuisine, :user_id, :price_cents, :discount)

@@ -9,4 +9,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  # add geocoder to translate address into coordinates
+  geocoded_by :home_address
+    after_validation :geocode, if: :will_save_change_to_home_address?
 end

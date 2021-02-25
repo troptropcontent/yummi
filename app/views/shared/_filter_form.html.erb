@@ -1,3 +1,10 @@
+<div id="myNav" class="overlay">
+
+  <!-- Button to close the overlay navigation -->
+  <a href="javascript:void(0)" id="filter-close-btn">&times;</a>
+
+  <!-- Overlay content -->
+  <div class="overlay-content">
 <%= form_tag meals_path, method: :get do %>
 
   <%= text_field_tag :chef,
@@ -26,5 +33,11 @@
 
   <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
+  </div>
 
-<%= console  %>
+</div>
+<a href="javascript:void(0)" id="filter-open-btn">filter</a>
+
+
+
+
