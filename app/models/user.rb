@@ -10,7 +10,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+  
   # add geocoder to translate address into coordinates
   geocoded_by :home_address
     after_validation :geocode, if: :will_save_change_to_home_address?
+
 end

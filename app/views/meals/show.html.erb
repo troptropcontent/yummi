@@ -1,1 +1,4 @@
-<%= meal.name %>
+
+<h1><%= @meal.name %></h1>
+<%= cl_image_tag @meal.photo.key, height: 300, width: 400, crop: :fill %>
+<h2><%= @chef.full_name %></h2>

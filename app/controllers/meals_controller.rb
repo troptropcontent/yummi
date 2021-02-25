@@ -28,6 +28,8 @@ class MealsController < ApplicationController
 
   def show
     @meal = Meal.find(params[:id])
+    @chef = @meal.user
+    authorize @meal
   end
 
   def new
