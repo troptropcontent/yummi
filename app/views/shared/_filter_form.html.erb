@@ -22,13 +22,24 @@
           placeholder: "What would make you feel Yummi?"
         %>
       <br>
-        <%= text_field_tag :cuisine,
-          params[:cuisine],
-          class: "form-control",
-          placeholder: "What type of food are you looking for?"
+      <%= text_field_tag :day,
+          params[:day],
+          class: "form-control datepicker",
+          placeholder: "When?"
         %>
+      <br>
+        <legend class="pt-0">What's your mood like?</legend>
+          <% @cuisines.each do |cuisine| %>
+            <div class="tag-item">
+              <%= check_box_tag "cuisine[]", cuisine,
+              params[:cuisine].present? && params[:cuisine].include?(cuisine),
+                class: 'form-check-input check_boxes optional tag-selector',
+                id: "cuisine-#{cuisine}" %>
+              <label class="form-check-label collection_check_boxes" for="cuisine-<%= cuisine %>"><%= cuisine %></label>
+            </div>
+          <% end %>
 
-        <legend class="col-form-label pt-0">Tags</legend>
+        <legend class=" pt-0">Choose your course</legend>
           <% @courses.each do |course| %>
             <div class="tag-item">
               <%= check_box_tag "course[]", course.id,
@@ -38,12 +49,7 @@
               <label class="form-check-label collection_check_boxes" for="course-<%= course.id %>"><%= course.name %></label>
             </div>
           <% end %>
-
-        <%= text_field_tag :day,
-          params[:day],
-          class: "form-control datepicker",
-          placeholder: "When?"
-        %>
+      <br>
       <br>
         <%= submit_tag "Search", class: "btn btn-primary" %>
         <br>

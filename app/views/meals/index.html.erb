@@ -14,7 +14,7 @@
       <div class="card-suggestion-infos">
         <div>
           <%= link_to meal_path(meal), id: 'link' do %>
-          <h2><strong><%= meal.name %></strong></h2>
+          <h2 id="margin-top"><strong><%= meal.name %></strong></h2>
           <p><%= meal.description[0..200] %>...</p>
           <div class="price-wrap">
             <h2><%= meal.price_cents.fdiv(100) %></h2>
