@@ -18,6 +18,21 @@
     placeholder: "What type of food are you looking for?"
   %>
 
+
+
+  <legend class="col-form-label pt-0">Tags</legend>
+    <% @courses.each do |course| %>
+      <div class="tag-item">
+        <input type="hidden" value="">
+        <%= check_box_tag "course#{course.id}", 1,
+        params["course#{course.id}"].present?,
+          class: 'form-check-input check_boxes optional tag-selector' %>
+        <label class="form-check-label collection_check_boxes" for="course<%= course.id %>"><%= course.name %></label>
+      </div>
+    <% end %>
+
+
+
   <%= text_field_tag :day,
     params[:day],
     class: "form-control datepicker",
@@ -27,4 +42,7 @@
   <%= submit_tag "Search", class: "btn btn-primary" %>
 <% end %>
 
-<%= console  %>
+<%= console %>
+
+
+
