@@ -1,33 +1,29 @@
 <h1>All meals</h1>
 
-<
-  <%= render 'shared/filter_form' %>
 
-<%= @meals.count %>
-
-<div id="meal-cards">
- <% @meals.each do |meal| %>
-
-  <center><div class="card-suggestion">
-    <%= cl_image_tag meal.photo.key, height: 300, width: 400, crop: :fill %>
-      <div class="card-suggestion-infos">
-        <div>
-          <%= link_to meal_path(meal) do %>
-          <h2><strong><%= meal.name %></strong></h2>
-          <% end %>
-          <p><%= meal.description %></p>
-        </div>
-          <h2 class="card-suggestion-pricing">meal.price</h2>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-suggestion-user avatar-bordered" />
-      </div>
-
-        <div class="icon">
-          <i class="fas fa-euro-sign"><%= meal.price_cents.fdiv(100) %></i>
-        </div>
-        <div class="meal-card-actions">
-        </div>
-  </div></center>
-    
-  <% end %>
+<%= render 'shared/filter_form' %>
+<div class="wrap-button">
+  <a href="javascript:void(0)" id="filter-open-btn" class="btn btn-primary">filters</a>
+  <p> We found <%= pluralize @meals.count, "result" %> </p>
 </div>
 
+<center>
+  <% @meals.each do |meal| %>
+    <div class="card-suggestion">
+      <%= cl_image_tag meal.photo.key, height: 300, width: 400, crop: :fill %>
+      <div class="card-suggestion-infos">
+        <div>
+          <%= link_to meal_path(meal), id: 'link' do %>
+          <h2><strong><%= meal.name %></strong></h2>
+          <p><%= meal.description[0..200] %>...</p>
+          <div class="price-wrap">
+            <h2><%= meal.price_cents.fdiv(100) %></h2>
+            <i class="fas fa-euro-sign"></i>
+          </div>
+          <% end %>
+          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-suggestion-user avatar-bordered" />
+        </div>
+      </div>
+    </div>
+  <% end %>
+</center>

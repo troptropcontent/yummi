@@ -43,21 +43,6 @@ class MealsController < ApplicationController
     end
   end
 
-console
-
-
-      # @meals = @meals.joins(:meal_course).where(sql_query, course1: "%#{params[:course1]}%")
-    # end
-    # if params[:course2].present?
-    #    sql_query = " \ #{Course.where(name:'dessert').first.id} @@ :course2 "
-    #   @meals = @meals.joins(:meal_course).where(sql_query, course2: "%#{params[:course2]}%")
-    # end
-    # if params[:course3].present?
-    #   sql_query = " \ #{Course.where(name:'appetizer').first.id} @@ :course3 "
-    #   @meals = @meals.joins(:meal_course).where(sql_query, course3: "%#{params[:course3]}%")
-    # end
-
-
   def show
     @meal = Meal.find(params[:id])
     @chef = @meal.user
