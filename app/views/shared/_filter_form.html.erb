@@ -21,7 +21,7 @@
     class: "form-control",
     placeholder: "What would make you feel Yummi?"
   %>
-<br>
+  <br>
   <%= text_field_tag :cuisine,
     params[:cuisine],
     class: "form-control",
@@ -44,8 +44,29 @@
     class: "form-control datepicker",
     placeholder: "When?"
   %>
-<br>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
+  <br>
+  <%= text_field_tag :price,
+    params[:price],
+    class: "js-range-slider-price"
+  %>
+  <br>
+
+  <%= text_field_tag :home_address,
+    params[:home_address],
+    class: "form-control",
+    id:"address",
+    placeholder: "What is your delivery address?"
+  %>
+
+  <ul class= "results">
+  </ul>
+
+  <%= text_field_tag :distance,
+    params[:distance],
+    class: "js-range-slider-radius"
+  %>
+
+  <%= submit_tag "Search", class: "btn btn-primary mb-5" %>
   <br>
 <% end %>
   </div>
@@ -53,5 +74,26 @@
 
 </div>
 <a href="javascript:void(0)" id="filter-open-btn">filter</a>
+  <!-- <input type="text" class="js-range-slider" name="my_range" value="" /> -->
 
 
+
+<script>
+  $(".js-range-slider-price").ionRangeSlider({
+      type: "double",
+      skin: "round",
+      min: <%= Meal.minimum(:price_cents) / 100 %>,
+      max: <%= Meal.maximum(:price_cents) / 100 %> ,
+      from: <%= params[:price] ? params[:price].split(';').first.to_i : Meal.minimum(:price_cents) / 100 %>,
+      to: <%= params[:price] ? params[:price].split(';').last.to_i : Meal.maximum(:price_cents) / 100 %>,
+      prefix: "€"
+    });
+
+  $(".js-range-slider-radius").ionRangeSlider({
+      skin: "round",
+      min: 0,
+      max: 10 ,
+      from: <%= params[:distance] ? params[:distance].to_i : 10 %>,
+      postfix: "KM"
+    });
+</script>

@@ -8,10 +8,8 @@ class MealsController < ApplicationController
 
     if params[:home_address].present? && params[:distance].present?
       users = User.near(params[:home_address], params[:distance].to_i)
-      @meals = @meals.where(user_id: users)
+      @meals = @meals.where(user_id: users.reorder(nil).pluck(:id))
     end
-
-    # { |meal| meal.distance(params[:home_address]) <= params[:distance] }
 
     if params[:query].present?
       sql_query = " \ meals.name @@ :query OR \
@@ -41,22 +39,18 @@ class MealsController < ApplicationController
       # sql_query = " \ #{Course.where(name:'dinner').first.id} @@ :course1 "
       @meals = @meals.joins(:meal_courses).where(meal_courses: {course_id: params[:course]})
     end
+
+
+    if params[:price].present?
+      minimum = params[:price].split(';').first.to_i * 100
+      maximum = params[:price].split(';').last.to_i * 100
+      @meals = @meals.where('meals.price_cents >= ?', minimum)
+      @meals = @meals.where('meals.price_cents <= ?', maximum)
+
+
+    end
+
   end
-
-console
-
-
-      # @meals = @meals.joins(:meal_course).where(sql_query, course1: "%#{params[:course1]}%")
-    # end
-    # if params[:course2].present?
-    #    sql_query = " \ #{Course.where(name:'dessert').first.id} @@ :course2 "
-    #   @meals = @meals.joins(:meal_course).where(sql_query, course2: "%#{params[:course2]}%")
-    # end
-    # if params[:course3].present?
-    #   sql_query = " \ #{Course.where(name:'appetizer').first.id} @@ :course3 "
-    #   @meals = @meals.joins(:meal_course).where(sql_query, course3: "%#{params[:course3]}%")
-    # end
-
 
   def show
     @meal = Meal.find(params[:id])
