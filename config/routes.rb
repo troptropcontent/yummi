@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:show, :update]
   resources :reviews, only: [:create]
   get '/settings', to: 'pages#settings'
+  get '/dashboard', to: 'pages#dashboard'
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
