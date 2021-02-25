@@ -4,8 +4,8 @@ class ReviewPolicy < ApplicationPolicy
       scope.all
     end
 
-    def create?
+  end
+  def create?
 
-    end
   end
 end
