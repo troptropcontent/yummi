@@ -1,4 +1,33 @@
+<div class="show-banner">
+<%= cl_image_tag @meal.photo.key, height: 300, width: 375, crop: :fill %>
+</div>
 
 <h1><%= @meal.name %></h1>
-<%= cl_image_tag @meal.photo.key, height: 300, width: 400, crop: :fill %>
-<h2><%= @chef.full_name %></h2>
+
+<p><%= @meal.description %></p>
+
+<div class="show-icons">
+  <ul>
+    <li><i class="fas fa-utensils"></i></li>
+    <li><i class="fas fa-seedling"></i></li>
+    <li><i class="fas fa-map-marker-alt"></i></li>
+  </ul>
+</div>
+<hr>
+
+<div class="chef-card">
+  <div class="chef-card-flex">
+    <div class="chef-card-left">
+      <h2><%= @chef.full_name %></h2>
+      <%= cl_image_tag @meal.photo.key, height: 160, width: 150, crop: :fill %>
+      <ul>
+        <li><i class="fas fa-drumstick-bite"></i></li>
+        <li><i class="fas fa-drumstick-bite"></i></li>
+        <li><i class="fas fa-drumstick-bite"></i></li>
+        <li><i class="fas fa-drumstick-bite"></i></li>
+        <li><i class="fas fa-drumstick-bite"></i></li>
+      </ul>
+    </div>
+    <p><%= @meal.description %></p>
+  </div>
+</div>

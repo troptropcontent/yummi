@@ -14,13 +14,14 @@
     class: "form-control",
     placeholder: "Are you looking for a chef in particular?"
   %>
+  <br>
 
   <%= text_field_tag :query,
     params[:query],
     class: "form-control",
     placeholder: "What would make you feel Yummi?"
   %>
-
+<br>
   <%= text_field_tag :cuisine,
     params[:cuisine],
     class: "form-control",
@@ -43,8 +44,9 @@
     class: "form-control datepicker",
     placeholder: "When?"
   %>
-
+<br>
   <%= submit_tag "Search", class: "btn btn-primary" %>
+  <br>
 <% end %>
   </div>
   </div>
