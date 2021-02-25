@@ -28,12 +28,14 @@ import { initFlatpickr } from "../plugins/flatpickr";
 import { addressFinder } from "../plugins/address_finder";
 
 // Internal imports, e.g:
+import {toggleFilters} from "../plugins/toggle_filters";
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  toggleFilters();
   initFlatpickr();
-  addressFinder();
+  // addressFinder();
 
 });
