@@ -7,7 +7,7 @@
 <div id="meal-cards">
  <% @meals.each do |meal| %>
 
-  <div class="card-suggestion">
+  <center><div class="card-suggestion">
     <%= cl_image_tag meal.photo.key, height: 300, width: 400, crop: :fill %>
       <div class="card-suggestion-infos">
         <div>
@@ -25,7 +25,7 @@
         </div>
         <div class="meal-card-actions">
         </div>
-      </div>
+  </div></center>
     
   <% end %>
 </div>
