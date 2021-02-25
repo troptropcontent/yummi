@@ -6,37 +6,53 @@
     <ul id="results">
     </ul>
 
-    <p class="display-coordinates"></p>
-    <div id="map" style="height: 300px; width: 600px"></div>
+  <%= text_field_tag :price,
+    params[:price],
+    class: "js-range-slider",
+    placeholder: "What price for each invitee ?"
+  %>
 
+  <!-- <input type="text" class="js-range-slider" name="my_range" value="" /> -->
 
-    <style>
+  <script>
+    $(".js-range-slider").ionRangeSlider({
+        type: "double",
+        skin: "round",
+        min: 0,
+        max: 1000,
+        from: 200,
+        to: 500,
+        prefix: "€"
+      });
+  </script>
 
-      #results {
-          width: 50vw;
-          list-style: none;
-          padding: 0;
-      }
+<style>
 
-      #results li:hover {
-        /*when hovering an item:*/
-        background-color: #e9e9e9;
-      }
+  #results {
+      width: 50vw;
+      list-style: none;
+      padding: 0;
+  }
 
-      #results li {
-        border-radius: 20px;
-        width: 50vw;
-        padding: 10px;
-        cursor: pointer;
-        background-color: #fff;
-        border-bottom: 1px solid #d4d4d4;
-      }
+  #results li:hover {
+    /*when hovering an item:*/
+    background-color: #e9e9e9;
+  }
 
-      .autocomplete-active {
-        /*when navigating through the items using the arrow keys:*/
-        background-color: DodgerBlue !important;
-        color: #ffffff;
-      }
+  #results li {
+    border-radius: 20px;
+    width: 50vw;
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
+  }
 
-    </style>
+  .autocomplete-active {
+    /*when navigating through the items using the arrow keys:*/
+    background-color: DodgerBlue !important;
+    color: #ffffff;
+  }
+
+</style>
 

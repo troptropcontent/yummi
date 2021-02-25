@@ -1,21 +1,33 @@
 <h1>All meals</h1>
 
-<%= render 'shared/filter_form' %>
+<
+  <%= render 'shared/filter_form' %>
+
 <%= @meals.count %>
 
+<div id="meal-cards">
  <% @meals.each do |meal| %>
   <div class="card-suggestion">
-    <img src="https://cdn.radiofrance.fr/s3/cruiser-production/2020/02/0ce7dc22-8fc2-4336-9c35-55ff1fa1461b/1200x680_bourguignon.jpg" />
-    <div class="card-suggestion-infos">
-      <div>
-        <h2><strong><%= meal.name %></strong></h2>
-        <p><%= meal.description %></p>
+    <%= cl_image_tag meal.photo.key, height: 300, width: 400, crop: :fill %>
+      <div class="card-suggestion-infos">
+        <div>
+          <%= link_to meal_path(meal) do %>
+          <h2><strong><%= meal.name %></strong></h2>
+          <% end %>
+          <p><%= meal.description %></p>
+        </div>
+          <h2 class="card-suggestion-pricing">meal.price</h2>
+          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-suggestion-user avatar-bordered" />
       </div>
-        <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-suggestion-user avatar-bordered" />
-      <div class="card-suggestion-wrap">
-        <h2> <%= meal.price_cents %></h2>
-        <i class="fas fa-euro-sign"></i>
+
+        <div class="icon">
+          <i class="fas fa-euro-sign"><%= meal.price_cents.fdiv(100) %></i>
+        </div>
+        <div class="meal-card-actions">
+        </div>
       </div>
-    </div>
-  </div>
-<% end %>
+    
+  <% end %>
+</div>
+
+

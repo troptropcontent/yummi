@@ -41,10 +41,13 @@ class MealsController < ApplicationController
       sql_query = " \ meals.course @@ :course "
       @meals = @meals.where(sql_query, course: "%#{params[:course]}%")
     end
+
   end
 
   def show
     @meal = Meal.find(params[:id])
+    @chef = @meal.user
+    authorize @meal
   end
 
   def new
@@ -65,19 +68,13 @@ class MealsController < ApplicationController
     @meal = meal.find(params[:id])
   end
 
-   def update
+  def update
     @meal = meal.find(params[:id])
     @meal.update(meal_params)
     redirect_to meal_path(@meal)
   end
 
-  def destroy
-    @meal = meal.find(params[:id])
-    @meal.destroy
-    redirect_to meals_path
-  end
-
-   private
+  private
 
   def meal_params
     params.require(:meal).permit(:name, :description, :cuisine, :user_id, :price_cents, :discount)
