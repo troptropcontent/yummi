@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="checkout-head">
+  <h1>Pleas confirm your order</h1>
+  </div>
+  <div class="checkout-data">
+    <div class="lines">
+      <% @order.lines.each do |line| %>
+        <div class="line" id=<%=line.id%>>
+          <div class="text">
+            <h2><%= line.meal.name %></h2>
+          </div>
+          <div class="figures">
+            <div class="quantity">
+              <%= simple_form_for line do |f| %>
+                <%= f.input :quantity %>
+              <% end %>
+            </div>
+            <div class="price" data-price=<%=line.meal.price_cents %>>
+              <% line.quantity = 1 %>
+              <p><%= (line.meal.price_cents*line.quantity.fdiv(100)).round(2) %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="checkout-footer">
+      <div class="total">
+      </div>
+      <div class="checkout-btn">
+      </div>
+    </div>
+  </div>
+</div>

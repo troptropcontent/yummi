@@ -1,0 +1,42 @@
+
+<div id="checkout" class="overlay">
+  <!-- Button to close the overlay navigation -->
+  <a href="javascript:void(0)" id="close-btn">&times;</a>
+  <!-- Overlay content -->
+  <div class="overlay-content">
+    <div class="container">
+      <h1><%= @chef.full_name %> also propose </h1>
+      <%= console %>
+      <% @other_courses.each do |meal| %>
+    
+        <div class="card-suggestion">
+          <%= cl_image_tag meal.photo.key, height: 300, width: 400, crop: :fill %>
+            <div class="card-suggestion-infos">
+              <div>
+                
+                <%= link_to meal_path(meal, quantity: params[:quantity]) do %>
+                
+                <h2><strong><%= meal.name %></strong></h2>
+                <% end %>
+                <p><%= meal.description %></p>
+              </div>
+                <h2 class="card-suggestion-pricing">meal.price</h2>
+                <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-suggestion-user avatar-bordered" />
+            </div>
+
+              <div class="icon">
+                <i class="fas fa-euro-sign"><%= meal.price_cents.fdiv(100) %></i>
+              </div>
+              <div class="meal-card-actions">
+              </div>
+            </div>
+        <% end %>   
+          <%= simple_form_for Line.new do |f| %>
+            <%= f.button :submit %>
+            <%= f.input :meal, :as => :hidden, :input_html => { :value => @meal.id } %>
+          <% end %>
+    </div>
+  </div>
+</div>
+
+<a href="javascript:void(0)" id="open-btn">Yummi</a>

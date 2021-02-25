@@ -3,8 +3,6 @@ class OrderPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
-
-   
   end
   def show?
     record.user == user || record.lines.map { |line| line.meal.user }.unique.include?(user)
@@ -13,4 +11,9 @@ class OrderPolicy < ApplicationPolicy
   def update?
     record.user == user
   end
+
+  def new?
+    return true
+  end
+
 end

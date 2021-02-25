@@ -29,6 +29,7 @@ class MealsController < ApplicationController
   def show
     @meal = Meal.find(params[:id])
     @chef = @meal.user
+    @other_courses = Meal.where(user_id: @chef.id).reject{|meal| meal.courses.first == @meal.courses.first}
     authorize @meal
   end
 

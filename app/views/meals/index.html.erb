@@ -1,17 +1,19 @@
 <h1>All meals</h1>
 
-<
+
   <%= render 'shared/filter_form' %>
 
-<%= @meals.count %>
 
 <div id="meal-cards">
+<%= console %>
  <% @meals.each do |meal| %>
   <div class="card-suggestion">
     <%= cl_image_tag meal.photo.key, height: 300, width: 400, crop: :fill %>
       <div class="card-suggestion-infos">
         <div>
-          <%= link_to meal_path(meal) do %>
+          
+          <%= link_to meal_path(meal, quantity: params[:quantity]) do %>
+          
           <h2><strong><%= meal.name %></strong></h2>
           <% end %>
           <p><%= meal.description %></p>
