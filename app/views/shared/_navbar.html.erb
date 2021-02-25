@@ -12,14 +12,21 @@
     <div class="navbar__item -orange">
         <span class="navbar__icon">
           <%= link_to meals_path do %>
-            <i class="fas fa-search"></i>
+            <div class="home-icon-orange">
+                <i class="fas fa-search"></i>
+            </div>
           <% end %>
             
         </span>
     </div>
     <div class="navbar__item -navy-blue">
         <span class="navbar__icon">
-            <i class="fas fa-sticky-note"></i>            
+            <%= link_to dashboard_path do %>
+                <div class="home-icon-dark-blue">
+                    <i class="fas fa-sticky-note"></i> 
+                </div>
+            <% end %>
+          
         </span>
     </div>
     <div class="navbar__item -yellow">
