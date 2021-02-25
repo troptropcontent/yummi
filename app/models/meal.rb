@@ -16,4 +16,5 @@ class Meal < ApplicationRecord
   has_many :lines
   has_many :reviews
   validates :discount, inclusion: { in: 0..100 }
+
 end

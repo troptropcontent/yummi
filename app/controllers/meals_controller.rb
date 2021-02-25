@@ -50,19 +50,13 @@ class MealsController < ApplicationController
     @meal = meal.find(params[:id])
   end
 
-   def update
+  def update
     @meal = meal.find(params[:id])
     @meal.update(meal_params)
     redirect_to meal_path(@meal)
   end
 
-  def destroy
-    @meal = meal.find(params[:id])
-    @meal.destroy
-    redirect_to meals_path
-  end
-
-   private
+  private
 
   def meal_params
     params.require(:meal).permit(:name, :description, :cuisine, :user_id, :price_cents, :discount)
