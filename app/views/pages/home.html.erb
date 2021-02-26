@@ -14,7 +14,7 @@
     <% @meals.each do |meal| %>
     <li>
       <div class="card-suggestion">
-    
+
         <%= cl_image_tag meal.photo.key, height: 200, width: 375, crop: :fill %>
 
         <div class="card-suggestion-infos">
@@ -35,7 +35,7 @@
 
     </li>
     <% end %>
-    
+
   </ul>
 </div>
 

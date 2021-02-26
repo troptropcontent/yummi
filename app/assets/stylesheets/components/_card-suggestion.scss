@@ -25,6 +25,7 @@
   color: black;
   border-radius: 8px;
   margin: 15px;
+  height: 100%;
 }
 
 .card-suggestion > img {
@@ -49,6 +50,8 @@
   opacity: .7;
   margin: 0;
 }
+
+
 
 .card-suggestion-wrap {
   display: flex;
