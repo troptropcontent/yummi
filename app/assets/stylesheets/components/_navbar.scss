@@ -69,7 +69,9 @@
     &:hover {
       &::before,
       &::after {
-        transform: translateY(-30px) scale(1.1);
+
+        transform: translateY(-20px) scale(1.1);
+
       }
       &::before {
         opacity: 1;
@@ -78,7 +80,9 @@
         opacity: 0.4;
       }
       .navbar__icon {
-        transform: translateY(-30px) scale(1.25);
+
+        transform: translateY(-18px) scale(1.25);
+
         color: #fff;
 
       }
@@ -96,8 +100,14 @@
 
 .home-icon {
   color: #06b8ff;
+  
 }
 
-.home-icon:hover {
-  color: white;
+.home-icon-orange {
+  color: #f2704d;
 }
+
+.home-icon-dark-blue {
+  color: #405fff;
+}
+
