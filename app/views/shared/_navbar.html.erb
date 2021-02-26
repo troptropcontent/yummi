@@ -1,46 +1,85 @@
 <div class="navbar">
 
   <%= link_to root_path do %>
-    <div class="navbar__item -blue">
-      <span class="navbar__icon">
-          <i class="fas fa-home"></i>
-      </span>
-    </div>
+    <% if params[:controller] == 'pages' && params[:action] == 'home'%>
+      <div class="navbar__item -blue">
+        <span class="navbar__icon">
+            <i class="fas fa-home"></i>
+        </span>
+      </div>
+    <% else %>
+      <div class="navbar__item -blue">
+        <span class="navbar__icon">
+            <i class="fas fa-home color-grey"></i>
+        </span>
+      </div>
+    <% end %>
   <% end %>
 
 
   <%= link_to meals_path do %>
-    <div class="navbar__item -orange">
-      <span class="navbar__icon">
-        <i class="fas fa-search"></i>
-      </span>
-    </div>
+    <% if params[:controller] == 'meals' && params[:action] == 'index'%>
+      <div class="navbar__item -orange">
+        <span class="navbar__icon">
+          <i class="fas fa-search"></i>
+        </span>
+      </div>
+    <% else %>
+      <div class="navbar__item -orange">
+        <span class="navbar__icon">
+          <i class="fas fa-search color-grey"></i>
+        </span>
+      </div>
+    <% end %>
   <% end %>
 
 
-
   <%= link_to "#" do  %>
-    <div class="navbar__item -navy-blue">
-      <span class="navbar__icon">
-        <i class="fas fa-sticky-note"></i>
-      </span>
-    </div>
+    <% if params[:controller] == 'meals' && params[:action] == 'new'%>
+      <div class="navbar__item -navy-blue">
+        <span class="navbar__icon">
+          <i class="fas fa-sticky-note"></i>
+        </span>
+      </div>
+    <% else %>
+      <div class="navbar__item -navy-blue">
+        <span class="navbar__icon">
+          <i class="fas fa-sticky-note color-grey"></i>
+        </span>
+      </div>
+    <% end %>
   <% end %>
 
   <%= link_to "#" do  %>
-    <div class="navbar__item -yellow">
-      <span class="navbar__icon">
-          <i class="fas fa-comments"></i>
-      </span>
-    </div>
+    <% if params[:controller] == 'reviews' && params[:action] == 'new'%>
+      <div class="navbar__item -yellow">
+        <span class="navbar__icon">
+            <i class="fas fa-comments"></i>
+        </span>
+      </div>
+    <% else %>
+      <div class="navbar__item -yellow">
+        <span class="navbar__icon">
+            <i class="fas fa-comments color-grey"></i>
+        </span>
+      </div>
+    <% end %>
   <% end %>
 
   <%= link_to "#" do  %>
-    <div class="navbar__item -purple">
-      <span class="navbar__icon">
-          <i class="fas fa-user-circle"></i>
-      </span>
-    </div>
+    <% if params[:controller] == 'pages' && params[:action] == 'dashboard'%>
+      <div class="navbar__item -purple">
+        <span class="navbar__icon">
+            <i class="fas fa-user-circle"></i>
+        </span>
+      </div>
+    <% else %>
+      <div class="navbar__item -purple">
+        <span class="navbar__icon">
+            <i class="fas fa-user-circle color-grey"></i>
+        </span>
+      </div>
+    <% end %>
   <% end %>
 
 </div>
