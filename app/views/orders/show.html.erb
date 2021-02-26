@@ -1,41 +1,40 @@
 <div class="container">
   <div class="checkout-head">
-  <h1>Pleas confirm your order</h1>
+  <h1>Please confirm your order</h1>
   </div>
   <div class="checkout-data">
-    <div class="lines">
-    <% total_price_lines = 0 %>
-      <% @order.lines.each do |line| %>
-        <div class="line" id=<%=line.id%>>
-          <div class="text">
-            <h2><%= line.meal.name %></h2>
-          </div>
-          <div class="figures">
-            <div class="quantity">
-              <%= simple_form_for line do |f| %>
-                <%= f.input :quantity %>
+  <% total_lines = 0 %>
+    <%= simple_form_for @order do |f| %>
+      <div class="lines">
+          <% @order.lines.each do |line|%>
+            <div class="line line_id_<%=line.id%>">
+              <%= f.simple_fields_for line do |l| %>
+                  <%= l.input :quantity ,:as => :hidden, input_html: { name: "line_#{line.id}", id: "quantity_input_line_#{line.id}", class: "quantity-input"} %>
               <% end %>
+              <p class="line_meal" data-line-id=<%=line.id%>>
+                <%= line.meal.name %>
+              </p>
+              <a href="#" data-value="-1" class="increment" data-line-id=<%=line.id%>>-</a>
+              <p class="line_quantity" data-line-id=<%=line.id%> data-meal-price-cents=<%=line.meal.price_cents%> id="quantity_line_<%=line.id%>">
+                <%= line.quantity %>
+              </p>            
+              <a href="#" data-value="+1" class="increment" data-line-id=<%=line.id%>>+</a>
+              <p class="line_price" id="price_line_<%=line.id%>" >
+                <%= line.meal.price_cents.fdiv(100) %>
+              </p>
             </div>
-            <div class="price" data-price=<%=line.meal.price_cents %>>
-              <% line.quantity = 1 %>
-              <% total_price_line = (line.meal.price_cents*line.quantity.fdiv(100)).round(2) %>
-              <p><%= total_price_line %></p>
-              <% total_price_lines += total_price_line %>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
+            <% total_lines += line.meal.price_cents.fdiv(100) %>
+          <%end %>
+      </div>
+
     <div class="checkout-footer">
       <div class="total">
-        <%= total_price_lines %>
+      <p class="total_price"><%= total_lines %></p>
       </div>
       <div class="checkout-btn">
-        <%= simple_form_for @order do |f| %>
-          <%= f.input :user %>
-          <%= f.button :submit %>
-        <% end %>
+      <%= f.button :submit, 'Confirm' %>
       </div>
     </div>
+    <% end %> 
   </div>
 </div>
