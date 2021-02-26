@@ -1,0 +1,74 @@
+.show-banner {
+  height: 300px;
+  width: 375px;
+  justify-content: space-around;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  top: 0;
+}
+
+.chef-card {
+  padding: 16px;
+  h2 {
+    font-family: 'Lobster', cursive;
+    text-align: left;
+    font-size: 24px;
+    padding: 8px;
+    color: black;
+    padding: 16px;
+  }
+  .chef-card-flex {
+    display: flex;
+  }
+  ul{
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    padding: 2px;
+    margin: 6px;
+  }
+}
+
+h1 {
+  font-family: 'Lobster', cursive;
+  text-align: center;
+  font-size: 32px;
+  padding: 8px;
+  color: black;
+}
+
+p {
+  padding: 8px;
+}
+
+.show-icons {
+  margin: 16px;
+  padding: 32px;
+  ul {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 2px;
+    color: black;
+    padding: 2px;
+  }
+  
+  .fas {
+    font-size: 32px;
+    color: black;
+  }
+
+}
+hr {
+  border: solid;
+  color: black;
+  text-align: center;
+  height: 3px;
+}
+
+
