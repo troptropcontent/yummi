@@ -19,7 +19,7 @@ class LinesController < ApplicationController
   private
 
   def current_order
-    if session[:order_id]
+    if session[:order_id] && Order.find(session[:order_id])
       Order.find(session[:order_id])
     else
       order = Order.create!(user: current_user)
