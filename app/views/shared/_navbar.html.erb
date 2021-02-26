@@ -1,15 +1,17 @@
 <div class="navbar">
+
+  <%= link_to root_path do %>
     <div class="navbar__item -blue">
-        <span class="navbar__icon">
-          <%= link_to root_path do  %>
-          <div class="home-icon">
-            <i class="fas fa-home"></i>
-          </div>
-          <% end %>
-          
-        </span>
+      <span class="navbar__icon">
+          <i class="fas fa-home"></i>
+      </span>
     </div>
+  <% end %>
+
+
+  <%= link_to meals_path do %>
     <div class="navbar__item -orange">
+
         <span class="navbar__icon">
           <%= link_to meals_path do %>
             <div class="home-icon-orange">
@@ -18,25 +20,39 @@
           <% end %>
             
         </span>
+
     </div>
+  <% end %>
+
+
+  <%= link_to "#" do  %>
     <div class="navbar__item -navy-blue">
         <span class="navbar__icon">
+
             <%= link_to dashboard_path do %>
                 <div class="home-icon-dark-blue">
                     <i class="fas fa-sticky-note"></i> 
                 </div>
             <% end %>
           
+
         </span>
     </div>
+  <% end %>
+
+  <%= link_to "#" do  %>
     <div class="navbar__item -yellow">
-        <span class="navbar__icon"> 
-            <i class="fas fa-comments"></i>
-        </span>
+      <span class="navbar__icon">
+          <i class="fas fa-comments"></i>
+      </span>
     </div>
+  <% end %>
+
+  <%= link_to "#" do  %>
     <div class="navbar__item -purple">
-        <span class="navbar__icon">
-            <i class="fas fa-user-circle"></i>
-        </span>
+      <span class="navbar__icon">
+          <i class="fas fa-user-circle"></i>
+      </span>
     </div>
+  <% end %>
 </div>

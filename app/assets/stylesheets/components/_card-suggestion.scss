@@ -10,12 +10,18 @@
     margin-inline-end: 0px;
     padding-inline-start: 10px;
   }
-  
+
 }
+
+#link {
+  text-decoration: none;
+}
+
 
 .card-suggestion {
   overflow: hidden;
   background: white;
+  position: center;
   width: 285px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   color: black;
@@ -33,7 +39,11 @@
 .card-suggestion h2 {
   font-size: 16px;
   font-weight: bold;
-  margin: 0 4px;
+  margin: 0px 10px;
+}
+
+#margin-top {
+  margin: 10px 0;
 }
 
 .card-suggestion p {
@@ -61,5 +71,10 @@
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+.price-wrap {
+  display: flex;
+  justify-content: center;
 }
 

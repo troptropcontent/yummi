@@ -1,57 +1,107 @@
 <div id="myNav" class="overlay">
 
   <!-- Button to close the overlay navigation -->
-  <a href="javascript:void(0)" id="filter-close-btn">&times;</a>
+  <a href="javascript:void(0)" id="close-btn">&times;</a>
 
   <!-- Overlay content -->
   <div class="overlay-content">
+
   <div class="container">
 
-<%= form_tag meals_path, method: :get do %>
+    <%= form_tag meals_path, method: :get do %>
 
-  <%= text_field_tag :chef,
-    params[:chef],
-    class: "form-control",
-    placeholder: "Are you looking for a chef in particular?"
-  %>
-  <br>
+      <%= text_field_tag :chef,
+        params[:chef],
+        class: "form-control",
+        placeholder: "Are you looking for a chef in particular?"
+      %>
+      <br>
 
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "What would make you feel Yummi?"
-  %>
-<br>
-  <%= text_field_tag :cuisine,
-    params[:cuisine],
-    class: "form-control",
-    placeholder: "What type of food are you looking for?"
-  %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "What would make you feel Yummi?"
+      %>
+    <br>
+    <%= text_field_tag :day,
+        params[:day],
+        class: "form-control datepicker",
+        placeholder: "When?"
+      %>
+    <br>
+    <legend class="pt-0">What's your mood like?</legend>
+      <% @cuisines.each do |cuisine| %>
+        <div class="tag-item">
+          <%= check_box_tag "cuisine[]", cuisine,
+          params[:cuisine].present? && params[:cuisine].include?(cuisine),
+            class: 'form-check-input check_boxes optional tag-selector',
+            id: "cuisine-#{cuisine}" %>
+          <label class="form-check-label collection_check_boxes" for="cuisine-<%= cuisine %>"><%= cuisine %></label>
+        </div>
+      <% end %>
 
-  <legend class="col-form-label pt-0">Tags</legend>
-    <% @courses.each do |course| %>
-      <div class="tag-item">
-        <%= check_box_tag "course[]", course.id,
-        params[:course].present? && params[:course].include?(course.id.to_s),
-          class: 'form-check-input check_boxes optional tag-selector',
-          id: "course-#{course.id}" %>
-        <label class="form-check-label collection_check_boxes" for="course-<%= course.id %>"><%= course.name %></label>
-      </div>
+    <legend class=" pt-0">Choose your course</legend>
+      <% @courses.each do |course| %>
+        <div class="tag-item">
+          <%= check_box_tag "course[]", course.id,
+          params[:course].present? && params[:course].include?(course.id.to_s),
+            class: 'form-check-input check_boxes optional tag-selector',
+            id: "course-#{course.id}" %>
+          <label class="form-check-label collection_check_boxes" for="course-<%= course.id %>"><%= course.name %></label>
+        </div>
+      <% end %>
+      <br>
+    
+      <br>
+      <%= text_field_tag :price,
+        params[:price],
+        class: "js-range-slider-price"
+      %>
+      <br>
+
+      <%= text_field_tag :home_address,
+        params[:home_address],
+        class: "form-control",
+        id:"address",
+        placeholder: "What is your delivery address?"
+      %>
+
+      <ul class= "results">
+      </ul>
+
+      <%= text_field_tag :distance,
+        params[:distance],
+        class: "js-range-slider-radius"
+      %>
+
+      <%= submit_tag "Search", class: "btn btn-primary mb-5" %>
+      <br>
     <% end %>
-
-  <%= text_field_tag :day,
-    params[:day],
-    class: "form-control datepicker",
-    placeholder: "When?"
-  %>
-<br>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-  <br>
-<% end %>
-  </div>
-  </div>
-
+   </div>
+   </div>
 </div>
-<a href="javascript:void(0)" id="filter-open-btn">filter</a>
+
+<a href="javascript:void(0)" id="open-btn">filter</a>
+  <!-- <input type="text" class="js-range-slider" name="my_range" value="" /> -->
 
 
+
+<script>
+  $(".js-range-slider-price").ionRangeSlider({
+      type: "double",
+      skin: "round",
+      min: <%= Meal.minimum(:price_cents) / 100 %>,
+      max: <%= Meal.maximum(:price_cents) / 100 %> ,
+      from: <%= params[:price] ? params[:price].split(';').first.to_i : Meal.minimum(:price_cents) / 100 %>,
+      to: <%= params[:price] ? params[:price].split(';').last.to_i : Meal.maximum(:price_cents) / 100 %>,
+      prefix: "€"
+    });
+
+  $(".js-range-slider-radius").ionRangeSlider({
+      skin: "round",
+      min: 0,
+      max: 10 ,
+      from: <%= params[:distance] ? params[:distance].to_i : 10 %>,
+      postfix: "KM"
+    });
+</script>
