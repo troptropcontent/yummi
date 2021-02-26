@@ -1,18 +1,16 @@
 <div class="banner">
   <h1>YUMMI !</h1>
   <h2>live a culinary experience thanks to your neighbors</h2>
-  <div class="">
-    <div class="search-bar">
-      <center><%= render 'shared/home_form' %></center>
-    </div>
+  <div class="search-bar">
+    <center><%= render 'shared/home_form' %></center>
   </div>
 </div>
+
 <h3>Top moment offers ! </h3>
 
 <div class="card-flex">
-  
+
   <ul>
-  
     <% @meals.each do |meal| %>
     <li>
       <div class="card-suggestion">
@@ -34,8 +32,10 @@
         </div>
       </div>
 
+
     </li>
     <% end %>
     
   </ul>
 </div>
+

@@ -10,26 +10,47 @@
 
     <%= form_tag meals_path, method: :get do %>
 
-      <%= text_field_tag :chef,
-        params[:chef],
-        class: "form-control",
-        placeholder: "Are you looking for a chef in particular?"
-      %>
-      <br>
+    <legend id="title-filters" class="pt-0">What are you Yumming for?</legend>
 
       <%= text_field_tag :query,
         params[:query],
-        class: "form-control",
-        placeholder: "What would make you feel Yummi?"
+        class: "form-control mb-3",
+        placeholder: "You can type a dish here"
       %>
-    <br>
-    <%= text_field_tag :day,
+
+      <%= text_field_tag :chef,
+        params[:chef],
+        class: "form-control mb-3",
+        placeholder: "You can type a chef here"
+      %>
+
+      <%= text_field_tag :day,
         params[:day],
-        class: "form-control datepicker",
-        placeholder: "When?"
+        class: "form-control datepicker mb-3",
+        placeholder: "You can type a date here"
       %>
-    <br>
-    <legend class="pt-0">What's your mood like?</legend>
+      <p class="mb-1">You can add a price range:</p>
+      <%= text_field_tag :price,
+        params[:price],
+        class: "js-range-slider-price color-orange mb-5"
+      %>
+      <p class="mb-1">You can add an address:</p>
+      <%= text_field_tag :home_address,
+        params[:home_address],
+        class: "form-control mb-3",
+        id:"address",
+        placeholder: "What is your delivery address?"
+      %>
+
+      <ul class= "results">
+      </ul>
+      <p class="mb-1">Maximum distance:</p>
+      <%= text_field_tag :distance,
+        params[:distance],
+        class: "js-range-slider-radius mb-3"
+      %>
+
+      <legend class="pt-0">What's your mood like?</legend>
       <% @cuisines.each do |cuisine| %>
         <div class="tag-item">
           <%= check_box_tag "cuisine[]", cuisine,
@@ -40,7 +61,7 @@
         </div>
       <% end %>
 
-    <legend class=" pt-0">Choose your course</legend>
+    <legend class=" pt-0">Choose your course:</legend>
       <% @courses.each do |course| %>
         <div class="tag-item">
           <%= check_box_tag "course[]", course.id,
@@ -51,37 +72,14 @@
         </div>
       <% end %>
       <br>
-    
-      <br>
-      <%= text_field_tag :price,
-        params[:price],
-        class: "js-range-slider-price"
-      %>
-      <br>
-
-      <%= text_field_tag :home_address,
-        params[:home_address],
-        class: "form-control",
-        id:"address",
-        placeholder: "What is your delivery address?"
-      %>
-
-      <ul class= "results">
-      </ul>
-
-      <%= text_field_tag :distance,
-        params[:distance],
-        class: "js-range-slider-radius"
-      %>
-
-      <%= submit_tag "Search", class: "btn btn-primary mb-5" %>
+      <%= submit_tag "Search", class: "btn btn-primary mt-5" %>
       <br>
     <% end %>
    </div>
    </div>
 </div>
 
-<a href="javascript:void(0)" id="open-btn">filter</a>
+
   <!-- <input type="text" class="js-range-slider" name="my_range" value="" /> -->
 
 
@@ -102,6 +100,6 @@
       min: 0,
       max: 10 ,
       from: <%= params[:distance] ? params[:distance].to_i : 10 %>,
-      postfix: "KM"
+      postfix: "km"
     });
 </script>
