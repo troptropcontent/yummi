@@ -5,18 +5,22 @@
 
 
 const toggleFilters = () => {
-  const filterBtn = document.getElementById("filter-open-btn");
-  const closeFilterBtn = document.getElementById("filter-close-btn");
+  const openBtn = document.getElementById("open-btn");
+  const closeBtn = document.getElementById("close-btn");
   const navbar = document.querySelector(".navbar");
+  const overlay = document.querySelector(".overlay");
 
-  if (filterBtn&&closeFilterBtn) {
-    const overlay = document.getElementById("myNav");
-    filterBtn.addEventListener("click",()=>{
+  if (openBtn&&closeBtn) {
+    
+    openBtn.addEventListener("click",()=>{
+      
       overlay.classList.toggle("active");
+      console.log("Hello")
       // document.getElementById("meal-cards").style.display ="none";
       navbar.style.display = "none";  
     });
-    closeFilterBtn.addEventListener("click",()=>{
+    closeBtn.addEventListener("click",()=>{
+      console.log("close")
       overlay.classList.toggle("active");
       navbar.style.display = "inline-flex";
       // document.getElementById("meal-cards").style.display ="none";
