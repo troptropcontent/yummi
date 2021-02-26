@@ -4,6 +4,7 @@
   </div>
   <div class="checkout-data">
     <div class="lines">
+    <% total_price_lines = 0 %>
       <% @order.lines.each do |line| %>
         <div class="line" id=<%=line.id%>>
           <div class="text">
@@ -17,7 +18,9 @@
             </div>
             <div class="price" data-price=<%=line.meal.price_cents %>>
               <% line.quantity = 1 %>
-              <p><%= (line.meal.price_cents*line.quantity.fdiv(100)).round(2) %></p>
+              <% total_price_line = (line.meal.price_cents*line.quantity.fdiv(100)).round(2) %>
+              <p><%= total_price_line %></p>
+              <% total_price_lines += total_price_line %>
             </div>
           </div>
         </div>
@@ -25,8 +28,13 @@
     </div>
     <div class="checkout-footer">
       <div class="total">
+        <%= total_price_lines %>
       </div>
       <div class="checkout-btn">
+        <%= simple_form_for @order do |f| %>
+          <%= f.input :user %>
+          <%= f.button :submit %>
+        <% end %>
       </div>
     </div>
   </div>
