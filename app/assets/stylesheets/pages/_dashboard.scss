@@ -1,0 +1,41 @@
+.tabs-underlined {
+  display: flex;
+  align-items: center;
+  font-size: 28px;
+  padding: 16px;
+}
+
+.tabs-underlined .tab-underlined {
+  color: black;
+  padding: 8px;
+  margin: 8px 16px;
+  opacity: .4;
+  cursor: pointer;
+  text-decoration: none;
+  border-bottom: 4px solid transparent;
+}
+
+.tabs-underlined .tab-underlined.active {
+  opacity: 1;
+  border-bottom: 3px solid #555555;
+}
+ .dashboard-list {
+   border-bottom: black solid;
+  ul {
+    list-style-type: none;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+    padding: 12px;
+  }
+
+ }
+
+ hr {
+  color: gray;
+  text-align: center;
+  height: 6px;
+  width: 285px;
+}
