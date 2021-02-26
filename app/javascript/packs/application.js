@@ -30,6 +30,9 @@ import { addressFinder } from "../plugins/address_finder";
 // Internal imports, e.g:
 import {toggleFilters} from "../plugins/toggle_filters";
 import {priceCalculator} from "../plugins/priceCalculator";
+import { loadDynamicBannerText } from '../components/banner';
+
+
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
@@ -40,5 +43,6 @@ document.addEventListener('turbolinks:load', () => {
 
   priceCalculator();
   addressFinder();
+  loadDynamicBannerText();
 
 });
