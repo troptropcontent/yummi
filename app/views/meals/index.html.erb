@@ -5,17 +5,13 @@
   <p> We found <%= pluralize @meals.count, "result" %> </p>
 </div>
 
-
-<
-  <%= render 'shared/filter_form' %>
-
-<%= @meals.count %>
+<%= render 'shared/filter_form' %>
 
 <div id="meal-cards">
  <% @meals.each do |meal| %>
 
   <center><div class="card-suggestion">
-  
+
     <%= cl_image_tag meal.photo.key, height: 300, width: 400, crop: :fill %>
 
       <div class="card-suggestion-infos">
