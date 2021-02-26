@@ -1,16 +1,3 @@
-.card-flex {
-  overflow-x: scroll;
-  ul {
-    display: flex;
-    list-style-type: disc;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 10px;
-  }
-
-}
 
 #link {
   text-decoration: none;
@@ -39,6 +26,7 @@
   font-size: 16px;
   font-weight: bold;
   margin: 0px 10px;
+  color: $my-orange
 }
 
 #margin-top {
@@ -49,6 +37,7 @@
   font-size: 12px;
   opacity: .7;
   margin: 0;
+  color: black;
 }
 
 
@@ -77,5 +66,5 @@
 .price-wrap {
   display: flex;
   justify-content: center;
+  position: bottom;
 }
-

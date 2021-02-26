@@ -3,8 +3,9 @@
 </div>
 
 <h1><%= @meal.name %></h1>
-
-<p><%= @meal.description %></p>
+<div class="description-show">
+  <p><%= @meal.description %></p>
+</div>
 
 <div class="show-icons">
   <ul>
@@ -14,7 +15,9 @@
   </ul>
   <br>
   <hr>
-
+  <div class="btn-order">
+    <%= render 'shared/checkout_modal' %>
+  </div>
 </div>
 
 <div class="chef-card">
@@ -30,7 +33,8 @@
         <li><i class="fas fa-drumstick-bite"></i></li>
       </ul>
     </div>
-    <p><%= @meal.description %></p>
-    <%= render 'shared/checkout_modal' %>  
+    <div class="description-chef-show">
+      <p><%= @meal.description %></p>
+    </div>
   </div>
 </div>

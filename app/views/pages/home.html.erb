@@ -13,22 +13,24 @@
   <ul>
     <% @meals.each do |meal| %>
     <li>
-      <div class="card-suggestion">
+      <div class="card-suggestion-home">
 
-        <%= cl_image_tag meal.photo.key, height: 200, width: 375, crop: :fill %>
+        <%= cl_image_tag meal.photo.key, height: 200, width: 285, crop: :fill %>
 
-        <div class="card-suggestion-infos">
-          <div>
+        <div class="card-suggestion-infos-home">
             <%= link_to meal_path(meal), id: 'link' do %>
-            <h2 id="margin-top"><strong><%= meal.name %></strong></h2>
-            <p><%= meal.description[0..200] %>...</p>
-            <div class="price-wrap">
-              <h2><%= meal.price_cents.fdiv(100) %></h2>
-              <i class="fas fa-euro-sign"></i>
-            </div>
+              <h2 id="margin-top-home"><strong><%= meal.name %></strong></h2>
+              <div class="description-flex">
+                <p><%= meal.description[0..100] %>...</p>
+              </div>
+              <br>
+              <div class="price-wrap-home">
+                <h2><%= meal.price_cents.fdiv(100) %></h2>
+                <i class="fas fa-euro-sign"></i>
+              </div>
             <% end %>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-suggestion-user avatar-bordered" />
-          </div>
+
+            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-suggestion-user-home avatar-bordered" />
         </div>
       </div>
 

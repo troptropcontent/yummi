@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:new, :show, :update]
   resources :reviews, only: [:create]
   get '/settings', to: 'pages#settings'
-
+  get '/home-page', to: 'pages#home-page'
   get '/dashboard', to: 'pages#dashboard'
 
   resources :charges, only: [:new, :create]
