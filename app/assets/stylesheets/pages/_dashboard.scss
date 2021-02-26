@@ -20,7 +20,9 @@
   border-bottom: 3px solid #555555;
 }
  .dashboard-list {
+   border-bottom: black solid;
   ul {
+    list-style-type: none;
     margin-block-start: 1em;
     margin-block-end: 1em;
     margin-inline-start: 0px;
@@ -28,4 +30,12 @@
     padding-inline-start: 0px;
     padding: 12px;
   }
+
  }
+
+ hr {
+  color: gray;
+  text-align: center;
+  height: 6px;
+  width: 285px;
+}
