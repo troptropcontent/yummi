@@ -41,10 +41,10 @@
           const newQuantity = actualQuantity+parseInt(event.target.dataset.value)
           console.log(newQuantity)
           quantityText.innerText = newQuantity
-          linePrice.innerText = parseInt(actualPrice)+(parseInt(event.target.dataset.value)*unitPrice)
+          linePrice.innerText = Math.round((parseInt(actualPrice)+(parseInt(event.target.dataset.value)*unitPrice))*100)/100
           quantityInput.value = newQuantity
           const actualTotal = total_price.innerText
-          total_price.innerText = parseInt(actualTotal)+(parseInt(event.target.dataset.value)*unitPrice)
+          total_price.innerText = Math.round((parseInt(actualTotal)+(parseInt(event.target.dataset.value)*unitPrice))*100)/100
           console.log(quantityText.innerText === quantityInput.value )
         });
       });      

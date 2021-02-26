@@ -13,10 +13,28 @@ end
   end
   
   def update
-    raise
+    @lines=[]
+    @linesParams = params.select{|param| param[0]=="l"}
+    @linesParams.each do |line|
+      @lines << line
+    end
+    @lines.each do |line|
+      updated_line = Line.find(line[0].split("_")[-1])
+      updated_line.quantity = line[1]
+      updated_line.save!
+    end
     @order = Order.find(params[:id])
+    @order.price_cents = @order.total_before_checkout
     @order.status = "Confirmed"
+    @order.save!
+    raise
     authorize @order
   end
+
+
+  def order_params
+    params.require(:order).permit(:status, :price_cents, :user_id)
+  end
+  
   
 end
