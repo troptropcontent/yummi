@@ -12,45 +12,30 @@
 <div class="card-flex">
   
   <ul>
+  
+    <% @meals.each do |meal| %>
+    <li>
+      <div class="card-suggestion">
+    
+        <%= cl_image_tag meal.photo.key, height: 200, width: 375, crop: :fill %>
 
-  <li>
-  <div class="card-suggestion">
-    <img src="https://cdn.radiofrance.fr/s3/cruiser-production/2020/02/0ce7dc22-8fc2-4336-9c35-55ff1fa1461b/1200x680_bourguignon.jpg" />
-    <div class="card-suggestion-infos">
-      <div>
-        <h2>Title here</h2>
-        <p>Short description here!</p>
+        <div class="card-suggestion-infos">
+          <div>
+            <%= link_to meal_path(meal), id: 'link' do %>
+            <h2 id="margin-top"><strong><%= meal.name %></strong></h2>
+            <p><%= meal.description[0..200] %>...</p>
+            <div class="price-wrap">
+              <h2><%= meal.price_cents.fdiv(100) %></h2>
+              <i class="fas fa-euro-sign"></i>
+            </div>
+            <% end %>
+            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-suggestion-user avatar-bordered" />
+          </div>
+        </div>
       </div>
-      <h2 class="card-suggestion-pricing">£99.99</h2>
-      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-suggestion-user avatar-bordered" />
-    </div>
-  </div>
-  </li>
-  <li>
-  <div class="card-suggestion">
-  <img src="https://cdn.radiofrance.fr/s3/cruiser-production/2020/02/0ce7dc22-8fc2-4336-9c35-55ff1fa1461b/1200x680_bourguignon.jpg" />
-    <div class="card-suggestion-infos">
-      <div>
-        <h2>Title here</h2>
-        <p>Short description here!</p>
-      </div>
-      <h2 class="card-suggestion-pricing">£99.99</h2>
-      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-suggestion-user avatar-bordered" />
-    </div>
-  </div>
-  </li>
-  <li>
-  <div class="card-suggestion">
-    <img src="https://cdn.radiofrance.fr/s3/cruiser-production/2020/02/0ce7dc22-8fc2-4336-9c35-55ff1fa1461b/1200x680_bourguignon.jpg" />
-    <div class="card-suggestion-infos">
-      <div>
-        <h2>Title here</h2>
-        <p>Short description here!</p>
-      </div>
-      <h2 class="card-suggestion-pricing">£99.99</h2>
-      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-suggestion-user avatar-bordered" />
-    </div>
-  </div></li>
 
+    </li>
+    <% end %>
+    
   </ul>
 </div>
