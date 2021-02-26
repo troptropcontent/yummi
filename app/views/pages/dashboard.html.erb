@@ -1,26 +1,78 @@
-<center>
-<ul class="list-inline tabs-underlined">
-  <li>
-    <a href="#" class="tab-underlined active">last orders</a>
-  </li>
-  <li>
-    <a href="#" class="tab-underlined">bidule</a>
-  </li>
-</ul>
-</center>
-<div class="dashboard-list">
-  <ul>
-    </li>
-      <div class="dashboard-card">
-        <img src="https://cdn.radiofrance.fr/s3/cruiser-production/2020/02/0ce7dc22-8fc2-4336-9c35-55ff1fa1461b/1200x680_bourguignon.jpg" />
+
+<div class= "container" >
+  <div class ="container-order">
+
+    <h1> Hello! </h1>
+
+    <div class="card-product-order">
+      <%= cl_image_tag @meal.photo.key %>
+      <div class="card-product-order-infos">
+        <p><strong>Product name</strong></p>
+        <p>Color: Black, Size: M, Qty: 1</p>
       </div>
-    <li>
-  </ul>
-  <br>
-  <h1>Date</h1>
-  <hr>
-  <h1>title</h1>
-  <hr>
-  <h1>price</h1>
-  <hr>
+      <p>$49.00</p>
+    </div>
+
+    <footer class="mt-3">
+      <ul class="flex flex-column">
+        <li class="d-flex justify-content-between"><i>Subtotal</i> <i>$98.00</i></li>
+        <li class="d-flex justify-content-between"><i>Tax</i> <i>$10.00</i></li>
+        <li class="d-flex justify-content-between"><i>Delivery</i> <i>Free</i></li>
+        <li class="d-flex justify-content-between"><i>Total</i> <i>$108.00</i></li>
+      </ul>
+    </footer>
+
+  </div>
 </div>
+
+
+<style>
+
+  .container-order {
+    background-color: white;
+    padding: 5px 15px;
+    margin-top: 10px;
+  }
+
+  .container-order ul {
+    padding-inline-start: 0px;
+  }
+
+  .card-product-order {
+    overflow: hidden;
+    height: 120px;
+    background: white;
+    display: flex;
+    align-items: center;
+  }
+
+  .card-product-order img {
+    height: 100%;
+    width: 120px;
+    object-fit: cover;
+  }
+
+  .card-product-order h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .card-product-order p {
+    font-size: 12px;
+    line-height: 1.4;
+    opacity: .7;
+    padding-bottom: 0px;
+  }
+
+  .card-product-order .card-product-order-infos {
+    padding: 16px;
+    flex-grow: 1;
+  }
+
+  .card-product-order-infos p {
+    margin:0;
+    padding:0;
+    align-items: center;
+  }
+</style>
