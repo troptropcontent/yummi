@@ -12,5 +12,11 @@ end
     authorize @order
   end
   
-
+  def update
+    raise
+    @order = Order.find(params[:id])
+    @order.status = "Confirmed"
+    authorize @order
+  end
+  
 end
