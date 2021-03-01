@@ -30,6 +30,7 @@ import { addressFinder } from "../plugins/address_finder";
 // Internal imports, e.g:
 import {toggleFilters} from "../plugins/toggle_filters";
 import {changeLineQuantity} from "../plugins/priceCalculator";
+import { initChatroomCable } from "../channels/chatroom_channel"
 
 import { loadDynamicBannerText } from '../components/banner';
 import { toggleOrderCardsDetails } from '../plugins/toggleOrderCardsDetails';
@@ -46,6 +47,7 @@ document.addEventListener('turbolinks:load', () => {
   changeLineQuantity();
   addressFinder();
   // loadDynamicBannerText();
+  initChatroomCable();
   toggleOrderCardsDetails();
 
 });
