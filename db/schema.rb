@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_27_171101) do
+ActiveRecord::Schema.define(version: 2021_03_01_101540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,13 +115,13 @@ ActiveRecord::Schema.define(version: 2021_02_27_171101) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer "rating"
     t.text "content"
-    t.bigint "meal_id", null: false
-    t.bigint "user_id", null: false
+    t.integer "rating"
+    t.bigint "order_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["meal_id"], name: "index_reviews_on_meal_id"
+    t.bigint "user_id", null: false
+    t.index ["order_id"], name: "index_reviews_on_order_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -165,7 +165,7 @@ ActiveRecord::Schema.define(version: 2021_02_27_171101) do
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
   add_foreign_key "orders", "users"
-  add_foreign_key "reviews", "meals"
+  add_foreign_key "reviews", "orders"
   add_foreign_key "reviews", "users"
   add_foreign_key "schedules", "users"
 end
