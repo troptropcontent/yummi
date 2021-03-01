@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :meals, only: [:index, :show, :new, :create]
   resources :lines, only: [:create, :update]
-  resources :orders, only: [:new, :show, :update]
-  resources :reviews, only: [:create]
+  resources :orders, only: [:new, :show, :update] do
+    resources :reviews, only: [ :new, :create ]
+  end
   get '/settings', to: 'pages#settings'
   get '/home-page', to: 'pages#home-page'
   get '/dashboard', to: 'pages#dashboard'

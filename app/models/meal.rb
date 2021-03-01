@@ -14,7 +14,8 @@ class Meal < ApplicationRecord
   has_many :meal_courses
   has_many :courses, through: :meal_courses
   has_many :lines
-  has_many :reviews
+  has_many :orders, through: :lines
+  has_many :reviews, through: :orders
   validates :discount, inclusion: { in: 0..100 }
 
 end
