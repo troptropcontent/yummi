@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :user
-  has_many :lines
+  has_many :lines, dependent: :destroy
+  has_one :chatroom
 
   def random_order_number
     random_number = []
@@ -19,12 +20,12 @@ class Order < ApplicationRecord
     random_date = today - random_number_days
     return random_date.strftime('%d/%m/%y')
   end
-  
-  
+
+
   def total_before_checkout
-    total = 0 
+    total = 0
     lines.each{|line| total += line.meal.price_cents}
     total
   end
-  
+
 end

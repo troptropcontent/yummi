@@ -1,0 +1,45 @@
+<div class="checkout-head">
+  <h1>Please confirm your order</h1>
+</div>
+<div class="checkout-data">
+<% total_lines = 0 %>
+    <div class="lines">
+        <% @order.lines.each do |line|%>
+          <div class="line line_id_<%=line.id%>">
+
+            <p class="line_meal" data-line-id=<%=line.id%>>
+              <%= line.meal.name %>
+            </p>
+            <p class="line_quantity" data-line-id=<%=line.id%> data-meal-price-cents=<%=line.meal.price_cents%> id="quantity_line_<%=line.id%>">
+              <%= line.quantity %>
+            </p>
+            <p class="line_price" id="price_line_<%=line.id%>" >
+              <%= line.meal.price_cents.fdiv(100) %>
+            </p>
+          </div>
+          <% total_lines += line.meal.price_cents.fdiv(100) %>
+        <% end %>
+    </div>
+
+  <div class="checkout-footer">
+    <div class="total">
+    <p class="total_price"><%= total_lines %></p>
+    </div>
+    <div class = checkout-stripe_btn>
+        <%= form_tag charges_path do %>
+        <article>
+          <% if flash[:error].present? %>
+            <div id="error_explanation">
+              <p><%= flash[:error] %></p>
+            </div>
+          <% end %>
+
+        </article>
+        <input name="OrderId" type="hidden" value="<%= @order.id %>">
+
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="<%= Rails.configuration.stripe[:publishable_key] %>" data-description="A month's subscription" data-amount="<%= @order.total_before_checkout %>" data-currency="eur" data-locale="auto"></script>
+      <% end %>
+    </div>
+  </div>
+
+</div>

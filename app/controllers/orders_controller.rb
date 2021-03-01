@@ -1,17 +1,18 @@
 class OrdersController < ApplicationController
-def new
-  @order = current_order
-  @line = Line.new
-  @line.meal = Meal.find(params[:meal])
-  @line.quantity = 1
-  authorize @order
-end
+# def new
+#   @order = current_order
+#   @order.status = "In_progress"
+#   @line = Line.new
+#   @line.meal = Meal.find(params[:meal])
+#   @line.quantity = 1
+#   authorize @order
+# end
 
   def show
     @order = Order.find(params[:id] )
     authorize @order
   end
-  
+
   def update
     @lines=[]
     @linesParams = params.select{|param| param[0]=="l"}
@@ -28,13 +29,13 @@ end
     @order.status = "Confirmed"
     @order.save!
     authorize @order
-    redirect_to dashboard_path
+    redirect_to @order
   end
 
 
   def order_params
     params.require(:order).permit(:status, :price_cents, :user_id)
   end
-  
-  
+
+
 end

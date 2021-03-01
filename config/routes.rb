@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'pages#dashboard'
 
   resources :charges, only: [:new, :create]
+
+
   resources :chatrooms, only: :show do
     resources :messages, only: [ :new, :create ]
   end

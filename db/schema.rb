@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_27_171101) do
+ActiveRecord::Schema.define(version: 2021_03_01_094430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,12 @@ ActiveRecord::Schema.define(version: 2021_02_27_171101) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "order_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "cook_id"
+    t.index ["cook_id"], name: "index_chatrooms_on_cook_id"
+    t.index ["order_id"], name: "index_chatrooms_on_order_id"
+    t.index ["user_id"], name: "index_chatrooms_on_user_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -155,6 +161,9 @@ ActiveRecord::Schema.define(version: 2021_02_27_171101) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "chatrooms", "orders"
+  add_foreign_key "chatrooms", "users"
+  add_foreign_key "chatrooms", "users", column: "cook_id"
   add_foreign_key "lines", "meals"
   add_foreign_key "lines", "orders"
   add_foreign_key "meal_categories", "categories"
