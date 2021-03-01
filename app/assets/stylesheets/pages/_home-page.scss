@@ -22,9 +22,10 @@
     h2 {
         text-align: center;
         margin: 15px;
-        font-size: 24px bold;
+        font-size: 48px bold;
         font-family: 'Varela Round', sans-serif;
         color: $my-beige;
+
     }
     .home-page-btn {
         vertical-align: middle;
@@ -48,9 +49,3 @@
 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
-
-.space-home-page {
-    width: 100%;
-    height: 300px;
-}
-  
