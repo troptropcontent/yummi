@@ -1,0 +1,9 @@
+<h3>Add a review</h3>
+<%= simple_form_for [order, @review] do |f| %>
+  <%= f.input :rating, collection: Review::RATING %>
+  <%= f.input :content %>
+  <center>
+  <a type="button" id="review-link" data-dismiss="modal">Close</a>
+  <%= f.button :submit, "Create", class: "btn btn-primary" %>
+  </center>
+<% end %>
