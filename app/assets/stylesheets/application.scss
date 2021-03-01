@@ -19,6 +19,7 @@
 @import "pages/dashboard";
 @import "pages/home-page";
 @import "pages/index_page";
+@import "pages/show-order";
 
 // police charactere
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Varela+Round&display=swap');
@@ -36,10 +37,10 @@ body {
 }
 
 legend {
-  color: white;
-  font-family: $headers-font;
+  color: $my-blue;
+  font-family: $body-font;
   padding: 10px;
-  font-size: 18px;
+  font-size: 16px;
   margin: 10px;
 }
 
