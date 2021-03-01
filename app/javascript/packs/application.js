@@ -48,8 +48,8 @@ document.addEventListener('turbolinks:load', () => {
   addressFinder();
 
   addToCart();
-  // loadDynamicBannerText();
-
+  loadDynamicBannerText();
+  
   initChatroomCable();
   toggleOrderCardsDetails();
 
