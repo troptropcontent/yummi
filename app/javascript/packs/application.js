@@ -46,7 +46,7 @@ document.addEventListener('turbolinks:load', () => {
 
   changeLineQuantity();
   addressFinder();
-  // loadDynamicBannerText();
+  loadDynamicBannerText();
   initChatroomCable();
   toggleOrderCardsDetails();
 

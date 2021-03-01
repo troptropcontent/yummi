@@ -1,31 +1,10 @@
 // Specific CSS for your home-page
-.banner {
-    height: 70vh;
-    justify-content: space-around;
-    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), image-url("banner.jpg");
-    background-size: cover;
-    background-position: center;
-    color: white;
-    top: 0;
-    h1 {
-        font-family: 'Lobster', cursive;
-        text-align: center;
-        font-size: 64px;
-        padding: 32px;
-    }
 
-    h2 {
-        text-align: center;
-        margin: 15px;
-        font-size: 24px;
-        font-family: 'Varela Round', sans-serif;
-    }
-}
 
 .home-page {
     height: 100vh;
     justify-content: space-around;
-    background-color: black;
+    background-image: asset-url('home-image.png');
     background-size: cover;
     background-position: center;
     color: white;
@@ -43,21 +22,35 @@
     h2 {
         text-align: center;
         margin: 15px;
-        font-size: 24px;
+        font-size: 24px bold;
         font-family: 'Varela Round', sans-serif;
         color: $my-beige;
-        padding: 42px;
     }
     .home-page-btn {
         vertical-align: middle;
+        padding: 32px;
     }
     img {
         border-radius: 50%;
         align-items: center;
+        width: 96px;
+        height: 96px;
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        margin:-40px 0 0 -40px;
+        -webkit-animation:spin 1s linear infinite;
+        -moz-animation:spin 1s linear infinite;
+        animation:spin 1s linear infinite;
     }
 }
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
 .space-home-page {
     width: 100%;
     height: 300px;
 }
+  
