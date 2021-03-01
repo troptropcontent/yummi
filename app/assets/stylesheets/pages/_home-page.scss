@@ -30,6 +30,8 @@
     background-position: center;
     color: white;
     top: 0;
+    text-align: center;
+    padding-top: 64px;
     h1 {
         font-family: 'Lobster', cursive;
         text-align: center;
@@ -44,9 +46,14 @@
         font-size: 24px;
         font-family: 'Varela Round', sans-serif;
         color: $my-beige;
+        padding: 42px;
     }
     .home-page-btn {
         vertical-align: middle;
+    }
+    img {
+        border-radius: 50%;
+        align-items: center;
     }
 }
 
