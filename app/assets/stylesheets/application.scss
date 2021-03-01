@@ -25,13 +25,19 @@
 body {
   color: $my-dbrown;
   font-weight: bold;
+  font-family: $body-font;
 }
 
 legend {
   color: white;
-  font-family: 'Varela Round', cursive;
+  font-family: $headers-font;
   padding: 10px;
   font-size: 18px;
   margin: 10px;
 }
+
+p, h2, h3, h4, h5, h6 {
+  font-family: $body-font;
+}
+
 

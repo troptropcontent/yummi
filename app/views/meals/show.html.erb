@@ -2,7 +2,7 @@
 <%= cl_image_tag @meal.photo.key, height: 300, width: 375, crop: :fill %>
 </div>
 
-<h1><%= @meal.name %></h1>
+<h2><%= @meal.name %></h2>
 <div class="description-show">
   <p><%= @meal.description %></p>
 </div>
@@ -37,4 +37,20 @@
       <p><%= @meal.description %></p>
     </div>
   </div>
+</div>
+<hr>
+<div class="reviews-container">
+  <strong><h3>Reviews: </h3></strong>
+  <% @meal.reviews.each do |review| %>
+    <div class="reviews-user-infos">
+    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="review-user avatar-bordered" />
+      <ul id="flex-grow-review">
+        <li><%= review.user.first_name %></li>
+        <li><%= review.created_at.strftime("%B") %></li>
+      </ul>
+    </div>
+    <div class="reviews-user-content">
+      <p> <%= review.content %> </p>
+    </div>
+  <% end %>
 </div>

@@ -5,7 +5,7 @@
     <h1> Hello! </h1>
 
     <%# <div class="card-product-order"> %>
-      <%# <%= cl_image_tag @meal.photo.key %> 
+      <%# <%= cl_image_tag @meal.photo.key %>
       <%# <div class="card-product-order-infos"> %>
         <%# <p><strong>Product name</strong></p> %>
         <%# <p>Color: Black, Size: M, Qty: 1</p> %>
@@ -14,7 +14,7 @@
     <%# </div> %>
     <h1>My orders</h1>
     <div class="order-cards">
-      
+
       <% @orders.each do |order| %>
         <div class="order-card">
           <div class="order-card-head">
@@ -23,9 +23,28 @@
               <p>delivered on <%= order.random_delivery_date %></p>
               <p>status : <%= order.status %></p>
             </div>
-            <div class="order-card-detail-btn" >
-            <a href="#" data-order-id="<%= order.id %>">details</a>
+            <a type="button" id="review-link" data-toggle="modal" data-target="#exampleModal">Leave a review</a>
+<!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-footer">
+                    <div class="modal-body">
+                      <%= render 'reviews/new', order: order %>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
+          <div class="order-card-detail-btn" >
+          <a href="#" data-order-id="<%= order.id %>">details</a>
+          </div>
           </div>
           <div class="order-card-lines" id="order-lines-<%= order.id %>">
           <% order.lines.each do |line| %>
@@ -47,7 +66,7 @@
           </div>
         </div>
       <% end %>
-      
+
     </div>
 
     <%# <footer class="mt-3">

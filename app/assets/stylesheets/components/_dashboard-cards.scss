@@ -4,9 +4,12 @@
   .order-card-detail-btn{
     text-align: right;
   }
-  .order-card-lines{
+  .order-card-lines {
     display: none;
-
+  }
+  #review-link {
+    font-size: 14px;
+    text-decoration: underline;
   }
   .order-card-details-expanded-bottom{
     display: flex;
@@ -22,7 +25,7 @@
   p {
     color: $my-dbrown;
     font-size: smaller;
-  
+
   }
 
 
