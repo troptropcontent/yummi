@@ -1,3 +1,21 @@
+#container-index {
+  padding-top: 35px;
+  padding-bottom: 15px;
+  justify-content: center;
+  text-align: center;
+  position: sticky;
+  top: 0px;
+  background-color: white;
+  z-index: 1;
+  h1 {
+    margin: 0px;
+    padding: 0px;
+  }
+  p {
+    margin: 0px;
+    padding: 0px;
+  }
+}
 
 #link {
   text-decoration: none;
@@ -7,12 +25,13 @@
 .card-suggestion {
   overflow: hidden;
   background: white;
-  width: 285px;
+  width: 300px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   color: black;
   border-radius: 8px;
   margin: 15px;
   height: 100%;
+  text-align: left;
 }
 
 .card-suggestion > img {
@@ -25,8 +44,6 @@
 .card-suggestion h2 {
   font-size: 16px;
   font-weight: bold;
-  margin: 0px 10px;
-  color: $my-orange
 }
 
 #margin-top {
@@ -49,11 +66,14 @@
 
 
 .card-suggestion .card-suggestion-infos {
-  padding: 16px;
+  padding: 0px 16px;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
   position: relative;
+  background-color: white;
+  margin: 10em 1em 1em 1em;
+  border-radius: 8px;
+  height: 100px;
+  align-items: center;
 }
 
 .card-suggestion-infos .card-suggestion-user {

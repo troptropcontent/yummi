@@ -2,15 +2,15 @@
 
 <%= text_field_tag :query,
     params[:query],
-    class: "form-control",
+    class: "form-control search-form",
     placeholder: "What would make you feel Yummi?"
   %> <br>
 
   <%= text_field_tag :day,
     params[:day],
-    class: "form-control datepicker",
+    class: "form-control datepicker search-form",
     placeholder: "Pick a date"
   %>
   <br>
-  <center><%= submit_tag "Find it!", class: "btn btn-primary" %></center>
+  <center><%= submit_tag "Find it!", class: "btn-home" %></center>
 <% end %>

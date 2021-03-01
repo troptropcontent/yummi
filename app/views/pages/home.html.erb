@@ -1,40 +1,29 @@
 <div class="banner">
-  <h1>YUMMI !</h1>
-  <h2>live a culinary experience thanks to your neighbors</h2>
+  <h2>Eat local food, prepared with love</h2>
   <div class="search-bar">
     <center><%= render 'shared/home_form' %></center>
   </div>
 </div>
 
-<h3>Top moment offers ! </h3>
+<div class="titles">
+  <h3>Moment offers </h3>
+  <%= link_to "See all", meals_path, id: 'link-to'  %>
+</div>
 
 <div class="card-flex">
 
   <ul>
     <% @meals.each do |meal| %>
     <li>
-      <div class="card-suggestion-home">
-
-        <%= cl_image_tag meal.photo.key, height: 200, width: 285, crop: :fill %>
-
+      <div class="card-suggestion-home" style="background-image: url(<%= cl_image_path meal.photo.key, height: 320, width: 300, crop: :fill %>);">
         <div class="card-suggestion-infos-home">
             <%= link_to meal_path(meal), id: 'link' do %>
               <h2 id="margin-top-home"><strong><%= meal.name %></strong></h2>
-              <div class="description-flex">
-                <p><%= meal.description[0..100] %>...</p>
-              </div>
-              <br>
-              <div class="price-wrap-home">
-                <h2><%= meal.price_cents.fdiv(100) %></h2>
-                <i class="fas fa-euro-sign"></i>
-              </div>
+              <h2><%= meal.price_cents.fdiv(100) %>€</h2>
             <% end %>
-
             <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-suggestion-user-home avatar-bordered" />
         </div>
       </div>
-
-
     </li>
     <% end %>
 

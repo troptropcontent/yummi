@@ -1,28 +1,24 @@
 .banner {
-  height: 450px;
+  height: 375px;
   justify-content: space-around;
   background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), image-url("banner.jpg");
   background-size: cover;
   background-position: center;
   color: white;
-  h1 {
-      font-family: 'Lobster', cursive;
-      text-align: center;
-      font-size: 64px;
-      padding: 32px;
-      color: $my-beige;
-    }
-    
+
     h2 {
-      text-align: center;
-      margin: 15px;
-      font-size: 24px;
-      font-family: 'Varela Round', sans-serif;
+      text-align: left;
+      margin: 0;
+      color: white;
+      padding-left: 20px;
+      padding-top: 86px;
+      padding-bottom: 22px;
+      font-weight: bold;
     }
   }
-  
+
 h3 {
-  font-family: 'Lobster', cursive;
+
   text-align: center;
   font-size: 32px;
   padding: 16px;
@@ -50,4 +46,30 @@ p{
 .search-bar{
   width: 335px;
   margin: 16px;
-}  
+}
+
+.titles {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 10px;
+  #link-to {
+    color: #E84C4F;
+    text-decoration: underline;
+  }
+}
+
+.btn-home {
+    background-color: #EDA245;
+    color: white;
+    width: 335px;
+    border-radius: 52px;
+    height: 38px;
+    font-size: 16px;
+    font-weight: bolder;
+    border: 0px;
+}
+
+.search-form {
+  border-radius: 52px;
+}

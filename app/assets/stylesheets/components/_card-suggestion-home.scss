@@ -21,7 +21,7 @@
   border-radius: 8px;
   margin-right: 15px;
   height: 100%;
-  text-align: center;
+  text-align: left;
 }
 
 .card-suggestion-home > img {
@@ -34,7 +34,6 @@
 .card-suggestion-home h2 {
   font-size: 16px;
   font-weight: bold;
-  margin: 0px 10px;
 }
 
 #margin-top-home {
@@ -52,15 +51,19 @@
 .card-suggestion-wrap-home {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 
 .card-suggestion-home .card-suggestion-infos-home {
-  padding: 16px;
+  padding: 0px 16px;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
   position: relative;
+  background-color: white;
+  margin: 10em 1em 1em 1em;
+  border-radius: 8px;
+  height: 100px;
+  align-items: center;
 }
 
 .card-suggestion-infos-home .card-suggestion-user-home {
@@ -70,15 +73,12 @@
   width: 40px;
 }
 
-.price-wrap-home {
-  display: flex;
-  justify-content: center;
-  position: bottom 0;
-}
-
 .description-flex {
   display: flex;
   flex-direction: column;
+  p {
+    margin: 0px
+  }
 }
 
 .row {
