@@ -33,6 +33,8 @@ import {changeLineQuantity} from "../plugins/priceCalculator";
 import { initChatroomCable } from "../channels/chatroom_channel"
 
 import { loadDynamicBannerText } from '../components/banner';
+import { toggleOrderCardsDetails } from '../plugins/toggleOrderCardsDetails';
+
 
 // import { initSelect2 } from '../components/init_select2';
 
@@ -46,5 +48,7 @@ document.addEventListener('turbolinks:load', () => {
   addressFinder();
   // loadDynamicBannerText();
   initChatroomCable();
+  toggleOrderCardsDetails();
 
 });
+

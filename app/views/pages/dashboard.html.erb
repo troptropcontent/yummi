@@ -4,75 +4,62 @@
 
     <h1> Hello! </h1>
 
-    <div class="card-product-order">
-      <%= cl_image_tag @meal.photo.key %>
-      <div class="card-product-order-infos">
-        <p><strong>Product name</strong></p>
-        <p>Color: Black, Size: M, Qty: 1</p>
-      </div>
-      <p>$49.00</p>
+    <%# <div class="card-product-order"> %>
+      <%# <%= cl_image_tag @meal.photo.key %> 
+      <%# <div class="card-product-order-infos"> %>
+        <%# <p><strong>Product name</strong></p> %>
+        <%# <p>Color: Black, Size: M, Qty: 1</p> %>
+      <%# </div> %>
+      <%# <p>$49.00</p> %>
+    <%# </div> %>
+    <h1>My orders</h1>
+    <div class="order-cards">
+      
+      <% @orders.each do |order| %>
+        <div class="order-card">
+          <div class="order-card-head">
+            <div class="order-card-head-infos">
+              <p>Order N° <%= order.random_order_number %></p>
+              <p>delivered on <%= order.random_delivery_date %></p>
+              <p>status : <%= order.status %></p>
+            </div>
+            <div class="order-card-detail-btn" >
+            <a href="#" data-order-id="<%= order.id %>">details</a>
+            </div>
+          </div>
+          <div class="order-card-lines" id="order-lines-<%= order.id %>">
+          <% order.lines.each do |line| %>
+            <div class="order-line">
+              <div class="order-line-left">
+                <p><%= line.meal.name %></p>
+                <p>from <%= line.meal.user.full_name %></p>
+              </div>
+              <div class="order-line-right">
+                <p>qty : <%= line.quantity %></p>
+                <p><%= line.meal.price_cents.fdiv(100).round(2) %> €</p>
+              </div>
+            </div>
+          <% end %>
+          <div class="order-card-details-expanded-bottom">
+            <h2>Total : <%= order.total_before_checkout.fdiv(100).round(2) %> €</h2>
+            <a href="#" data-order-id="<%= order.id %>">hide</a>
+          </div>
+          </div>
+        </div>
+      <% end %>
+      
     </div>
 
-    <footer class="mt-3">
+    <%# <footer class="mt-3">
       <ul class="flex flex-column">
         <li class="d-flex justify-content-between"><i>Subtotal</i> <i>$98.00</i></li>
         <li class="d-flex justify-content-between"><i>Tax</i> <i>$10.00</i></li>
         <li class="d-flex justify-content-between"><i>Delivery</i> <i>Free</i></li>
         <li class="d-flex justify-content-between"><i>Total</i> <i>$108.00</i></li>
       </ul>
-    </footer>
+    </footer> %>
 
   </div>
 </div>
 
 
-<style>
-
-  .container-order {
-    background-color: white;
-    padding: 5px 15px;
-    margin-top: 10px;
-  }
-
-  .container-order ul {
-    padding-inline-start: 0px;
-  }
-
-  .card-product-order {
-    overflow: hidden;
-    height: 120px;
-    background: white;
-    display: flex;
-    align-items: center;
-  }
-
-  .card-product-order img {
-    height: 100%;
-    width: 120px;
-    object-fit: cover;
-  }
-
-  .card-product-order h2 {
-    font-size: 16px;
-    font-weight: bold;
-    margin: 0;
-  }
-
-  .card-product-order p {
-    font-size: 12px;
-    line-height: 1.4;
-    opacity: .7;
-    padding-bottom: 0px;
-  }
-
-  .card-product-order .card-product-order-infos {
-    padding: 16px;
-    flex-grow: 1;
-  }
-
-  .card-product-order-infos p {
-    margin:0;
-    padding:0;
-    align-items: center;
-  }
-</style>
