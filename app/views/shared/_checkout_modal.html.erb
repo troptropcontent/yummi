@@ -8,7 +8,7 @@
       <h1><%= @chef.full_name %> also propose </h1>
       <% @other_courses.each do |meal| %>
     
-        <div class="card-suggestion">
+        <div class="card-suggestion" id="other-course-meal-id-<%= meal.id%>">
           <%= cl_image_tag meal.photo.key, height: 300, width: 400, crop: :fill %>
             <div class="card-suggestion-infos">
               <div>
@@ -19,20 +19,27 @@
                 <% end %>
                 <p><%= meal.description %></p>
               </div>
-                <h2 class="card-suggestion-pricing">meal.price</h2>
                 <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-suggestion-user avatar-bordered" />
             </div>
-
-              <div class="icon">
-                <i class="fas fa-euro-sign"><%= meal.price_cents.fdiv(100) %></i>
-              </div>
-              <div class="meal-card-actions">
+              <div class="card-suggestion-footer">
+                <div class="meal-card-price">
+                  <P><%= meal.price_cents.fdiv(100) %> €</P>
+                </div>
+                <div class="meal-card-action">
+                  <a href="#" class="add-to-cart" data-meal-id=<%= meal.id %>>Add to cart</a>
+                  <a href="#" class="meal-added-to-cart" data-meal-id=<%= meal.id %>>Added to cart</a>
+                </div>
               </div>
             </div>
         <% end %>   
           <%= simple_form_for Line.new do |f| %>
             <%= f.button :submit %>
             <%= f.input :meal, :as => :hidden, :input_html => { :value => @meal.id } %>
+            <% @other_courses.each do |meal| %>
+              <%= f.input :meal ,:as => :hidden, input_html: { name: "other_meal_#{meal.id}", id: "other_meal_added_to_basket_#{meal.id}", class: "other_meal_added_to_basket"} %>
+            <% end %>
+            
+            <%# <%= l.input :quantity ,:as => :hidden, input_html: { name: "line_#{line.id}", id: "quantity_input_line_#{line.id}", class: "quantity-input"} %> 
           <% end %>
     </div>
   </div>

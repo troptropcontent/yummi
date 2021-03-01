@@ -1,0 +1,32 @@
+.reviews-container {
+ background-color: white;
+ font-family: $body-font;
+ overflow: hidden;
+ position: relative;
+ margin: 10px;
+}
+
+.reviews-container {
+  li {
+    list-style: none;
+  }
+}
+
+.reviews-user-infos {
+  display: flex;
+  justify-content: space-between;
+}
+
+#flex-grow-review {
+  flex-grow: 1;
+  padding: 0px 10px;
+}
+
+.reviews-user-infos img {
+  margin-left: 16px;
+  width: 6vh;
+}
+
+.reviews-user-content {
+  padding: 16px;
+}

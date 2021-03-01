@@ -1,19 +1,40 @@
 .order-card{
   background-color: white;
   margin-bottom: 10px;
+  padding: 0 16px;
+  .order-card-details-bottom {
+    display: flex;
+    justify-content: space-between;
+  }
+
   .order-card-detail-btn{
     text-align: right;
   }
-  .order-card-lines{
-    display: none;
 
+  #review-link {
+    font-size: 14px;
+    text-decoration: underline;
   }
+
+  .order-card-details-expanded-bottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid $my-dbrown;
+    p {
+      color: $my-dbrown;
+    }
+  }
+}
+
+.order-card-lines {
+  display: none;
+  background-color: white;
   .order-card-details-expanded-bottom{
     display: flex;
     justify-content: space-between;
   }
 }
-
 
 .order-line {
   display: flex;
@@ -22,7 +43,7 @@
   p {
     color: $my-dbrown;
     font-size: smaller;
-  
+
   }
 
 

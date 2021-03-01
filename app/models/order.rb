@@ -2,6 +2,8 @@ class Order < ApplicationRecord
   belongs_to :user
   has_many :lines, dependent: :destroy
   has_one :chatroom
+  has_one :review
+
 
   def random_order_number
     random_number = []
