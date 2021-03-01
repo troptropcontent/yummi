@@ -2,10 +2,13 @@
   <h1>All meals</h1>
   <%= render 'shared/filter_form' %>
   <div class="wrap-button">
-    <a href="javascript:void(0)" id="open-btn" class="btn btn-primary">filters</a>
     <p> We found <%= pluralize @meals.count, "result" %> </p>
 </div>
-
+  <div class="filter-icon">
+    <a href="javascript:void(0)" id="open-btn" class="btn-filter">
+      <img src=" <%= image_path ("filter-icon.png") %> " alt="" class="tag">
+    </a>
+  </div>
 <%= render 'shared/filter_form' %>
 </div>
 
