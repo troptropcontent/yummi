@@ -14,7 +14,10 @@ const toggleOrderCardsDetails = () => {
     });
     hideDetailsBtns.forEach(hideDetailsBtn => {
       hideDetailsBtn.addEventListener("click",(event)=>{
-        const orderId = event.target.dataset.orderId
+        event.preventDefault();
+        const orderId = event.target.dataset.orderId;
+        const orderLine = document.getElementById(`order-lines-${orderId}`);
+        orderLine.style.display = "none";
         console.log(orderId)
       });
     });

@@ -6,6 +6,7 @@
   }
   .order-card-lines{
     display: none;
+
   }
   .order-card-details-expanded-bottom{
     display: flex;
@@ -17,8 +18,10 @@
 .order-line {
   display: flex;
   justify-content: space-between;
+
   p {
     color: $my-dbrown;
+    font-size: smaller;
   
   }
 
