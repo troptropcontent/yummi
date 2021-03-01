@@ -24,7 +24,7 @@ class ChargesController < ApplicationController
     Chatroom.create(order_id: @order.id, user_id: @user.id, cook_id: @order.lines.first.meal.user.id)
     session[:order_id] = nil
     redirect_to dashboard_path
-    @order.status="Paid"
+    @order.status = "Paid"
 
 
   rescue Stripe::CardError => e

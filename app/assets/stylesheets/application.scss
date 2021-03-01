@@ -43,7 +43,7 @@ legend {
   margin: 10px;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, a{
   color: $my-blue;
   font-family: $body-font;
 }
@@ -56,6 +56,12 @@ p {
   color: gray;
   font-family: $body-font;
   font-size: 14px;
+}
+
+a {
+  font-size: 14px;
+  color: $my-blue;
+  font-family: $body-font;
 }
 
 #position-logo {
