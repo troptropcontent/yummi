@@ -11,8 +11,8 @@
 //       price.innerText = newPrice;
 //     })
 //   }
-// } 
- 
+// }
+
     const changeLineQuantity = () => {
 
       const linesPrices = document.querySelectorAll(".line_price");
@@ -25,31 +25,32 @@
 
 
       const incrementers = document.querySelectorAll(".increment");
-      incrementers.forEach(increment => {
-        increment.addEventListener("click",(event)=>{
-          event.preventDefault();
-          console.log(event.target.dataset.lineId)
-          const quantityText = document.getElementById(`quantity_line_${event.target.dataset.lineId}`)
-          const linePrice = document.getElementById(`price_line_${event.target.dataset.lineId}`)
-          const quantityInput = document.getElementById(`quantity_input_line_${event.target.dataset.lineId}`)
-          console.log(quantityText.innerText)
-          const actualQuantity = parseInt(quantityText.innerText)
-          const actualPrice = linePrice.innerText
-          const unitPrice = quantityText.dataset.mealPriceCents/100
-          console.log(unitPrice)
-          console.log(actualPrice)
-          const newQuantity = actualQuantity+parseInt(event.target.dataset.value)
-          console.log(newQuantity)
-          quantityText.innerText = newQuantity
-          linePrice.innerText = Math.round((parseInt(actualPrice)+(parseInt(event.target.dataset.value)*unitPrice))*100)/100
-          quantityInput.value = newQuantity
-          const actualTotal = total_price.innerText
-          total_price.innerText = Math.round((parseInt(actualTotal)+(parseInt(event.target.dataset.value)*unitPrice))*100)/100
-          console.log(quantityText.innerText === quantityInput.value )
-        });
-      });      
+      if (incrementers) {incrementers.forEach(increment => {
+            increment.addEventListener("click",(event)=>{
+              event.preventDefault();
+              console.log(event.target.dataset.lineId)
+              const quantityText = document.getElementById(`quantity_line_${event.target.dataset.lineId}`)
+              const linePrice = document.getElementById(`price_line_${event.target.dataset.lineId}`)
+              const quantityInput = document.getElementById(`quantity_input_line_${event.target.dataset.lineId}`)
+              console.log(quantityText.innerText)
+              const actualQuantity = parseInt(quantityText.innerText)
+              const actualPrice = linePrice.innerText
+              const unitPrice = quantityText.dataset.mealPriceCents/100
+              console.log(unitPrice)
+              console.log(actualPrice)
+              const newQuantity = actualQuantity+parseInt(event.target.dataset.value)
+              console.log(newQuantity)
+              quantityText.innerText = newQuantity
+              linePrice.innerText = Math.round((parseInt(actualPrice)+(parseInt(event.target.dataset.value)*unitPrice))*100)/100
+              quantityInput.value = newQuantity
+              const actualTotal = total_price.innerText
+              total_price.innerText = Math.round((parseInt(actualTotal)+(parseInt(event.target.dataset.value)*unitPrice))*100)/100
+              console.log(quantityText.innerText === quantityInput.value )
+            });
+          });
 
-    };
+        };
+      }
 // function openNav() {
 //   if (document.getElementById("myNav")) {
 //     document.getElementById("myNav").style.display = "block";

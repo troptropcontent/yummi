@@ -7,6 +7,7 @@ class PagesController < ApplicationController
 
   def dashboard
     @user = current_user
+    @orders = @user.orders.select{|order| order.status }
     @meal = Meal.find(1)
   end
 end

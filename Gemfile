@@ -36,25 +36,28 @@ gem 'devise'
 #authorisation
 gem 'pundit'
 
-#API user's token
+# API user's token
 gem 'simple_token_authentication'
 
 
-#geocoder
+# geocoder
 gem 'geocoder'
 
-#seach_form
+# seach_form
 gem 'pg_search', '~> 2.3.0'
 
-#faker
+# faker
 gem 'faker'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
 
-#include stripe payment
+# include stripe payment
 gem 'stripe'
+
+# add sms confirmation
+gem 'twilio-ruby'
 
 group :development, :test do
   gem 'pry-byebug'

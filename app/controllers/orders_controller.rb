@@ -28,6 +28,7 @@ end
     @order.status = "Confirmed"
     @order.save!
     authorize @order
+    redirect_to dashboard_path
   end
 
 
