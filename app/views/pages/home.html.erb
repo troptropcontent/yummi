@@ -15,6 +15,7 @@
   <ul>
     <% @meals.each do |meal| %>
     <li>
+
       <div class="card-suggestion-home" style="background-image: url(<%= cl_image_path meal.photo.key, height: 320, width: 300, crop: :fill %>);">
         <div class="card-suggestion-infos-home">
             <%= link_to meal_path(meal), id: 'link' do %>
@@ -23,10 +24,30 @@
             <% end %>
             <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-suggestion-user-home avatar-bordered" />
         </div>
+
+      <div class="card-suggestion-home">
+
+        <%= cl_image_tag meal.photo.key, height: 200, width: 285, crop: :fill %>
+          <div class="card-suggestion-infos-home">
+              <%= link_to meal_path(meal), id: 'link' do %>
+                <h2 id="margin-top-home"><strong><%= meal.name %></strong></h2>
+                <div class="description-flex">
+                  <p><%= meal.description[0..100] %>...</p>
+                </div>
+                <br>
+                <div class="price-wrap-home">
+                  <h2><%= meal.price_cents.fdiv(100) %></h2>
+                  <i class="fas fa-euro-sign"></i>
+                </div>
+              <% end %>
+              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-suggestion-user-home avatar-bordered" />
+          </div>        
+
       </div>
     </li>
     <% end %>
 
   </ul>
 </div>
+
 

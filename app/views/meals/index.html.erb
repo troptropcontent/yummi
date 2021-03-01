@@ -1,14 +1,13 @@
-<div id="container-index">
+<div class="statick">
   <h1>All meals</h1>
-  <p> We found <%= pluralize @meals.count, "result" %> </p>
-</div>
-
-<div class="wrap-button">
-  <a href="javascript:void(0)" id="open-btn" class="btn btn-primary">filters</a>
-
+  <%= render 'shared/filter_form' %>
+  <div class="wrap-button">
+    <a href="javascript:void(0)" id="open-btn" class="btn btn-primary">filters</a>
+    <p> We found <%= pluralize @meals.count, "result" %> </p>
 </div>
 
 <%= render 'shared/filter_form' %>
+</div>
 
 <div id="meal-cards">
   <% @meals.each do |meal| %>

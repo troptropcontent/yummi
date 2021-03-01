@@ -1,0 +1,27 @@
+.card-suggestion-footer{
+  display: flex;
+  justify-content: space-between;
+  a {
+    font-size: smaller;
+  }
+}
+
+.meal-added-to-cart {
+  display: none;
+}
+.meal-card-action {
+  a.meal-added-to-cart{
+    display: none;
+  }
+}
+
+
+.added-to-cart{
+  border: medium solid green;
+  a.add-to-cart{
+    display: none;
+  }
+  a.meal-added-to-cart {
+    display: block;
+  }
+}
