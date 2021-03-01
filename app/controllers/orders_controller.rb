@@ -27,8 +27,8 @@ end
     @order.price_cents = @order.total_before_checkout
     @order.status = "Confirmed"
     @order.save!
-    raise
     authorize @order
+    redirect_to dashboard_path
   end
 
 
