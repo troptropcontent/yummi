@@ -34,7 +34,7 @@ import { initChatroomCable } from "../channels/chatroom_channel"
 
 import { loadDynamicBannerText } from '../components/banner';
 import { toggleOrderCardsDetails } from '../plugins/toggleOrderCardsDetails';
-
+import { addToCart } from '../plugins/addToCart';
 
 // import { initSelect2 } from '../components/init_select2';
 
@@ -46,6 +46,7 @@ document.addEventListener('turbolinks:load', () => {
 
   changeLineQuantity();
   addressFinder();
+  addToCart();
   // loadDynamicBannerText();
   initChatroomCable();
   toggleOrderCardsDetails();
