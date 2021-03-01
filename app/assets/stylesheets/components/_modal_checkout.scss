@@ -3,6 +3,7 @@
   justify-content: space-between;
   a {
     font-size: smaller;
+    text-decoration: underline;
   }
 }
 
@@ -10,6 +11,7 @@
   display: none;
 }
 .meal-card-action {
+  width: 80px;
   a.meal-added-to-cart{
     display: none;
   }

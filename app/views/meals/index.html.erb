@@ -1,16 +1,88 @@
 <div class="statick">
   <h1>All meals</h1>
-  <%= render 'shared/filter_form' %>
   <div class="wrap-button">
     <p> We found <%= pluralize @meals.count, "result" %> </p>
-</div>
-  <div class="filter-icon">
-    <a href="javascript:void(0)" id="open-btn" class="btn-filter">
-      <img src=" <%= image_path ("filter-icon.png") %> " alt="" class="tag">
-    </a>
   </div>
-<%= render 'shared/filter_form' %>
+
+  <div class="filter-search-wrap">
+      <% if params[:query] && params[:query] != ""%>
+        <div class="search-query">
+          <%= image_tag 'search.svg', class: "padding-right" %>
+            <p><%= params[:query] %></p>
+        </div>
+      <% end %>
+    </a>
+
+      <% if params[:chef] && params[:chef] != ""%>
+        <div class="search-query">
+          <%= image_tag 'search.svg', class: "padding-right"  %>
+            <p><%= params[:chef] %></p>
+            <%= render 'shared/filter_form' %>
+        </div>
+      <% end %>
+      <% if params[:day].present? && params[:day] != "" %>
+        <div class="search-query">
+          <%= image_tag 'search.svg', class: "padding-right"  %>
+            <p><%= params[:day] %></p>
+        </div>
+      <% end %>
+      <% if params[:price] && params[:price] != "" %>
+        <div class="search-query">
+          <%= image_tag 'search.svg', class: "padding-right"  %>
+            <p>from <%= params[:price].split(";").first %>€ to <%= params[:price].split(";").last %>€</p>
+        </div>
+      <% end %>
+      <% if params[:home_address] && params[:home_address] != "" %>
+        <div class="search-query">
+          <%= image_tag 'search.svg', class: "padding-right"  %>
+            <p><%= params[:home_address] %></p>
+        </div>
+      <% end %>
+      <% if params[:distance] && params[:distance] != "" %>
+        <div class="search-query">
+          <%= image_tag 'search.svg', class: "padding-right"  %>
+            <p><%= params[:distance] %>km</p>
+        </div>
+      <% end %>
+      <% if params[:cuisine] && params[:cuisine] != "" %>
+        <div class="search-query">
+          <%= image_tag 'search.svg', class: "padding-right"  %>
+            <p><%= params[:cuisine].join(", ") %></p>
+        </div>
+      <% end %>
+      <% if params[:course].present? && params[:course].include?("1") && params[:course] != "" %>
+        <div class="search-query">
+          <%= image_tag 'search.svg', class: "padding-right"  %>
+          <p><%= Course.find("#{params[:course].first}").name %></p>
+        </div>
+      <% end %>
+      <% if params[:course].present? && params[:course].include?("2") && params[:course] != ""%>
+        <div class="search-query">
+          <%= image_tag 'search.svg', class: "padding-right"  %>
+          <p><%= Course.find("#{params[:course][1]}").name %></p>
+        </div>
+      <% end %>
+      <% if params[:course].present? && params[:course].include?("3") && params[:course] != ""%>
+        <div class="search-query">
+          <%= image_tag 'search.svg', class: "padding-right"  %>
+          <p><%= Course.find("#{params[:course].last}").name %></p>
+        </div>
+      <% end %>
+  </div>
 </div>
+
+<div class="filter-icon">
+  <a href="javascript:void(0)" id="open-btn" class="btn-filter">
+    <img src=" <%= image_path ("filter-icon.png") %> " alt="" class="tag">
+  </a>
+  <%= render 'shared/filter_form' %>
+</div>
+
+
+
+
+
+
 
 <div id="meal-cards">
   <% @meals.each do |meal| %>
