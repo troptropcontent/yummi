@@ -6,7 +6,8 @@ const toggleOrderCardsDetails = () => {
     showDetailsBtns.forEach(showDetailsBtn => {
       showDetailsBtn.addEventListener("click", (event)=>{
         event.preventDefault();
-        const orderId = event.target.dataset.orderId;
+        console.log(event)
+        const orderId = event.path[1].dataset.orderId;
         const orderLine = document.getElementById(`order-lines-${orderId}`);
         console.log(orderId)
         orderLine.style.display = "block";
@@ -15,7 +16,7 @@ const toggleOrderCardsDetails = () => {
     hideDetailsBtns.forEach(hideDetailsBtn => {
       hideDetailsBtn.addEventListener("click",(event)=>{
         event.preventDefault();
-        const orderId = event.target.dataset.orderId;
+        const orderId = event.path[1].dataset.orderId;
         const orderLine = document.getElementById(`order-lines-${orderId}`);
         orderLine.style.display = "none";
         console.log(orderId)

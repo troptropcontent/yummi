@@ -23,7 +23,36 @@
               <p>delivered on <%= order.random_delivery_date %></p>
               <p>status : <%= order.status %></p>
             </div>
-            <a type="button" id="review-link" data-toggle="modal" data-target="#exampleModal">Leave a review</a>
+              <div class="order-card-details-bottom">
+                <a type="button" id="review-link" data-toggle="modal" data-target="#exampleModal">Leave a review</a>
+                <div class="order-card-detail-btn" >
+                  <a href="#" data-order-id="<%= order.id %>">
+                    <i class="fas fa-list"></i>
+                  </a>
+                </div>
+              </div>
+<!-- Expandable details start-->            
+              <div class="order-card-lines" id="order-lines-<%= order.id %>">
+                  <% order.lines.each do |line| %>
+                    <div class="order-line">
+                      <div class="order-line-left">
+                        <p><%= line.meal.name %></p>
+                        <p>from <%= line.meal.user.full_name %></p>
+                      </div>
+                      <div class="order-line-right">
+                        <p>qty : <%= line.quantity %></p>
+                        <p><%= line.meal.price_cents.fdiv(100).round(2) %> €</p>
+                      </div>
+                    </div>
+                  <% end %>
+                <div class="order-card-details-expanded-bottom">
+                  <P>Total : <%= order.total_before_checkout.fdiv(100).round(2) %> €</P>
+                  <a href="#" data-order-id="<%= order.id %>">
+                    <i class="far fa-minus-square"></i>
+                  </a>
+                </div>
+              </div>
+<!-- Expandable details end--> 
 <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -42,31 +71,9 @@
               </div>
             </div>
           </div>
-          <div class="order-card-detail-btn" >
-          <a href="#" data-order-id="<%= order.id %>">details</a>
-          </div>
-          </div>
-          <div class="order-card-lines" id="order-lines-<%= order.id %>">
-          <% order.lines.each do |line| %>
-            <div class="order-line">
-              <div class="order-line-left">
-                <p><%= line.meal.name %></p>
-                <p>from <%= line.meal.user.full_name %></p>
-              </div>
-              <div class="order-line-right">
-                <p>qty : <%= line.quantity %></p>
-                <p><%= line.meal.price_cents.fdiv(100).round(2) %> €</p>
-              </div>
-            </div>
-          <% end %>
-          <div class="order-card-details-expanded-bottom">
-            <h2>Total : <%= order.total_before_checkout.fdiv(100).round(2) %> €</h2>
-            <a href="#" data-order-id="<%= order.id %>">hide</a>
-          </div>
           </div>
         </div>
       <% end %>
-
     </div>
 
     <%# <footer class="mt-3">
