@@ -7,9 +7,8 @@
   %> <br>
 
   <%= text_field_tag :day,
-    params[:day],
-    class: "form-control datepicker search-form",
-    placeholder: "Pick a date"
+    params[:day] || "#{1.day.from_now.to_date} 20:00",
+    class: "form-control flatpickr datepicker search-form"
   %>
   <br>
   <center><%= submit_tag "Find it!", class: "btn-home" %></center>
