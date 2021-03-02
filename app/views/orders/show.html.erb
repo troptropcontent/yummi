@@ -1,7 +1,8 @@
-<div class="container">
+<div class="container-order">
   <% if @order.status == "In_progress" %>
     <%= render 'order_show_created' %>
   <% else %>
     <%= render 'order_show_confirmed' %>
   <% end %>
 </div>
+
