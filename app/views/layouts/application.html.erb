@@ -33,8 +33,10 @@
         <%= yield %>
       </div>
 
-      <% if action_name != "home-page" || controller_name != "pages" %>
-        <%= render 'shared/navbar' %>
+
+      <% if action_name != "homepage" || controller_name != "pages" %>
+        <%= render 'shared/navbar' %>        
+
       <% end %>
     </div>
   </body>

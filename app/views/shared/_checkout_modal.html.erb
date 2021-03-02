@@ -1,7 +1,8 @@
-
 <div id="checkout" class="overlay">
   <!-- Button to close the overlay navigation -->
-  <a href="javascript:void(0)" id="close-btn">&times;</a>
+  <div class="close-btn">
+    <a href="javascript:void(0)" id="close-btn">&times;</a>
+  </div>
   <!-- Overlay content -->
   <div class="overlay-content">
     <div class="container">
@@ -18,8 +19,9 @@
               </div>
               <div class="card-suggestion-footer">
                 <div class="meal-card-action">
-                  <a href="#" class="add-to-cart" data-meal-id=<%= meal.id %>>Add to cart</a>
-                  <a href="#" class="meal-added-to-cart" data-meal-id=<%= meal.id %>>Added to cart</a>
+                <%#  <i class="fas fa-shopping-basket"></i>%>
+                  <a href="#" class="add-to-cart" data-meal-id=<%= meal.id %>>+</a>
+                  <a href="#" class="meal-added-to-cart" data-meal-id=<%= meal.id %>>Added</a>
                 </div>
               </div>
                 <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-suggestion-user avatar-bordered" />
@@ -28,7 +30,9 @@
             </div>
         <% end %>
           <%= simple_form_for Line.new do |f| %>
-            <%= f.button :submit %>
+            <div class="line-button">
+              <%= f.button :submit %>
+            </div>
             <%= f.input :meal, :as => :hidden, :input_html => { :value => @meal.id } %>
             <% @other_courses.each do |meal| %>
               <%= f.input :meal ,:as => :hidden, input_html: { name: "other_meal_#{meal.id}", id: "other_meal_added_to_basket_#{meal.id}", class: "other_meal_added_to_basket"} %>
