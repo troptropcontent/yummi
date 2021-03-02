@@ -15,6 +15,22 @@
   a.meal-added-to-cart{
     display: none;
   }
+  a {
+    color: white;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: bolder;
+    border: solid;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding: 2px;
+    margin-left: 40%;
+    background-color: $my-orange
+  }
+  .fas {
+    font-size: 19px;
+  }
 }
 
 
@@ -22,8 +38,28 @@
   border: medium solid green;
   a.add-to-cart{
     display: none;
+    
   }
   a.meal-added-to-cart {
     display: block;
+    font-size: 16px;
+    font-weight: normal;
+    border: 0;
+    background-color: transparent;
+    color: black;
+  }
+}
+
+.close-btn {
+  color: gray;
+  a {
+    color: gray;
+  }
+}
+
+.line-button {
+  color: gray;
+  .btn {
+    color: gray;
   }
 }
