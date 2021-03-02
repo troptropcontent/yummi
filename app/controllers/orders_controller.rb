@@ -32,6 +32,7 @@ class OrdersController < ApplicationController
     @order.save!
     authorize @order
 
+
     pay()
 
 
@@ -40,9 +41,11 @@ class OrdersController < ApplicationController
   private
 
   def pay
+    
   # Amount in cents
     @user = current_user
     @amount = @order.price_cents.fdiv(100)
+    
 
     customer = Stripe::Customer.create({
       email: params[:stripeEmail],
