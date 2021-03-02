@@ -37,9 +37,15 @@
                 <p>delivered on <%= order.random_delivery_date %></p>
                 <p>status : <%= order.status %></p>
               </div>
-              <div class="order-card-head-infos-right">
+<!--               <div class="order-card-head-infos-right">
                 <i class="far fa-comments"></i>
-              </div>              
+              </div> -->
+
+              <%= link_to chatroom_path(order.chatroom) do  %>
+                <div class="order-card-head-infos-right">
+                  <i class="far fa-comments"></i>
+                </div>
+              <% end %>
             </div>
               <div class="order-card-details-bottom">
                 <a type="button" id="review-link" data-toggle="modal" data-target="#exampleModal">Leave a review</a>
