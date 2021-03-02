@@ -32,9 +32,14 @@
         <div class="order-card">
           <div class="order-card-head">
             <div class="order-card-head-infos">
-              <p>Order N° <%= order.random_order_number %></p>
-              <p>delivered on <%= order.random_delivery_date %></p>
-              <p>status : <%= order.status %></p>
+              <div class="order-card-head-infos-left">
+                <p>Order N° <%= order.random_order_number %></p>
+                <p>delivered on <%= order.random_delivery_date %></p>
+                <p>status : <%= order.status %></p>
+              </div>
+              <div class="order-card-head-infos-right">
+                <i class="far fa-comments"></i>
+              </div>              
             </div>
               <div class="order-card-details-bottom">
                 <a type="button" id="review-link" data-toggle="modal" data-target="#exampleModal">Leave a review</a>
