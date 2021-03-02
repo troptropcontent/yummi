@@ -2,6 +2,7 @@ require 'open-uri'
 require 'nokogiri'
 require "open-uri"
 require 'faker'
+require 'json'
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
@@ -64,12 +65,13 @@ CUISINES.each do |cuisine|
       end
 
       cards.first(number_of_items).each do |card|
+
         tag = card.search(".tag").text.strip
         name = card.search(".hed").text.strip
         url = "https://www.epicurious.com#{card.search('a').attribute('href').value}"
         show =  scrap(url)
         description = show.search(".dek").text.strip
-        photo = show.search(".photo-wrap").search("img").attribute("srcset").value
+        photo = show.search(".photo-wrap").search("source").first.attribute("srcset").value
         p photo
 
         if tag == "recipe" && description.length > 0
@@ -119,6 +121,12 @@ def random_restaurant
   return restaurants.sample
 end
 
+
+def google_map_reverse_geocoding(lat,long)
+  return "https://maps.googleapis.com/maps/api/geocode/json?latlng=#{lat},#{long}&key=#{ENV['GOOGLE_MAP_API_KEY']}"
+end
+
+
 CUISINES.each do |cuisine|
   1.times do
     puts "Creation of a chef for #{cuisine} cuisine"
@@ -131,6 +139,13 @@ CUISINES.each do |cuisine|
     new_user.password_confirmation = new_user.password
     new_user.longitude = place[:longitude]
     new_user.latitude = place[:latitude]
+    url = google_map_reverse_geocoding(new_user.latitude,new_user.longitude)
+    map_serialized = open(url).read
+    map = JSON.parse(map_serialized)
+    new_user.home_address = map["results"].first["formatted_address"]
+    # 
+    file = URI.open("https://source.unsplash.com/400x400/?portrait,human")
+    new_user.photo.attach(io: file, filename: Faker::Alphanumeric.alpha(number: 10), content_type: 'image/png')
     new_user.save!
     puts "#{new_user.first_name} #{new_user.last_name} created"
     puts "saving to the chef 1 starter 2 main courses and 1 dessert"
@@ -156,5 +171,47 @@ CUISINES.each do |cuisine|
     puts appetizer.name
   end
 end
+
+# creation of order and reviews
+sample_review = %w(disgusting, bad, ok, good, amazing)
+remaining_users = User.all
+# selection of one user
+4.times do 
+  client = User.all.sample
+  # reject cet user de la liste des user et sauver cette nouvelle liste dans une variable
+  remaining_users = remaining_users.reject{|user| user == client}
+  chef = remaining_users.sample
+  # prendre un meal de cet user
+  lines = []
+  choosen_meal = chef.meals.sample
+  lines << choosen_meal
+  # rajouter eventuellement un other course
+  other_courses = chef.meals.reject{|meal| meal == choosen_meal}
+  other_course = other_courses.sample
+  lines << other_course
+  # create an order avec random date et random number
+  order = Order.new
+  order.user = client
+  order.delivery_date = order.random_delivery_date
+  order.status = "Paid"
+  order.save!
+  quantity = (6..12).to_a.sample
+  lines.each do |meal|
+    new_line = Line.new
+    new_line.quantity = quantity
+    new_line.meal = meal
+    new_line.order = order  
+  end
+  # ajouter une review
+  review = Review.new
+  rating = (1..5).to_a.sample
+  content = sample_review[rating]
+  review.rating = rating-1
+  review.content = content
+  review.order = order
+  review.user = client
+  review.save!
+end
+# refaire ca 15 fois
 
 
