@@ -49,9 +49,24 @@ document.addEventListener('turbolinks:load', () => {
 
   addToCart();
   loadDynamicBannerText();
-  
+
   initChatroomCable();
   toggleOrderCardsDetails();
 
 });
 
+
+const delivery = document.querySelector(".delivery-wrapper");
+
+console.log(delivery)
+
+delivery.addEventListener("change", (event)=>{
+console.log(event.target.defaultValue)
+console.log(event)
+const address = document.querySelector('.delivery-address')
+address.classList.toggle("delivery-mode-delivery")
+const deliveryHiddenInput = document.getElementById("delivery-type")
+deliveryHiddenInput.value = event.target.defaultValue
+console.log(deliveryHiddenInput)
+
+})

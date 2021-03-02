@@ -1,4 +1,7 @@
 class Order < ApplicationRecord
+
+  DELIVERY_OPTIONS = ["delivery", "pick and collect"]
+
   belongs_to :user
   has_many :lines, dependent: :destroy
   has_one :chatroom
