@@ -44,3 +44,11 @@
   display: block;
  }
 }
+
+.delivery_fee_line{
+  display: flex;
+  justify-content: space-between;
+  .delivery_fee_amount{
+    display: flex;
+  }
+}

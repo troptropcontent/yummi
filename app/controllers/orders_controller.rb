@@ -25,20 +25,24 @@ class OrdersController < ApplicationController
       updated_line.save!
     end
     @order = Order.find(params[:id])
+    @order.delivery_type = params[:order][:delivery_type] 
+    @order.delivery_fee_cents = params[:delivery_fee]
     @order.price_cents = @order.total_before_checkout
-    # @order.status = "In_progress"
+    @order.status = "Comfirmed"
     @order.save!
     authorize @order
-    redirect_to @order
+
+    pay()
+
+
   end
 
   private
 
   def pay
   # Amount in cents
-    @order = Order.find(params[:OrderId])
     @user = current_user
-    @amount = @order.total_before_checkout
+    @amount = @order.price_cents.fdiv(100)
 
     customer = Stripe::Customer.create({
       email: params[:stripeEmail],
@@ -60,12 +64,7 @@ class OrdersController < ApplicationController
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
-    redirect_to new_charge_path
-  end
-
-
-  def order_params
-    params.require(:order).permit(:status, :price_cents, :user_id)
+    redirect_to @order
   end
 
 

@@ -30,6 +30,7 @@ class Order < ApplicationRecord
   def total_before_checkout
     total = 0
     lines.each{|line| total += line.meal.price_cents}
+    total += delivery_fee_cents if delivery_fee_cents
     total
   end
 

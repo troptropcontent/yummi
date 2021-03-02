@@ -45,24 +45,39 @@
                     collection_wrapper_class: 'delivery-wrapper',
                     item_wrapper_class: 'delivery-item',
                     input_html: {class: 'delivery-selector'},
-                    collection: Order::DELIVERY_OPTIONS %>
-
-
-        <p> Delivery fee </p>
-        <p> 5 €</p>
+                    collection: Order::DELIVERY_OPTIONS,
+                    checked: Order::DELIVERY_OPTIONS[0] %>
+                    
       </div>
       <div class="delivery-address">
+        <% chef = @order.lines.first.meal.user %>
+        <% client = @order.user %>
+        <% delivery_fee_cents = (client.distance_from_chef(chef)*(0.9)*100).round %>
         <div class="delivery">
-          <p>Delivery Address</p>
+          <p><%= client.home_address %></p>
+          <div class="delivery_fee_line">
+            <p>Delivery fee :</p>
+            <div class="delivery_fee_amount">
+              <p id="delivery_fee_amount_cents" data-amount-cents = <%= delivery_fee_cents %>><%= (delivery_fee_cents.fdiv(100)).round(2)%></p>
+              <p id="delivery_fee_curency">€</p>
+            </div>
+          </div>
         </div>
         <div class="click-and-collect">
-          <p>click-and-collect</p>
+          <p><%=  chef.home_address %> - <%= client.distance_from_chef(chef) %> km away</p>
+          <%= console %>
         </div>
       </div>
-    <%= f.input :delivery_type , input_html: { name: "order_#{@order.id}", id: "delivery-type", class: "quantity-input"} %>
+    <%= f.input :delivery_type ,:as => :hidden, input_html: { value: 'delivery', name: "order_#{@order.id}", id: "delivery-type"} %>
+    <%= f.input :delivery_fee_cents ,:as => :hidden, input_html: {value: delivery_fee_cents, name: "delivery_fee", id: "delivery-fee"} %>
+    <%= f.submit %>
+    
+    
+    
     <% end %>
 
   </div>
+
 
   <div class = "checkout-stripe_btn">
     <%= form_tag charges_path do %>

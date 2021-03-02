@@ -35,6 +35,8 @@ import { initChatroomCable } from "../channels/chatroom_channel"
 import { loadDynamicBannerText } from '../components/banner';
 import { toggleOrderCardsDetails } from '../plugins/toggleOrderCardsDetails';
 import { addToCart } from '../plugins/addToCart';
+import { deliveryOrClickAndCollect } from '../plugins/deliveryOrClickAndCollect';
+
 
 // import { initSelect2 } from '../components/init_select2';
 
@@ -52,21 +54,9 @@ document.addEventListener('turbolinks:load', () => {
 
   initChatroomCable();
   toggleOrderCardsDetails();
+  deliveryOrClickAndCollect();
 
 });
 
 
-const delivery = document.querySelector(".delivery-wrapper");
 
-console.log(delivery)
-
-delivery.addEventListener("change", (event)=>{
-console.log(event.target.defaultValue)
-console.log(event)
-const address = document.querySelector('.delivery-address')
-address.classList.toggle("delivery-mode-delivery")
-const deliveryHiddenInput = document.getElementById("delivery-type")
-deliveryHiddenInput.value = event.target.defaultValue
-console.log(deliveryHiddenInput)
-
-})
