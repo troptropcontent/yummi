@@ -1,15 +1,11 @@
 <%= form_tag meals_path, method: :get do %>
 
-<%= text_field_tag :query,
-    params[:query],
-    class: "form-control search-form",
-    placeholder: "What would make you feel Yummi?"
-  %> <br>
-
+  <p class="mb-1 p-homepage">When?</p>
   <%= text_field_tag :day,
     params[:day] || "#{1.day.from_now.to_date} 20:00",
     class: "form-control flatpickr datepicker search-form"
   %>
   <br>
-  <center><%= submit_tag "Find it!", class: "btn-home" %></center>
+  <center><%= submit_tag "Let's get yummi food!", class: "btn-home" %></center>
 <% end %>
+

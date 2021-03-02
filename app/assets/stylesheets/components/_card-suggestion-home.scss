@@ -12,6 +12,46 @@
 
 }
 
+.display-column {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0px;
+}
+
+.display-flex-card {
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  h3 {
+  font-size: 12px;
+  padding: 0;
+  margin: 0;
+  color: gray;
+  text-align: left;
+  }
+}
+
+.tag-show-card {
+  display: flex-end;
+  border: 2px solid $my-blue;
+  opacity: 0.7;
+  border-radius: 50px;
+  padding: 5px;
+  margin: 2px;
+  p {
+    font-size: 8px;
+    color: $my-blue;
+    margin: 0;
+  }
+}
+
+.price-tag {
+  background-color: $my-blue;
+  color: white;
+  padding: 4px;
+  border-radius: 4px;
+}
+
 .card-suggestion-home {
   overflow: hidden;
   background: white;

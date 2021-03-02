@@ -88,16 +88,29 @@
   <% @meals.each do |meal| %>
     <center><div class="card-suggestion" style="background-image: url(<%= cl_image_path meal.photo.key, height: 320, width: 300, crop: :fill %>);">
       <div class="card-suggestion-infos">
-        <div>
-          <%= link_to meal_path(meal), id: 'link' do %>
-            <h2 id="margin-top"><strong><%= meal.name %></strong></h2>
-            <h2><%= meal.price_cents.fdiv(100) %>€</h2>
-          <% end %>
-          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-suggestion-user avatar-bordered" />
-        </div>
+        <%= link_to meal_path(meal), id: 'link' do %>
+          <div class="display-flex-card">
+            <div class="display-column">
+              <h2 id="margin-top"><strong><%= meal.name[0..18] %></strong></h2>
+              <div><div class="tag-show-card"><p><%= meal.cuisine %></p></div></div>
+            </div>
+            <div class="display-column">
+              <h3>By <%= meal.user.full_name %></h3>
+              <h2 class="price-tag"><%= meal.price_cents.fdiv(100) %>€</h2>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
   <% end %>
 </div>
+
+<style>
+  .display-column {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0px;
+  }
+</style>
 
 
