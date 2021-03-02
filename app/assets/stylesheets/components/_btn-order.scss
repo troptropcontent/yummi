@@ -1,8 +1,14 @@
 .btn-order {
-  background-color: white;
+  background-color: $my-orange;
   border: 1px solid $my-orange;
+  color: white;
   padding: 8px 24px;
+  width: 335px;
+  height: 50px;
   border-radius: 50px;
   font-weight: lighter;
   text-align: center;
+  a {
+    color: white;
+  }
 }

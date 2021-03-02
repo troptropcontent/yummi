@@ -34,39 +34,7 @@
   <% end %>
 
 
-  <%= link_to "#" do  %>
-    <% if params[:controller] == 'meals' && params[:action] == 'new'%>
-      <div class="navbar__item -navy-blue">
-        <span class="navbar__icon">
-          <i class="fas fa-sticky-note"></i>
-        </span>
-      </div>
-    <% else %>
-      <div class="navbar__item -navy-blue">
-        <span class="navbar__icon">
-          <i class="fas fa-sticky-note color-grey"></i>
-        </span>
-      </div>
-    <% end %>
-  <% end %>
-
-  <%= link_to "#" do  %>
-    <% if params[:controller] == 'reviews' && params[:action] == 'new'%>
-      <div class="navbar__item -yellow">
-        <span class="navbar__icon">
-            <i class="fas fa-comments"></i>
-        </span>
-      </div>
-    <% else %>
-      <div class="navbar__item -yellow">
-        <span class="navbar__icon">
-            <i class="fas fa-comments color-grey"></i>
-        </span>
-      </div>
-    <% end %>
-  <% end %>
-
-  <%= link_to "#" do  %>
+  <%= link_to dashboard_path do  %>
     <% if params[:controller] == 'pages' && params[:action] == 'dashboard'%>
       <div class="navbar__item -purple">
         <span class="navbar__icon">

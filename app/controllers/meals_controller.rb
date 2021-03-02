@@ -45,7 +45,7 @@ class MealsController < ApplicationController
       maximum = params[:price].split(';').last.to_i * 100
       @meals = @meals.where('meals.price_cents >= ?', minimum)
       @meals = @meals.where('meals.price_cents <= ?', maximum)
-      
+
     end
   end
 

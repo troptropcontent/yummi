@@ -1,56 +1,66 @@
-<div class="show-banner">
-<%= cl_image_tag @meal.photo.key, height: 300, width: 375, crop: :fill %>
-</div>
+<div class="container-show">
+  <div class="show-banner">
+  <%= cl_image_tag @meal.photo.key, height: 260, width: 375, crop: :fill %>
+  </div>
 
-<h2><%= @meal.name %></h2>
-<div class="description-show">
-  <p><%= @meal.description %></p>
-</div>
+  <h1><%= @meal.name %></h1>
 
-<div class="show-icons">
-  <ul>
-    <li><i class="fas fa-utensils"></i></li>
-    <li><i class="fas fa-seedling"></i></li>
-    <li><i class="fas fa-map-marker-alt"></i></li>
-  </ul>
-  <br>
+  <center><div class="tag-show">
+    <p><%= @meal.cuisine%></p>
+  </div>
+  <div class="tag-show">
+    <p><%= @meal.courses.first.name %></p>
+  </div>
+  <div class="tag-show">
+    <p><%= @meal.price_cents.fdiv(100) %>€</p>
+  </div></center>
+
+  <div class="description-show">
+    <p><%= @meal.description %></p>
+  </div>
+
   <hr>
-  <div class="btn-order">
-    <%= render 'shared/checkout_modal' %>
+
+  <div class="chef-card">
+    <div class="chef-card-flex">
+      <div class="chef-card-left">
+        <%= cl_image_tag @meal.photo.key, class: "rounded-image", height: 160, width: 150, crop: :fill %>
+      </div>
+      <div class="description-chef-show">
+        <h2><%= @chef.full_name %></h2>
+        <div class="address-wrap">
+          <%= image_tag 'map-pin.svg', id: "padding-left-address" %>
+          <p><%= @chef.home_address %> Downtown Paris 75000</p>
+        </div>
+        <p><%= @meal.description %></p>
+      </div>
+    </div>
+  </div>
+  <center><div class="btn-order">
+     <%= render 'shared/checkout_modal' %>
+  </div></center>
+  <hr>
+  <div class="reviews-container">
+    <strong><h1>Reviews: </h1></strong>
+    <% @meal.reviews.each do |review| %>
+      <div class="reviews-user-infos">
+      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="review-user avatar-bordered" />
+        <ul id="flex-grow-review">
+          <li><%= review.user.first_name %></li>
+          <li><%= review.created_at.strftime("%B") %></li>
+        </ul>
+      </div>
+      <div class="reviews-user-content">
+        <p> <%= review.content %> </p>
+      </div>
+    <% end %>
   </div>
 </div>
 
-<div class="chef-card">
-  <div class="chef-card-flex">
-    <div class="chef-card-left">
-      <h2><%= @chef.full_name %></h2>
-      <%= cl_image_tag @meal.photo.key, height: 160, width: 150, crop: :fill %>
-      <ul>
-        <li><i class="fas fa-drumstick-bite"></i></li>
-        <li><i class="fas fa-drumstick-bite"></i></li>
-        <li><i class="fas fa-drumstick-bite"></i></li>
-        <li><i class="fas fa-drumstick-bite"></i></li>
-        <li><i class="fas fa-drumstick-bite"></i></li>
-      </ul>
-    </div>
-    <div class="description-chef-show">
-      <p><%= @meal.description %></p>
-    </div>
-  </div>
-</div>
-<hr>
-<div class="reviews-container">
-  <strong><h3>Reviews: </h3></strong>
-  <% @meal.reviews.each do |review| %>
-    <div class="reviews-user-infos">
-    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="review-user avatar-bordered" />
-      <ul id="flex-grow-review">
-        <li><%= review.user.first_name %></li>
-        <li><%= review.created_at.strftime("%B") %></li>
-      </ul>
-    </div>
-    <div class="reviews-user-content">
-      <p> <%= review.content %> </p>
-    </div>
-  <% end %>
-</div>
+<style>
+  .rounded-image {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+  }
+</style>

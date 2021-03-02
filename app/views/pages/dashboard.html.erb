@@ -1,8 +1,21 @@
+ <ul class="list-inline tabs-underlined">
+  <li>
+    <a href="#" class="tab-underlined active">Orders</a>
+  </li>
+  <li>
+    <a href="#" class="tab-underlined">Requests</a>
+  </li>
+  <li>
+    <a href="#" class="tab-underlined">Conversations</a>
+  </li>
+</ul>
+
+<br><br>
 
 <div class= "container" >
   <div class ="container-order">
 
-    <h1> Hello! </h1>
+    <h1> Hello <%= current_user.email %>! </h1>
 
     <%# <div class="card-product-order"> %>
       <%# <%= cl_image_tag @meal.photo.key %>
@@ -19,9 +32,14 @@
         <div class="order-card">
           <div class="order-card-head">
             <div class="order-card-head-infos">
-              <p>Order N° <%= order.random_order_number %></p>
-              <p>delivered on <%= order.random_delivery_date %></p>
-              <p>status : <%= order.status %></p>
+              <div class="order-card-head-infos-left">
+                <p>Order N° <%= order.random_order_number %></p>
+                <p>delivered on <%= order.random_delivery_date %></p>
+                <p>status : <%= order.status %></p>
+              </div>
+              <div class="order-card-head-infos-right">
+                <i class="far fa-comments"></i>
+              </div>              
             </div>
               <div class="order-card-details-bottom">
                 <a type="button" id="review-link" data-toggle="modal" data-target="#exampleModal">Leave a review</a>
@@ -31,7 +49,7 @@
                   </a>
                 </div>
               </div>
-<!-- Expandable details start-->            
+<!-- Expandable details start-->
               <div class="order-card-lines" id="order-lines-<%= order.id %>">
                   <% order.lines.each do |line| %>
                     <div class="order-line">
@@ -52,7 +70,7 @@
                   </a>
                 </div>
               </div>
-<!-- Expandable details end--> 
+<!-- Expandable details end-->
 <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
