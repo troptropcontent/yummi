@@ -35,14 +35,11 @@ class Order < ApplicationRecord
     total
   end
 
-<<<<<<< HEAD
-=======
   private
 
   def create_chatroom
     #create a chatroom for the order
     Chatroom.create(order: self)
   end
->>>>>>> c3d0816996eaa9fab14ee0a184af2adef9aeef43
 
 end

@@ -15,6 +15,9 @@
   padding: 10px 20px 15px;
   box-shadow: 0px 20px 40px rgba(18, 34, 64, 0.1);
   height: 80px;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
 
   &__item {
     width: 50px;
