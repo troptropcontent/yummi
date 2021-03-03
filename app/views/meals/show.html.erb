@@ -24,15 +24,26 @@
   <div class="chef-card">
     <div class="chef-card-flex">
       <div class="chef-card-left">
-        <%= cl_image_tag @meal.photo.key, class: "rounded-image", height: 160, width: 150, crop: :fill %>
+
+        <% if @chef.photo.attached? %>
+          <%= cl_image_tag @chef.photo.key, class: "rounded-image", height: 160, width: 150, crop: :fill %>
+        <% else %>
+          <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="rounded-image" />
+        <% end %>
       </div>
       <div class="description-chef-show">
         <h2><%= @chef.full_name %></h2>
         <div class="address-wrap">
-          <%= image_tag 'map-pin.svg', id: "padding-left-address" %>
-          <p><%= @chef.home_address %> Downtown Paris 75000</p>
+          <% if @chef.rating_average != nil %>
+            <%= image_tag 'star.svg' %>
+            <p><%= number_to_human @chef.rating_average %>/5</p>
+          <% end %>
         </div>
-        <p><%= @meal.description %></p>
+        <div class="address-wrap">
+          <%= image_tag 'map-pin.svg', id: "padding-left-address" %>
+          <p><%= @chef.home_address %></p>
+        </div>
+        <p><%= @chef.bio %></p>
       </div>
     </div>
   </div>
@@ -47,7 +58,7 @@
       <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="review-user avatar-bordered" />
         <ul id="flex-grow-review">
           <li><%= review.user.first_name %></li>
-          <li><%= review.created_at.strftime("%B") %></li>
+          <li id="date"><%= review.created_at.strftime("%B") %></li>
         </ul>
       </div>
       <div class="reviews-user-content">
@@ -57,10 +68,3 @@
   </div>
 </div>
 
-<style>
-  .rounded-image {
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-  }
-</style>

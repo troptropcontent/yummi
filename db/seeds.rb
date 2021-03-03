@@ -143,7 +143,7 @@ CUISINES.each do |cuisine|
     map_serialized = open(url).read
     map = JSON.parse(map_serialized)
     new_user.home_address = map["results"].first["formatted_address"]
-    # 
+    #
     file = URI.open("https://source.unsplash.com/400x400/?portrait,human")
     new_user.photo.attach(io: file, filename: Faker::Alphanumeric.alpha(number: 10), content_type: 'image/png')
     new_user.save!
@@ -176,7 +176,7 @@ end
 sample_review = %w(disgusting, bad, ok, good, amazing)
 remaining_users = User.all
 # selection of one user
-4.times do 
+4.times do
   client = User.all.sample
   # reject cet user de la liste des user et sauver cette nouvelle liste dans une variable
   remaining_users = remaining_users.reject{|user| user == client}
@@ -200,7 +200,8 @@ remaining_users = User.all
     new_line = Line.new
     new_line.quantity = quantity
     new_line.meal = meal
-    new_line.order = order  
+    new_line.order = order
+    new_line.save!
   end
   # ajouter une review
   review = Review.new

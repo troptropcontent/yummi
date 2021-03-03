@@ -26,6 +26,10 @@
               </div>
               <div class="display-column">
                 <h3>By <%= meal.user.full_name %></h3>
+                <% if meal.user.rating_average != nil %>
+                  <%= image_tag 'star.svg' %>
+                  <h3 id="flex-grow"><%= number_to_human  meal.user.rating_average %>/5</h3>
+                <% end %>
                 <h2 class="price-tag"><%= meal.price_cents.fdiv(100) %>€</h2>
               </div>
             </div>

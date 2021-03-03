@@ -35,7 +35,7 @@
               console.log(quantityText.innerText)
               const actualQuantity = parseInt(quantityText.innerText)
               const actualPrice = linePrice.innerText
-              const unitPrice = quantityText.dataset.mealPriceCents/100
+              const unitPrice = quantityText.dataset.mealPriceCents
               console.log(unitPrice)
               console.log(actualPrice)
               const newQuantity = actualQuantity+parseInt(event.target.dataset.value)
@@ -44,8 +44,24 @@
               linePrice.innerText = Math.round((parseInt(actualPrice)+(parseInt(event.target.dataset.value)*unitPrice))*100)/100
               quantityInput.value = newQuantity
               const actualTotal = total_price.innerText
-              total_price.innerText = Math.round((parseInt(actualTotal)+(parseInt(event.target.dataset.value)*unitPrice))*100)/100
+              const totalexcludingDelivery = parseInt(actualTotal*100)+(parseInt(event.target.dataset.value)*unitPrice)
+              total_price.innerText = totalexcludingDelivery/100
               console.log(quantityText.innerText === quantityInput.value )
+              const deliveryFee = document.getElementById("delivery_fee_amount_cents")
+              const deliveryFeeAmount = parseInt(deliveryFee.dataset.amountCents)
+              console.log(actualTotal)
+              console.log(actualTotal*100)
+              console.log(parseInt(event.target.dataset.value))
+              console.log(unitPrice)
+              const totalIncludingDelivery = totalexcludingDelivery + deliveryFeeAmount
+              const stripeBtn = document.getElementById("stripe-button")
+              console.log(stripeBtn)
+              console.log(totalexcludingDelivery)
+              console.log(totalIncludingDelivery)
+              stripeBtn.dataset.amount = totalIncludingDelivery
+              const stripeButton = document.getElementById("stripe-btn")
+              console.log(stripeButton)
+              console.log(stripeButton.innerHTML)
             });
           });
 
@@ -62,3 +78,4 @@
 
 
 export {changeLineQuantity};
+

@@ -7,6 +7,7 @@ class MealsController < ApplicationController
     @meals = policy_scope(Meal).order(created_at: :desc)
 
 
+
     if params[:home_address].present? && params[:distance].present?
       users = User.near(params[:home_address], params[:distance].to_i)
       @meals = @meals.where(user_id: users.reorder(nil).pluck(:id))
@@ -53,6 +54,7 @@ class MealsController < ApplicationController
     @meal = Meal.find(params[:id])
     @chef = @meal.user
     @other_courses = Meal.where(user_id: @chef.id).reject{|meal| meal.courses.first == @meal.courses.first}
+    @rating_average = @meal.reviews.average(:rating)
     authorize @meal
   end
 
