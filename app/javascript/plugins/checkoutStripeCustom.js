@@ -29,24 +29,25 @@ const checkoutStripeCustom = () => {
         // Get the token ID to your server-side code for use.
       }
     });
-    
+
     document.getElementById('customButton').addEventListener('click', function(e) {
       // Open Checkout with further options:
       handler.open({
         name: 'Stripe.com',
         description: 'Your order',
         amount: stripeBtn.dataset.amount,
-        
+        currency: 'eur',
+
       });
-      
+
       // sleep(3000)
       e.preventDefault();
     });
-    
+
     // Close Checkout on page navigation:
     window.addEventListener('popstate', function() {
       handler.close();
-    });    
+    });
   };
 };
 
