@@ -12,8 +12,8 @@ class ChatroomPolicy < ApplicationPolicy
   end
 
   def show?
-    # return true
-    record.order.user == user || record.order.lines.first.meal.user == user
+    return true
+    # record.order.user == user || record.order.lines.first.meal.user == user
     # must verify that order users are the only one to access
     # record == chatroom
     # record.order
