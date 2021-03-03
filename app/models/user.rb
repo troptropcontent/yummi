@@ -19,6 +19,11 @@ class User < ApplicationRecord
   def rating_average
     reviews_as_chef.average(:rating)
   end
+
+  def distance_from_chef(chef)
+    return self.distance_from([chef.latitude,chef.longitude]).round(2) 
+  end
+  
   # add geocoder to translate address into coordinates
   geocoded_by :home_address
     after_validation :geocode, if: :will_save_change_to_home_address?

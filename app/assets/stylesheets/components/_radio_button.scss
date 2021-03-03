@@ -1,0 +1,54 @@
+.delivery-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.delivery-item {
+  flex: 0 0 30%;
+}
+
+.delivery-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.delivery-selector + label {
+  display: block;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 12px;
+  text-align: left;
+  padding: 10px 10px 30px 10px;
+  border: 1px solid #EAEAEA;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.delivery-selector:checked + label {
+  color: black !important;
+  background-color: grey;
+}
+
+
+.click-and-collect{
+  display: none;
+ }
+
+.delivery-mode-delivery{
+ .delivery{
+  display: none;
+ }
+ .click-and-collect{
+  display: block;
+ }
+}
+
+.delivery_fee_line{
+  display: flex;
+  justify-content: space-between;
+  .delivery_fee_amount{
+    display: flex;
+  }
+}

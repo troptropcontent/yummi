@@ -1,8 +1,83 @@
-<div class="container-order">
-  <% if @order.status == "In_progress" %>
-    <%= render 'order_show_created' %>
-  <% else %>
-    <%= render 'order_show_confirmed' %>
-  <% end %>
-</div>
+<div class = "container">
+  <div class="checkout-head">
+    <h1>Please confirm your order</h1>
+  </div>
+  <div class="checkout-data">
+  <% total_lines = 0 %>
+    <%= simple_form_for @order do |f| %>
+      <div class="lines">
+          <% @order.lines.each do |line|%>
+            <div class="line line_id_<%=line.id%>" style="display: flex; justify-content: space-between;">
+              <%= f.simple_fields_for line do |l| %>
+                  <%= l.input :quantity ,:as => :hidden, input_html: { name: "line_#{line.id}", id: "quantity_input_line_#{line.id}", class: "quantity-input"} %>
+              <% end %>
+              <p class="line_meal" data-line-id=<%=line.id%>>
+                <%= line.meal.name %>
+              </p>
+              <div style="display: flex; justify-content: space-between;">
+                <a href="#" data-value="-1" class="increment" data-line-id=<%=line.id%>>-</a>
+                <p class="line_quantity" data-line-id=<%=line.id%> data-meal-price-cents=<%=line.meal.price_cents%> id="quantity_line_<%=line.id%>">
+                  <%= line.quantity %>
+                </p>
+                <a href="#" data-value="+1" class="increment" data-line-id=<%=line.id%>>+</a>
+                <p class="line_price" id="price_line_<%=line.id%>" >
+                  <%= line.meal.price_cents.fdiv(100) %>
+                </p>
+              </div>
+            </div>
+            <% total_lines += line.meal.price_cents %>
+          <% end %>
+      </div>
 
+      <div class="checkout-footer">
+        <div class="total">
+          <p> Subtotal </p>
+        </div>
+        <div class="total">
+          <p class="total_price"><%= total_lines.fdiv(100) %></p>
+        </div>
+      </div>
+
+      <div>
+        <%= f.input :delivery_type,
+                    as: :radio_buttons,
+                    collection_wrapper_tag: 'div',
+                    collection_wrapper_class: 'delivery-wrapper',
+                    item_wrapper_class: 'delivery-item',
+                    input_html: {class: 'delivery-selector'},
+                    collection: Order::DELIVERY_OPTIONS,
+                    checked: Order::DELIVERY_OPTIONS[0] %>
+                    
+      </div>
+      <div class="delivery-address">
+        <% chef = @order.lines.first.meal.user %>
+        <% client = @order.user %>
+        <% delivery_fee_cents = (client.distance_from_chef(chef)*(0.9)*100).round %>
+        <div class="delivery">
+          <p><%= client.home_address %></p>
+          <div class="delivery_fee_line">
+            <p>Delivery fee :</p>
+            <div class="delivery_fee_amount">
+              <p id="delivery_fee_amount_cents" data-amount-cents = <%= delivery_fee_cents %>><%= (delivery_fee_cents.fdiv(100)).round(2)%></p>
+              <p id="delivery_fee_curency">€</p>
+            </div>
+          </div>
+        </div>
+        <div class="click-and-collect">
+          <p><%=  chef.home_address %> - <%= client.distance_from_chef(chef) %> km away</p>
+          <%= console %>
+        </div>
+      </div>
+    <%= f.input :delivery_type ,:as => :hidden, input_html: { value: 'delivery', name: "order_#{@order.id}", id: "delivery-type"} %>
+    <%= f.input :delivery_fee_cents ,:as => :hidden, input_html: {value: delivery_fee_cents, name: "delivery_fee", id: "delivery-fee"} %>
+    <%= f.submit %>
+    <div id="stripe-btn">
+    <script src="https://checkout.stripe.com/checkout.js" id="stripe-button" class="stripe-button" data-key="<%= Rails.configuration.stripe[:publishable_key] %>" data-description="A month's subscription" data-amount="<%= total_lines+delivery_fee_cents %>" data-currency="eur" data-locale="auto"></script>
+    </div>
+
+    <% end %>
+
+  </div>
+
+
+</div>
