@@ -1,5 +1,14 @@
 <%= form_tag meals_path, method: :get do %>
 
+  <p class="mb-1 p-homepage">Where?</p>
+  <%= text_field_tag :home_address,
+    params[:home_address] || session[:home_address] || current_user.home_address,
+    class: "form-control mb-4",
+    id:"address"
+  %>
+  <ul class= "results">
+  </ul>
+
   <p class="mb-1 p-homepage">When?</p>
   <%= text_field_tag :day,
     params[:day] || "#{1.day.from_now.to_date} 20:00",
