@@ -4,7 +4,7 @@ class Order < ApplicationRecord
 
   belongs_to :user
   has_many :lines, dependent: :destroy
-  has_one :chatroom
+  has_one :chatroom, dependent: :destroy
   has_one :review
   after_create :create_chatroom
 
