@@ -1,5 +1,5 @@
 .card-suggestion-footer{
-  display: flex;
+  display: inline-flex;
   justify-content: space-between;
   a {
     font-size: smaller;
@@ -25,11 +25,11 @@
     width: 40px;
     height: 40px;
     padding: 2px;
-    margin-left: 40%;
+    margin: auto;
     background-color: $my-orange
   }
   .fas {
-    font-size: 19px;
+    font-size: 16px;
   }
 }
 
@@ -38,7 +38,7 @@
   border: medium solid green;
   a.add-to-cart{
     display: none;
-    
+
   }
   a.meal-added-to-cart {
     display: block;
@@ -47,6 +47,8 @@
     border: 0;
     background-color: transparent;
     color: black;
+    display: flex;
+    justify-content: flex-end;
   }
 }
 

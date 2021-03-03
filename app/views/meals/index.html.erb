@@ -7,7 +7,6 @@
   <div class="filter-search-wrap">
       <% if params[:query] && params[:query] != ""%>
         <div class="search-query">
-          <%= image_tag 'search.svg', class: "padding-right" %>
             <p><%= params[:query] %></p>
         </div>
       <% end %>
@@ -15,56 +14,47 @@
 
       <% if params[:chef] && params[:chef] != ""%>
         <div class="search-query">
-          <%= image_tag 'search.svg', class: "padding-right"  %>
             <p><%= params[:chef] %></p>
             <%= render 'shared/filter_form' %>
         </div>
       <% end %>
       <% if params[:day].present? && params[:day] != "" %>
         <div class="search-query">
-          <%= image_tag 'search.svg', class: "padding-right"  %>
             <p><%= params[:day] %></p>
         </div>
       <% end %>
       <% if params[:price] && params[:price] != "" %>
         <div class="search-query">
-          <%= image_tag 'search.svg', class: "padding-right"  %>
             <p>from <%= params[:price].split(";").first %>€ to <%= params[:price].split(";").last %>€</p>
         </div>
       <% end %>
       <% if params[:home_address] && params[:home_address] != "" %>
         <div class="search-query">
-          <%= image_tag 'search.svg', class: "padding-right"  %>
             <p><%= params[:home_address] %></p>
         </div>
       <% end %>
       <% if params[:distance] && params[:distance] != "" %>
         <div class="search-query">
-          <%= image_tag 'search.svg', class: "padding-right"  %>
             <p><%= params[:distance] %>km</p>
         </div>
       <% end %>
       <% if params[:cuisine] && params[:cuisine] != "" %>
         <div class="search-query">
-          <%= image_tag 'search.svg', class: "padding-right"  %>
             <p><%= params[:cuisine].join(", ") %></p>
         </div>
       <% end %>
       <% if params[:course].present? && params[:course].include?("1") && params[:course] != "" %>
         <div class="search-query">
-          <%= image_tag 'search.svg', class: "padding-right"  %>
           <p><%= Course.find("#{params[:course].first}").name %></p>
         </div>
       <% end %>
       <% if params[:course].present? && params[:course].include?("2") && params[:course] != ""%>
         <div class="search-query">
-          <%= image_tag 'search.svg', class: "padding-right"  %>
           <p><%= Course.find("#{params[:course][1]}").name %></p>
         </div>
       <% end %>
       <% if params[:course].present? && params[:course].include?("3") && params[:course] != ""%>
         <div class="search-query">
-          <%= image_tag 'search.svg', class: "padding-right"  %>
           <p><%= Course.find("#{params[:course].last}").name %></p>
         </div>
       <% end %>
@@ -96,6 +86,10 @@
             </div>
             <div class="display-column">
               <h3>By <%= meal.user.full_name %></h3>
+              <% if meal.user.rating_average != nil %>
+                <%= image_tag 'star.svg' %>
+                <h3 id="flex-grow"><%= number_to_human  meal.user.rating_average %>/5</h3>
+              <% end %>
               <h2 class="price-tag"><%= meal.price_cents.fdiv(100) %>€</h2>
             </div>
           </div>
@@ -105,12 +99,5 @@
   <% end %>
 </div>
 
-<style>
-  .display-column {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 0px;
-  }
-</style>
 
 

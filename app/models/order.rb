@@ -1,9 +1,13 @@
 class Order < ApplicationRecord
+
+  DELIVERY_OPTIONS = ["delivery", "pick and collect"]
+
   belongs_to :user
   has_many :lines, dependent: :destroy
   has_one :chatroom
   has_one :review
-  DELIVERY_OPTIONS = ["click-and-collect", "delivery"]
+  after_create :create_chatroom
+
 
   def random_order_number
     random_number = []
@@ -26,9 +30,19 @@ class Order < ApplicationRecord
 
   def total_before_checkout
     total = 0
-    lines.each{|line| total += line.meal.price_cents}
+    lines.each{|line| total += line.meal.price_cents*line.quantity}
+    total += delivery_fee_cents if delivery_fee_cents
     total
   end
 
+<<<<<<< HEAD
+=======
+  private
+
+  def create_chatroom
+    #create a chatroom for the order
+    Chatroom.create(order: self)
+  end
+>>>>>>> c3d0816996eaa9fab14ee0a184af2adef9aeef43
 
 end

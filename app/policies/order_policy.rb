@@ -5,7 +5,7 @@ class OrderPolicy < ApplicationPolicy
     end
   end
   def show?
-    record.user == user || record.lines.map { |line| line.meal.user }.unique.include?(user)
+    record.user == user || record.lines.map { |line| line.meal.user }.uniq.include?(user)
   end
 
   def update?
