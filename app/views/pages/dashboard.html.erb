@@ -1,12 +1,12 @@
  <ul class="list-inline tabs-underlined">
   <li>
-    <%= link_to "Orders", dashboard_path, class: "tab-underlined" %>
+    <a href="#" class="tab-underlined active">Orders</a>
   </li>
   <li>
-    <%= link_to "Messages", "#", class: "tab-underlined" %>
+    <a href="#" class="tab-underlined">Requests</a>
   </li>
   <li>
-    <%= link_to "Accout Settings", settings_path , class: "tab-underlined" %>
+    <a href="#" class="tab-underlined">Conversations</a>
   </li>
 </ul>
 
@@ -31,13 +31,9 @@
               <div class="order-card-head-infos-left">
                 <div class="container-dashboard-order">
                   <p><%= order.status %></p>
-                  <p><%= order.id %></p>
-                  <div class="flex-price-date">
-                    <ul>
-                      <li><p><%= @meal.price_cents.fdiv(100) %>€ . </p></li>
-                      <li><p>  <%= order.random_delivery_date %></p></li>
-                    </ul>
-                  </div>
+                  <p><%= order.random_order_number %></p>
+                  <p><%= order.price_cents.fdiv(100) %>€</p>
+                  <p><%= order.random_delivery_date %></p>
                 </div>
 
               </div>
@@ -45,14 +41,14 @@
                 <i class="far fa-comments"></i>
               </div> -->
 
-
+              <% if Order.all == nil %>
                 <%= link_to chatroom_path(order.chatroom) do  %>
                   <div class="order-card-head-infos-right">
                     <i class="far fa-comments"></i>
                   </div>
                 <% end %>
-
-
+              <% end %>
+              
             </div>
               <div class="order-card-details-bottom">
 
