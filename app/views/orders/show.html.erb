@@ -1,6 +1,9 @@
+<div class="banner-confirmed">
+  <h1>Please confirm your order</h1>
+</div>
+
 <div class = "container">
   <div class="checkout-head">
-    <h1>Please confirm your order</h1>
   </div>
   <div class="checkout-data">
   <% total_lines = 0 %>
@@ -65,7 +68,6 @@
         </div>
         <div class="click-and-collect">
           <p><%=  chef.home_address %> - <%= client.distance_from_chef(chef) %> km away</p>
-          <%= console %>
         </div>
       </div>
     <%= f.input :delivery_type ,:as => :hidden, input_html: { value: 'delivery', name: "order_#{@order.id}", id: "delivery-type"} %>
