@@ -1,4 +1,7 @@
 class Order < ApplicationRecord
+
+  DELIVERY_OPTIONS = ["delivery", "pick and collect"]
+
   belongs_to :user
   has_many :lines, dependent: :destroy
   has_one :chatroom
@@ -26,7 +29,8 @@ class Order < ApplicationRecord
 
   def total_before_checkout
     total = 0
-    lines.each{|line| total += line.meal.price_cents}
+    lines.each{|line| total += line.meal.price_cents*line.quantity}
+    total += delivery_fee_cents if delivery_fee_cents
     total
   end
 

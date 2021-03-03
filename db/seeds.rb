@@ -201,6 +201,7 @@ remaining_users = User.all
     new_line.quantity = quantity
     new_line.meal = meal
     new_line.order = order  
+    new_line.save!
   end
   # ajouter une review
   review = Review.new
