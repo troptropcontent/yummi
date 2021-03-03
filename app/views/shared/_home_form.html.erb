@@ -2,7 +2,7 @@
 
   <p class="mb-1 p-homepage">Where?</p>
   <%= text_field_tag :home_address,
-    params[:home_address] || session[:home_address] || current_user.home_address,
+    params[:home_address] || session[:home_address] || current_user&.home_address,
     class: "form-control mb-4",
     id:"address"
   %>

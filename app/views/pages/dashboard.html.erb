@@ -1,12 +1,12 @@
  <ul class="list-inline tabs-underlined">
   <li>
-    <a href="#" class="tab-underlined active">Orders</a>
+    <%= link_to "Orders", dashboard_path, class: "tab-underlined" %>
   </li>
   <li>
-    <a href="#" class="tab-underlined">Requests</a>
+    <%= link_to "Messages", "#", class: "tab-underlined" %>
   </li>
   <li>
-    <a href="#" class="tab-underlined">Conversations</a>
+    <%= link_to "Accout Settings", settings_path , class: "tab-underlined" %>
   </li>
 </ul>
 
@@ -45,14 +45,14 @@
                 <i class="far fa-comments"></i>
               </div> -->
 
-              <% if Order.all == nil %>
+
                 <%= link_to chatroom_path(order.chatroom) do  %>
                   <div class="order-card-head-infos-right">
                     <i class="far fa-comments"></i>
                   </div>
                 <% end %>
-              <% end %>
-              
+
+
             </div>
               <div class="order-card-details-bottom">
 

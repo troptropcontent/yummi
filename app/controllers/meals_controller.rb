@@ -6,6 +6,7 @@ class MealsController < ApplicationController
     @courses = Course.all
     @meals = policy_scope(Meal).order(created_at: :desc)
 
+
     if params[:home_address]
       session[:home_address] = params[:home_address]
     end
