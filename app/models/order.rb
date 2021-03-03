@@ -35,6 +35,10 @@ class Order < ApplicationRecord
     total
   end
 
+  def change_status_to_accepted
+    status = "Accepted"
+  end
+
   private
 
   def create_chatroom

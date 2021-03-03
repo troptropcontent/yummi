@@ -66,11 +66,18 @@
               <p id="delivery_fee_amount_cents" data-amount-cents = <%= delivery_fee_cents %>><%= (delivery_fee_cents.fdiv(100)).round(2)%></p>
               <p id="delivery_fee_curency">€</p>
             </div>
-          </div>
+          </div>       
         </div>
         <div class="click-and-collect">
           <p><%=  chef.home_address %> - <%= client.distance_from_chef(chef) %> km away</p>
         </div>
+          <%# <div class="total_line"> %>
+            <%# <p>total :</p> %>
+            <%# <div class="total_line_amount"> %>
+              <%# <p id="total_line_amount_cents" data-amount-cents=<%= total_lines+delivery_fee_cents %>><%= (total_lines+delivery_fee_cents).fdiv(100) %></p> %>
+              <%# <p id="total_line_amount_curency">€</p> %>
+            <%# </div> %>
+          <%# </div>            %>
       </div>
     <%= f.input :delivery_type ,:as => :hidden, input_html: { value: 'delivery', name: "order_#{@order.id}", id: "delivery-type"} %>
     <%= f.input :delivery_fee_cents ,:as => :hidden, input_html: {value: delivery_fee_cents, name: "delivery_fee", id: "delivery-fee"} %>
