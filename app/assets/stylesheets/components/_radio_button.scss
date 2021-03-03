@@ -1,11 +1,15 @@
 .delivery-wrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-wrap: wrap;
 }
 
 .delivery-item {
   flex: 0 0 30%;
+}
+
+.center-delivery {
+  text-align: center;
 }
 
 .delivery-selector {
@@ -17,10 +21,10 @@
   display: block;
   cursor: pointer;
   box-sizing: border-box;
-  width: 100%;
+  width: 140px;
   font-size: 12px;
-  text-align: left;
-  padding: 10px 10px 30px 10px;
+  text-align: center;
+  padding: 10px;
   border: 1px solid #EAEAEA;
   border-radius: 4px;
   background-color: white;

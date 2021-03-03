@@ -13,16 +13,17 @@
                   <%= l.input :quantity ,:as => :hidden, input_html: { name: "line_#{line.id}", id: "quantity_input_line_#{line.id}", class: "quantity-input"} %>
               <% end %>
               <div class="flex-confirmed">
+                <div class="width-button">
                 <a href="#" data-value="-1" class="increment" data-line-id=<%=line.id%>>-</a>
                 <p class="line_quantity" data-line-id=<%=line.id%> data-meal-price-cents=<%=line.meal.price_cents%> id="quantity_line_<%=line.id%>">
                   <%= line.quantity %>
                 </p>
                 <a href="#" data-value="+1" class="increment" data-line-id=<%=line.id%>>+</a>
+              </div>
 
               <p class="line_meal" data-line-id=<%=line.id%>>
                 <%= line.meal.name %>
               </p>
-
                 <p class="line_price" id="price_line_<%=line.id%>" >
                   <%= line.meal.price_cents.fdiv(100) %>
                 </p>
@@ -43,7 +44,7 @@
       </div>
 
       <div>
-        <%= f.input :delivery_type,
+        <%= f.input :delivery_type, class: 'center-delivery',
                     as: :radio_buttons,
                     collection_wrapper_tag: 'div',
                     collection_wrapper_class: 'delivery-wrapper',
@@ -51,7 +52,7 @@
                     input_html: {class: 'delivery-selector'},
                     collection: Order::DELIVERY_OPTIONS,
                     checked: Order::DELIVERY_OPTIONS[0] %>
-                    
+
       </div>
       <div class="delivery-address">
         <% chef = @order.lines.first.meal.user %>
@@ -73,16 +74,21 @@
       </div>
     <%= f.input :delivery_type ,:as => :hidden, input_html: { value: 'delivery', name: "order_#{@order.id}", id: "delivery-type"} %>
     <%= f.input :delivery_fee_cents ,:as => :hidden, input_html: {value: delivery_fee_cents, name: "delivery_fee", id: "delivery-fee"} %>
-    
+
     <div id="stripe-btn">
     <script src="https://checkout.stripe.com/checkout.js" id="stripe-button" data-key="<%= Rails.configuration.stripe[:publishable_key] %>" data-description="A month's subscription" data-amount="<%= total_lines+delivery_fee_cents %>" data-currency="eur" data-locale="auto"></script>
     <%= f.submit id: "customButton", value: "Comfirm and pay"%>
+
+    </div>
     </div>
     <%= f.input :delivery_fee_cents ,:as => :hidden, input_html: {name: "stripeToken", id: "stripeToken"} %>
     <%= f.input :delivery_fee_cents ,:as => :hidden, input_html: {name: "stripeEmail", id: "stripeEmail"} %>
+
     <% end %>
 
   </div>
-
-
 </div>
+
+<style>
+
+</style>
