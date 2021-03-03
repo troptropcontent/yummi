@@ -39,7 +39,7 @@ class Order < ApplicationRecord
 
   def create_chatroom
     #create a chatroom for the order
-    Chatroom.create(order: self)
+    # Chatroom.create(order: self)
   end
 
 end
