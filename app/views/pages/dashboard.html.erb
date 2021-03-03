@@ -24,6 +24,7 @@
       <%# <p>$49.00</p> %>
     <%# </div> %>
     <div class="order-cards">
+      <% if Order.all == nil %>
       <% @orders.each do |order| %>
         <div class="order-card">
           <div class="order-card-head">
@@ -48,7 +49,7 @@
                   </div>
                 <% end %>
               <% end %>
-              
+
             </div>
               <div class="order-card-details-bottom">
 
@@ -109,6 +110,7 @@
           </div>
           </div>
         </div>
+        <% end %>
       <% end %>
     </div>
 
