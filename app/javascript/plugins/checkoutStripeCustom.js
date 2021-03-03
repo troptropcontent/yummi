@@ -19,6 +19,12 @@ const checkoutStripeCustom = () => {
       image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
       locale: 'auto',
       token: function(token) {
+        const form = stripeBtn.closest('form')
+        const tokenInput = document.getElementById('stripeToken')
+        const tokenEmailInput = document.getElementById('stripeEmail')
+        tokenInput.value = token.id
+        tokenEmailInput.value = token.email
+        form.submit()
         // You can access the token ID with `token.id`.
         // Get the token ID to your server-side code for use.
       }
@@ -30,12 +36,9 @@ const checkoutStripeCustom = () => {
         name: 'Stripe.com',
         description: 'Your order',
         amount: stripeBtn.dataset.amount,
-        closed: ()=>{
-          const form = stripeBtn.closest('form')
-          form.submit()
-        },
+        
       });
-
+      
       // sleep(3000)
       e.preventDefault();
     });

@@ -33,7 +33,6 @@ class OrdersController < ApplicationController
     authorize @order
 
     pay()
-
   end
 
   private
@@ -44,23 +43,23 @@ class OrdersController < ApplicationController
     @user = current_user
     @amount = @order.price_cents
     
-
-    # customer = Stripe::Customer.create({
-    #   email: params[:stripeEmail],
-    #   source: params[:stripeToken],
-    # })
-
-    # charge = Stripe::Charge.create({
-    #   customer: customer.id,
-    #   amount: @amount,
-    #   description: 'Rails Stripe customer',
-    #   currency: 'eur',
-    # })
-
+    customer = Stripe::Customer.create({
+      email: params[:stripeEmail],
+      source: params[:stripeToken],
+    })
+    
+    charge = Stripe::Charge.create({
+      customer: customer.id,
+      amount: @amount,
+      description: 'Rails Stripe customer',
+      currency: 'eur',
+    })
+  
     # Chatroom.create(order_id: @order.id, user_id: @user.id, cook_id: @order.lines.first.meal.user.id)
     session[:order_id] = nil
     @order.status = "Paid"
     @order.save!
+
     redirect_to dashboard_path
     
 

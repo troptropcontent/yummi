@@ -80,7 +80,9 @@
     <%= f.submit id: "customButton", value: "Comfirm and pay"%>
 
     </div>
-
+    </div>
+    <%= f.input :delivery_fee_cents ,:as => :hidden, input_html: {name: "stripeToken", id: "stripeToken"} %>
+    <%= f.input :delivery_fee_cents ,:as => :hidden, input_html: {name: "stripeEmail", id: "stripeEmail"} %>
 
     <% end %>
 
