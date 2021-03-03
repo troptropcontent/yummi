@@ -5,7 +5,6 @@ class ChargesController < ApplicationController
 
   def create
     # Amount in cents
-    raise
     @order = Order.find(params[:OrderId])
     @user = current_user
     @amount = @order.total_before_checkout
