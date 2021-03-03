@@ -32,7 +32,7 @@ class LinesController < ApplicationController
   private
 
   def current_order
-    if session[:order_id] && Order.find_by(id: session[:order_id])
+    if session[:order_id] && Order.find_by(id: session[:order_id]) && Order.find_by(id: session[:order_id]).user == current_user
       Order.find(session[:order_id])
     else
       order = Order.create!(user: current_user, status: "In_progress")

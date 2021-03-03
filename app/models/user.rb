@@ -21,7 +21,8 @@ class User < ApplicationRecord
   end
 
   def distance_from_chef(chef)
-    return self.distance_from([chef.latitude,chef.longitude]).round(2) 
+    return self.distance_from([chef.latitude,chef.longitude]).round(2) if self.distance_from([chef.latitude,chef.longitude])
+    return 5
   end
   
   # add geocoder to translate address into coordinates
