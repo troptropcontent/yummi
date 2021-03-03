@@ -3,7 +3,7 @@ class Order < ApplicationRecord
   has_many :lines, dependent: :destroy
   has_one :chatroom
   has_one :review
-
+  DELIVERY_OPTIONS = ["click-and-collect", "delivery"]
 
   def random_order_number
     random_number = []
@@ -29,5 +29,6 @@ class Order < ApplicationRecord
     lines.each{|line| total += line.meal.price_cents}
     total
   end
+
 
 end
