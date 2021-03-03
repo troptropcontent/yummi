@@ -6,3 +6,11 @@
   height: 125px;
   object-fit: cover;
 }
+.order-card-head-infos-left{
+  width: 100%;
+  .container-dashboard-order{
+    display: flex;
+  justify-content: space-between;
+  width: 100%;
+  }
+}
