@@ -77,7 +77,7 @@
 
     <div id="stripe-btn">
     <script src="https://checkout.stripe.com/checkout.js" id="stripe-button" data-key="<%= Rails.configuration.stripe[:publishable_key] %>" data-description="A month's subscription" data-amount="<%= total_lines+delivery_fee_cents %>" data-currency="eur" data-locale="auto"></script>
-    <%= f.submit id: "customButton", value: "Comfirm and pay"%>
+    <center><%= f.submit class: 'btn-pay', value: "Comfirm and pay"%></center>
 
     </div>
     </div>

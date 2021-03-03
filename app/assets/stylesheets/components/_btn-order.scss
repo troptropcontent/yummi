@@ -16,6 +16,24 @@
 
 }
 
+.btn-pay {
+  background-color: $my-orange;
+  border: 1px solid $my-orange;
+  color: white;
+  padding: 8px 24px;
+  width: 250px;
+  height: 50px;
+  border-radius: 50px;
+  font-weight: lighter;
+  text-align: center;
+  a {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+  }
+
+}
+
 .btn-order-fix {
   position: absolute;
   bottom: 100px;
