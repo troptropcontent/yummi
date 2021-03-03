@@ -3,7 +3,7 @@ class Order < ApplicationRecord
   has_many :lines, dependent: :destroy
   has_one :chatroom
   has_one :review
-
+  after_create :create_chatroom
 
   def random_order_number
     random_number = []
@@ -28,6 +28,13 @@ class Order < ApplicationRecord
     total = 0
     lines.each{|line| total += line.meal.price_cents}
     total
+  end
+
+  private
+
+  def create_chatroom
+    #create a chatroom for the order
+    Chatroom.create(order: self)
   end
 
 end
