@@ -4,6 +4,7 @@ class ChargesController < ApplicationController
   end
 
   def create
+    raise
     # Amount in cents
     @order = Order.find(params[:OrderId])
     @user = current_user
@@ -21,7 +22,7 @@ class ChargesController < ApplicationController
       currency: 'eur',
     })
 
-    Chatroom.create(order_id: @order.id, user_id: @user.id, cook_id: @order.lines.first.meal.user.id)
+    # Chatroom.create(order_id: @order.id, user_id: @user.id, cook_id: @order.lines.first.meal.user.id)
     session[:order_id] = nil
     redirect_to dashboard_path
     @order.status = "Paid"
