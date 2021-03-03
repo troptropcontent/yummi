@@ -68,3 +68,11 @@
     text-align: center;
   }
 }
+
+.total_line{
+  display: flex ;
+  justify-content: space-between;
+  .total_line_amount {
+    display: flex;
+  }
+}
