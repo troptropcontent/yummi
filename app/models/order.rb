@@ -8,6 +8,7 @@ class Order < ApplicationRecord
   has_one :review
   after_create :create_chatroom
 
+
   def random_order_number
     random_number = []
     5.times do

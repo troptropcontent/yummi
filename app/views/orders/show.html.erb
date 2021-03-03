@@ -3,8 +3,6 @@
 </div>
 
 <div class = "container">
-  <div class="checkout-head">
-  </div>
   <div class="checkout-data">
   <% total_lines = 0 %>
     <%= simple_form_for @order do |f| %>
@@ -14,19 +12,22 @@
               <%= f.simple_fields_for line do |l| %>
                   <%= l.input :quantity ,:as => :hidden, input_html: { name: "line_#{line.id}", id: "quantity_input_line_#{line.id}", class: "quantity-input"} %>
               <% end %>
-              <p class="line_meal" data-line-id=<%=line.id%>>
-                <%= line.meal.name %>
-              </p>
-              <div style="display: flex; justify-content: space-between;">
+              <div class="flex-confirmed">
                 <a href="#" data-value="-1" class="increment" data-line-id=<%=line.id%>>-</a>
                 <p class="line_quantity" data-line-id=<%=line.id%> data-meal-price-cents=<%=line.meal.price_cents%> id="quantity_line_<%=line.id%>">
                   <%= line.quantity %>
                 </p>
                 <a href="#" data-value="+1" class="increment" data-line-id=<%=line.id%>>+</a>
+
+              <p class="line_meal" data-line-id=<%=line.id%>>
+                <%= line.meal.name %>
+              </p>
+
                 <p class="line_price" id="price_line_<%=line.id%>" >
                   <%= line.meal.price_cents.fdiv(100) %>
                 </p>
               </div>
+
             </div>
             <% total_lines += line.meal.price_cents %>
           <% end %>
