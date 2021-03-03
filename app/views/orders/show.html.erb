@@ -72,10 +72,13 @@
       </div>
     <%= f.input :delivery_type ,:as => :hidden, input_html: { value: 'delivery', name: "order_#{@order.id}", id: "delivery-type"} %>
     <%= f.input :delivery_fee_cents ,:as => :hidden, input_html: {value: delivery_fee_cents, name: "delivery_fee", id: "delivery-fee"} %>
-    <%= f.submit %>
+    
     <div id="stripe-btn">
-    <script src="https://checkout.stripe.com/checkout.js" id="stripe-button" class="stripe-button" data-key="<%= Rails.configuration.stripe[:publishable_key] %>" data-description="A month's subscription" data-amount="<%= total_lines+delivery_fee_cents %>" data-currency="eur" data-locale="auto"></script>
+    <script src="https://checkout.stripe.com/checkout.js" id="stripe-button" data-key="<%= Rails.configuration.stripe[:publishable_key] %>" data-description="A month's subscription" data-amount="<%= total_lines+delivery_fee_cents %>" data-currency="eur" data-locale="auto"></script>
+    <%= f.submit id: "customButton", value: "Comfirm and pay"%>
+    
     </div>
+    
 
     <% end %>
 

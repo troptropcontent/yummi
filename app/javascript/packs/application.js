@@ -36,6 +36,7 @@ import { loadDynamicBannerText } from '../components/banner';
 import { toggleOrderCardsDetails } from '../plugins/toggleOrderCardsDetails';
 import { addToCart } from '../plugins/addToCart';
 import { deliveryOrClickAndCollect } from '../plugins/deliveryOrClickAndCollect';
+import { checkoutStripeCustom }  from '../plugins/checkoutStripeCustom';
 
 
 // import { initSelect2 } from '../components/init_select2';
@@ -55,6 +56,7 @@ document.addEventListener('turbolinks:load', () => {
   initChatroomCable();
   toggleOrderCardsDetails();
   deliveryOrClickAndCollect();
+  checkoutStripeCustom();
 
 });
 

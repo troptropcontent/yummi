@@ -44,6 +44,7 @@
 <!--               <div class="order-card-head-infos-right">
                 <i class="far fa-comments"></i>
               </div> -->
+
               <% if Order.all == nil %>
                 <%= link_to chatroom_path(order.chatroom) do  %>
                   <div class="order-card-head-infos-right">
@@ -51,6 +52,7 @@
                   </div>
                 <% end %>
               <% end %>
+              
             </div>
               <div class="order-card-details-bottom">
 

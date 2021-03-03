@@ -32,9 +32,7 @@ class OrdersController < ApplicationController
     @order.save!
     authorize @order
 
-
     pay()
-
 
   end
 
@@ -44,25 +42,27 @@ class OrdersController < ApplicationController
     
   # Amount in cents
     @user = current_user
-    @amount = @order.price_cents.fdiv(100)
+    @amount = @order.price_cents
     
 
-    customer = Stripe::Customer.create({
-      email: params[:stripeEmail],
-      source: params[:stripeToken],
-    })
+    # customer = Stripe::Customer.create({
+    #   email: params[:stripeEmail],
+    #   source: params[:stripeToken],
+    # })
 
-    charge = Stripe::Charge.create({
-      customer: customer.id,
-      amount: @amount,
-      description: 'Rails Stripe customer',
-      currency: 'eur',
-    })
+    # charge = Stripe::Charge.create({
+    #   customer: customer.id,
+    #   amount: @amount,
+    #   description: 'Rails Stripe customer',
+    #   currency: 'eur',
+    # })
 
-    Chatroom.create(order_id: @order.id, user_id: @user.id, cook_id: @order.lines.first.meal.user.id)
+    # Chatroom.create(order_id: @order.id, user_id: @user.id, cook_id: @order.lines.first.meal.user.id)
     session[:order_id] = nil
-    redirect_to dashboard_path
     @order.status = "Paid"
+    @order.save!
+    redirect_to dashboard_path
+    
 
 
   rescue Stripe::CardError => e
