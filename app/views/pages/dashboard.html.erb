@@ -1,14 +1,16 @@
- <ul class="list-inline tabs-underlined">
-  <li>
-    <a href="#" class="tab-underlined active">Orders</a>
-  </li>
-  <li>
-    <a href="#" class="tab-underlined">Requests</a>
-  </li>
-  <li>
-    <a href="#" class="tab-underlined">Conversations</a>
-  </li>
-</ul>
+  <ul class="list-inline tabs-underlined">
+   <li>
+     <%= link_to "Orders", dashboard_path, class: "tab-underlined" %>
+   </li>
+   <li>
+     <%= link_to "Messages", "#", class: "tab-underlined" %>
+   </li>
+   <li>
+     <%= link_to "Accout Settings", settings_path , class: "tab-underlined" %>
+   </li>
+ </ul>
+
+ <br><br>
 
 <br><br>
 
