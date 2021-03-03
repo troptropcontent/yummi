@@ -6,33 +6,33 @@
   <!-- Overlay content -->
   <div class="overlay-content">
     <div class="container">
-      <h1><%= @chef.full_name %> also propose </h1>
+      <h1><%= @chef.full_name %> also cooks </h1>
       <% @other_courses.each do |meal| %>
 
         <div class="card-suggestion" id="other-course-meal-id-<%= meal.id%>" style="background-image: url(<%= cl_image_path meal.photo.key, height: 320, width: 300, crop: :fill %>);">
             <div class="card-suggestion-infos">
               <div>
                 <%= link_to meal_path(meal, quantity: params[:quantity]) do %>
-                <h2><strong><%= meal.name %></strong></h2>
+                <h2><strong><%= meal.name[0..15] %></strong></h2>
                 <p><%= meal.price_cents.fdiv(100) %>€</p>
                 <% end %>
               </div>
               <div class="card-suggestion-footer">
+                <div><div class="tag-show-card"><p><%= meal.courses.first.name %></p></div></div>
                 <div class="meal-card-action">
                 <%#  <i class="fas fa-shopping-basket"></i>%>
                   <a href="#" class="add-to-cart" data-meal-id=<%= meal.id %>>+</a>
                   <a href="#" class="meal-added-to-cart" data-meal-id=<%= meal.id %>>Added</a>
                 </div>
               </div>
-                <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-suggestion-user avatar-bordered" />
             </div>
 
             </div>
         <% end %>
           <%= simple_form_for Line.new do |f| %>
-            <div class="line-button">
-              <%= f.button :submit %>
-            </div>
+            <center><div class="btn-order-checkout">
+              <%= f.button :submit, "Go to checkout" %>
+            </div></center>
             <%= f.input :meal, :as => :hidden, :input_html => { :value => @meal.id } %>
             <% @other_courses.each do |meal| %>
               <%= f.input :meal ,:as => :hidden, input_html: { name: "other_meal_#{meal.id}", id: "other_meal_added_to_basket_#{meal.id}", class: "other_meal_added_to_basket"} %>
