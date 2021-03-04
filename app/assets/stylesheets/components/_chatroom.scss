@@ -13,12 +13,24 @@
 
 
 .chatbox{
+  h1{
+    position: sticky;
+    top: 0px;
+    background: white;
+    padding: 5px;
+  }
   height: calc(100% - 80px);
   display: flex;
   flex-direction: column;
   .messages{
     flex-grow: 1;
     margin-bottom: 80px;
+
+  }
+  .new-message-form{
+    position: sticky;
+    bottom: 80px;
+
   }
 }
 .message{
