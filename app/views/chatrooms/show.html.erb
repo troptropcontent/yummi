@@ -15,7 +15,7 @@
     <% end %>
   </div>
 <%= console %>
-  <form class="" id="new_message" novalidate="novalidate" action="http://localhost:3000/chatrooms/<%= @chatroom.id %>/messages" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="hkdFS4nRYsxEv6dqr1zD2IbP/Tmoxh9ViS21SPSrtE0/VZY+r6GkVw3pacwww+4HJ2wU5jNTUCLKOhLdU795MA==">
+  <form class="new-message-form" id="new_message" novalidate="novalidate" action="http://localhost:3000/chatrooms/<%= @chatroom.id %>/messages" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="hkdFS4nRYsxEv6dqr1zD2IbP/Tmoxh9ViS21SPSrtE0/VZY+r6GkVw3pacwww+4HJ2wU5jNTUCLKOhLdU795MA==">
       <div class="type-zone">
         <input class="form-control string optional input" placeholder="Message #" type="text" name="message[content]" id="message_content">
         <input type="submit" name="commit" value="Send" class="send-btn" data-disable-with="Send"> 
