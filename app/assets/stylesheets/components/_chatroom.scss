@@ -1,3 +1,17 @@
+.chatroom-head{
+  position: sticky;
+  top: 0;
+  background-color: white;
+  padding-left: 5px;
+
+}
+
+.new-message-form{
+    position: sticky;
+    bottom: 80px;
+}
+
+
 .chatbox{
   h1{
     position: sticky;
@@ -11,10 +25,12 @@
   .messages{
     flex-grow: 1;
     margin-bottom: 80px;
+
   }
   .new-message-form{
     position: sticky;
     bottom: 80px;
+
   }
 }
 .message{

@@ -60,9 +60,13 @@
       <div class="delivery-address">
         <% chef = @order.lines.first.meal.user %>
         <% client = @order.user %>
-        <% delivery_fee_cents = (client.distance_from_chef(chef)*(0.9)*100).round %>
+        <% delivery_address = session["home_address"] || client.home_address %>
+        <% delivery_coordinates = session["home_address"] ? Geocoder.search(session["home_address"]).first.coordinates : client.coordinates  %>
+        <% distance_between_delivery_address_and_chef = Geocoder::Calculations.distance_between(delivery_coordinates,chef.coordinates) %>
+        <% delivery_fee_cents = (distance_between_delivery_address_and_chef*(0.9)*100).round %>
         <div class="delivery">
-          <p><%= client.home_address %></p>
+          <%= console  %>
+          <p><%= delivery_address %></p>
         </div>
         <div class="click-and-collect">
           <p><%=  chef.home_address %> - <%= client.distance_from_chef(chef) %> km away</p>
