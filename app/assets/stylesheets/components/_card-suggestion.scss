@@ -38,7 +38,10 @@
   margin: 15px;
   height: 100%;
   text-align: left;
-  border: solid 2px transparent;
+  border: solid 4px transparent;
+  &.added-to-cart {
+    border: solid 4px rgb(0, 151, 0);
+  }
 }
 
 .card-suggestion > img {

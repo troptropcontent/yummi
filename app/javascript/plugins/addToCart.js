@@ -5,7 +5,7 @@ const addToCart = () => {
       addToCartBtn.addEventListener("click",(event)=>{
         event.preventDefault();
         const mealId = event.target.dataset.mealId
-        console.log(event.path[1].dataset.mealId)
+        console.log(mealId);
         const otherMealInput = document.getElementById(`other_meal_added_to_basket_${mealId}`);
         const otherMealCard = document.getElementById(`other-course-meal-id-${mealId}`);
         const mealAddedToCart = event.target.innerText === "Added to cart"
