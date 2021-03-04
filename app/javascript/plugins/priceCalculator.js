@@ -41,10 +41,13 @@
               const newQuantity = actualQuantity+parseInt(event.target.dataset.value)
               console.log(newQuantity)
               quantityText.innerText = newQuantity
-              linePrice.innerText = Math.round((parseInt(actualPrice)+(parseInt(event.target.dataset.value)*unitPrice))*100)/100
+              linePrice.innerText = Math.round((parseFloat(actualPrice)+(parseInt((event.target.dataset.value)*unitPrice)/100))*100)/100
+              console.log("parseInt(event.target.dataset.value)*unitPrice" + parseInt(event.target.dataset.value)*unitPrice)
+              console.log("parseInt(event.target.dataset.value)" + parseInt(event.target.dataset.value))
+              console.log("unitPrice" + unitPrice)
               quantityInput.value = newQuantity
-              const actualTotal = total_price.innerText
-              const totalexcludingDelivery = parseInt(actualTotal*100)+(parseInt(event.target.dataset.value)*unitPrice)
+              const actualTotal = total_price.dataset.amountCents
+              const totalexcludingDelivery = parseInt(actualTotal)+(parseInt(event.target.dataset.value)*unitPrice)
               total_price.innerText = totalexcludingDelivery/100
               console.log(quantityText.innerText === quantityInput.value )
               const deliveryFee = document.getElementById("delivery_fee_amount_cents")

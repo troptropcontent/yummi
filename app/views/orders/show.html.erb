@@ -24,9 +24,12 @@
               <p class="line_meal" data-line-id=<%=line.id%>>
                 <%= line.meal.name %>
               </p>
+              <div class="price">
                 <p class="line_price" id="price_line_<%=line.id%>" >
                   <%= line.meal.price_cents.fdiv(100) %>
                 </p>
+                <p class="line_price_currency" id="currency_line_<%=line.id%>" >&nbsp€</p>     
+              </div>
               </div>
 
             </div>
@@ -39,7 +42,7 @@
           <p> Subtotal </p>
         </div>
         <div class="total">
-          <p class="total_price"><%= total_lines.fdiv(100) %></p>
+          <p class="total_price" id='subtotal-amount' data-amount-cents=<%= total_lines%>><%= total_lines.fdiv(100) %> €</p>
         </div>
       </div>
 
@@ -60,17 +63,24 @@
         <% delivery_fee_cents = (client.distance_from_chef(chef)*(0.9)*100).round %>
         <div class="delivery">
           <p><%= client.home_address %></p>
-          <div class="delivery_fee_line">
-            <p>Delivery fee :</p>
-            <div class="delivery_fee_amount">
-              <p id="delivery_fee_amount_cents" data-amount-cents = <%= delivery_fee_cents %>><%= (delivery_fee_cents.fdiv(100)).round(2)%></p>
-              <p id="delivery_fee_curency">€</p>
-            </div>
-          </div>
         </div>
         <div class="click-and-collect">
           <p><%=  chef.home_address %> - <%= client.distance_from_chef(chef) %> km away</p>
         </div>
+        <div class="delivery_fee_line">
+          <p>Delivery fee :</p>
+          <div class="delivery_fee_amount">
+            <p id="delivery_fee_amount_cents" data-amount-cents = <%= delivery_fee_cents %>><%= (delivery_fee_cents.fdiv(100)).round(2)%></p>
+            <p id="delivery_fee_curency">€</p>
+          </div>
+        </div>
+        <div class="total_line">
+          <p>Total :</p>
+          <div class="total_line_amount">
+            <p id="total_line_amount_cents" data-subtotal-cents=<%= total_lines%> data-delivery-fee-cents=<%= delivery_fee_cents %>><%= (total_lines+delivery_fee_cents).fdiv(100)%></p>
+            <p id="total_line_curency">€</p>
+          </div>
+        </div>        
           <%# <div class="total_line"> %>
             <%# <p>total :</p> %>
             <%# <div class="total_line_amount"> %>

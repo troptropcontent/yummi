@@ -1,0 +1,23 @@
+.message{
+  
+  width: fit-content;
+  background-color: $my-brown;
+  margin: 0 0 0 2px;
+  border-radius: 5px;
+  padding: 0 10px ;
+
+}
+
+.sender{  
+  text-align: right;
+  align-items: flex-end;
+  background-color: $my-beige
+}
+
+
+.type-zone{
+  display: flex;
+  .input{
+    width: 100%;
+  }
+}

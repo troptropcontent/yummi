@@ -44,11 +44,14 @@
                 <i class="far fa-comments"></i>
               </div> -->
 
-              <%= link_to chatroom_path(order.chatroom) do  %>
-                <div class="order-card-head-infos-right">
-                  <i class="far fa-comments ml-2"></i>
-                </div>
+              <% if Order.all == nil %>
+                <%= link_to chatroom_path(order.chatroom) do  %>
+                  <div class="order-card-head-infos-right">
+                    <i class="far fa-comments"></i>
+                  </div>
+                <% end %>
               <% end %>
+
             </div>
               <div class="order-card-details-bottom">
 

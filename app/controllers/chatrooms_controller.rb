@@ -4,6 +4,7 @@ class ChatroomsController < ApplicationController
   end
 
   def show
+    @sender = current_user
     @chatroom = Chatroom.find(params[:id])
     authorize @chatroom
     @message = Message.new
