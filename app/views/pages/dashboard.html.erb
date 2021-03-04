@@ -38,11 +38,10 @@
                   <i class="far fa-comments"></i>
                 </div> -->
 
-                
                   <%= link_to chatroom_path(order.chatroom) do  %>
                     <%= image_tag 'message-circle.svg' %>
                   <% end %>
-          
+
               </div>
                   <% if order.review %>
                     <p>" <%= order.review.content %> " - <%= order.review.rating %> / 5</p>
