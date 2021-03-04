@@ -35,7 +35,7 @@
                 <div class="container-dashboard-order">
                   <p><%= order.status %></p>
                   <p><%= order.id %><%= order.random_order_number %></p>
-                  <p><%= order.price_cents.fdiv(100) %>€</p>
+                  <p><%= order.price_cents.fdiv(100) if order.price_cents  %>€</p>
                   <p><%= order.random_delivery_date %></p>
                 </div>
 
