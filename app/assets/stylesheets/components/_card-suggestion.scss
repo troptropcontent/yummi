@@ -30,6 +30,7 @@
 .card-suggestion {
   overflow: hidden;
   background: white;
+  border: medium solid rgba(255, 255, 255, 0.9);
   width: 300px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   color: black;
@@ -92,4 +93,15 @@
   display: flex;
   justify-content: center;
   position: bottom;
+}
+
+.line_meal{
+  font-size: larger;
+}
+.line_price{
+  font-size: larger;
+}
+.line_quantity{
+  font-size: larger;
+  padding-bottom: 1px;
 }
