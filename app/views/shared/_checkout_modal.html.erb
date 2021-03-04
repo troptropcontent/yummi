@@ -9,7 +9,7 @@
       <h1><%= @chef.full_name %> also cooks </h1>
       <% @other_courses.each do |meal| %>
         <div class="flex-modal">
-          <div class="card-suggestion" id="other-course-meal-id-<%= meal.id%>" style="background-image: url(<%= cl_image_path meal.photo.key, height: 320, width: 300, crop: :fill %>);">
+          <div class="card-suggestion transparent" id="other-course-meal-id-<%= meal.id%>" style="background-image: url(<%= cl_image_path meal.photo.key, height: 320, width: 300, crop: :fill %>);">
             <div class="card-suggestion-infos">
               <div>
                 <%= link_to meal_path(meal, quantity: params[:quantity]) do %>

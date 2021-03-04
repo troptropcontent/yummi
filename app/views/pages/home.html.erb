@@ -20,15 +20,19 @@
           <%= link_to meal_path(meal), id: 'link' do %>
             <div class="display-flex-card">
               <div class="display-column">
-                <h2 id="margin-top"><strong><%= meal.name[0..18] %></strong></h2>
+                <h2 id="margin-top"><strong><%= meal.name[0..27] %></strong></h2>
                 <div><div class="tag-show-card"><p><%= meal.cuisine %></p></div></div>
               </div>
               <div class="display-column">
-                <h3><%= meal.user.full_name %></h3>
                 <% if meal.user.rating_average != nil %>
-                  <%= image_tag 'star.svg' %>
-                  <h3 id="flex-grow"><%= number_to_human  meal.user.rating_average %>/5</h3>
-                <% end %>
+                    <div class="flex-reviews">
+                      <h3 class="width-auto"><%= meal.user.full_name %></h3>
+                      <%= image_tag 'star.svg' %>
+                      <h3 id="flex-grow"><%= number_to_human  meal.user.rating_average %>/5</h3>
+                    </div>
+                  <% else %>
+                    <h3><%= meal.user.full_name %></h3>
+                  <% end %>
                 <h2 class="price-tag"><%= meal.price_cents.fdiv(100) %>€</h2>
               </div>
             </div>
