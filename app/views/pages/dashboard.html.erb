@@ -29,7 +29,6 @@
                 <div class="order-card-head-infos-left">
                   <div class="container-dashboard-order">
                     <p><%= order.status %></p>
-                    <p><%= order.id %><%= order.random_order_number %></p>
                     <p><%= order.price_cents.fdiv(100) if order.price_cents %>€</p>
                     <p><%= order.random_delivery_date %></p>
                   </div>
@@ -39,17 +38,12 @@
                   <i class="far fa-comments"></i>
                 </div> -->
 
-                <% if Order.all == nil %>
+                
                   <%= link_to chatroom_path(order.chatroom) do  %>
-                    <div class="order-card-head-infos-right">
-                      <i class="far fa-comments"></i>
-                    </div>
+                    <%= image_tag 'message-circle.svg' %>
                   <% end %>
-                <% end %>
-
+          
               </div>
-                <div class="order-card-details-bottom">
-
                   <% if order.review %>
                     <p>" <%= order.review.content %> " - <%= order.review.rating %> / 5</p>
                   <% else %>
@@ -57,12 +51,31 @@
                       <a type="button" id="review-link" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Leave a review</a>
                     </div>
                   <% end %>
+                <div class="order-card-detail-btn" >
+                  <center><a href="" data-order-id="<%= order.id %>">
+                    <i class="fas fa-chevron-down"></i>
+                  </a></center>
+                </div>
+<!-- Expandable details start-->
+              <div class="order-card-lines" id="order-lines-<%= order.id %>">
+                  <% order.lines.each do |line| %>
+                    <div class="order-line">
+                      <div class="order-line-left">
+                        <div class="flex-quantity">
+                          <p><%= line.quantity %></p>
+                        </div>
+                        <p><%= line.meal.name %></p>
+                      </div>
+                      <div class="order-line-right">
+                        <p><%= line.meal.price_cents.fdiv(100).round(2) %> €</p>
+                      </div>
+                    </div>
+                  <% end %>
+                <div class="order-card-details-btn">
+                  <P>Total : <%= order.total_before_checkout.fdiv(100).round(2) %> €</P>
+              </div>
+                <div class="order-card-details-bottom">
 
-                  <div class="order-card-detail-btn" >
-                    <a href="#" data-order-id="<%= order.id %>">
-                      <i class="fas fa-list"></i>
-                    </a>
-                  </div>
                 </div>
   <!-- Expandable details start-->
                 <div class="order-card-lines" id="order-lines-<%= order.id %>">

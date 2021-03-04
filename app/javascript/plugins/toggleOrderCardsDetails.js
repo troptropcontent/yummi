@@ -1,6 +1,5 @@
 const toggleOrderCardsDetails = () => {
   const showDetailsBtns = document.querySelectorAll('.order-card-detail-btn')
-  const hideDetailsBtns = document.querySelectorAll('.order-card-details-expanded-bottom')
   console.log(showDetailsBtns)
   if (showDetailsBtns) {
     showDetailsBtns.forEach(showDetailsBtn => {
@@ -10,10 +9,11 @@ const toggleOrderCardsDetails = () => {
         const orderId = event.path[1].dataset.orderId;
         const orderLine = document.getElementById(`order-lines-${orderId}`);
         console.log(orderId)
-        orderLine.style.display = "block";
+        orderLine.classList.toggle("d-block");
+        showDetailsBtn.classList.toggle("active");
       });
     });
-    hideDetailsBtns.forEach(hideDetailsBtn => {
+    /* hideDetailsBtns.forEach(hideDetailsBtn => {
       hideDetailsBtn.addEventListener("click",(event)=>{
         event.preventDefault();
         const orderId = event.path[1].dataset.orderId;
@@ -21,7 +21,7 @@ const toggleOrderCardsDetails = () => {
         orderLine.style.display = "none";
         console.log(orderId)
       });
-    });
+    }); */
 
 
 
