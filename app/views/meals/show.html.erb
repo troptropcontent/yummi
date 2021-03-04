@@ -1,3 +1,7 @@
+<% content_for :meta_title, "#{@meal.name} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @meal.description %>
+<% content_for :meta_image, cl_image_path(@meal.photo.key) %>
+
 <div class="container-show">
   <div class="show-banner">
   <%= cl_image_tag @meal.photo.key, height: 300, width: 420, crop: :fill %>

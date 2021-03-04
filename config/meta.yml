@@ -1,0 +1,5 @@
+meta_product_name: "Yummi"
+meta_title: "yummi - Eat local food, prepared with love"
+meta_description: "Yummi connects food lovers who want to share their passion and live a unique experience."
+meta_image: "metaimage.jpg" # should exist in `app/assets/images/`
+twitter_account: "@yummifood"
