@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :meals, only: [:index, :show, :new, :create]
   resources :lines, only: [:create, :update]
   resources :orders, only: [:new, :show, :update] do
-    resources :reviews, only: [ :new, :create ]
+  resources :reviews, only: [ :new, :create ]
   end
   get '/settings', to: 'pages#settings'
   get '/home', to: 'pages#home'
