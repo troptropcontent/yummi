@@ -1,6 +1,6 @@
 <div class="container-show">
   <div class="show-banner">
-  <%= cl_image_tag @meal.photo.key, height: 260, width: 375, crop: :fill %>
+  <%= cl_image_tag @meal.photo.key, height: 300, width: 420, crop: :fill %>
   </div>
 
   <h1><%= @meal.name %></h1>
@@ -16,7 +16,7 @@
   </div></center>
 
   <div class="description-show">
-    <p><%= @meal.description %></p>
+    <p><%= @meal.description.first(250) %></p>
   </div>
 
   <hr>

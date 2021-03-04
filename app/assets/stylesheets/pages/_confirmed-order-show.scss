@@ -15,6 +15,7 @@
   padding-top: 30px;
   flex-direction: column;
   margin-bottom: 26px;
+  box-shadow: 0px 0px 20px rgb(18, 34, 64 / 20%);
   h1 {
     color: white;
     padding-top: 54px;
@@ -52,11 +53,12 @@
   color: white;
   text-decoration: none;
   font-weight: bolder;
+  font-size: larger;
   border: solid;
   border-radius: 50%;
   width: 40px;
   height: 40px;
-  padding: 7px;
+  padding: 4px;
   margin: 4px;
   background-color: #EDA345;
   text-align: center;

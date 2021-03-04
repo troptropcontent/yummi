@@ -2,15 +2,15 @@
 
   <%= link_to home_path do %>
     <% if params[:controller] == 'pages' && params[:action] == 'home'%>
-      <div class="navbar__item -blue">
+      <div class="navbar__item">
         <span class="navbar__icon">
-            <i class="fas fa-home"></i>
+          <%= image_tag 'homeorange.svg' %>
         </span>
       </div>
     <% else %>
-      <div class="navbar__item -blue">
+      <div class="navbar__item">
         <span class="navbar__icon">
-            <i class="fas fa-home color-grey"></i>
+          <%= image_tag 'home.svg' %>
         </span>
       </div>
     <% end %>
@@ -19,15 +19,15 @@
 
   <%= link_to meals_path do %>
     <% if params[:controller] == 'meals' && params[:action] == 'index'%>
-      <div class="navbar__item -orange">
+      <div class="navbar__item">
         <span class="navbar__icon">
-          <i class="fas fa-search"></i>
+          <%= image_tag 'searchorange.svg' %>
         </span>
       </div>
     <% else %>
-      <div class="navbar__item -orange">
+      <div class="navbar__item">
         <span class="navbar__icon">
-          <i class="fas fa-search color-grey"></i>
+          <%= image_tag 'search.svg' %>
         </span>
       </div>
     <% end %>
@@ -36,15 +36,15 @@
 
   <%= link_to dashboard_path do  %>
     <% if params[:controller] == 'pages' && params[:action] == 'dashboard'%>
-      <div class="navbar__item -purple">
+      <div class="navbar__item">
         <span class="navbar__icon">
-            <i class="fas fa-user-circle"></i>
+            <%= image_tag 'userorange.svg' %>
         </span>
       </div>
     <% else %>
-      <div class="navbar__item -purple">
+      <div class="navbar__item">
         <span class="navbar__icon">
-            <i class="fas fa-user-circle color-grey"></i>
+          <%= image_tag 'user.svg' %>
         </span>
       </div>
     <% end %>

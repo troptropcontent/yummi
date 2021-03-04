@@ -1,6 +1,8 @@
 .home-page {
     height: 100vh;
-    justify-content: space-around;
+    display: block;
+    justify-content: center;
+    align-items: center;
     background-image: asset-url('home-image.png');
     background-size: cover;
     background-position: center;
@@ -28,17 +30,10 @@
         padding: 32px;
     }
     img {
-        border-radius: 50%;
-        align-items: center;
-        width: 96px;
-        height: 96px;
-        position: absolute;
-        top: 30%;
-        left: 50%;
-        margin:-40px 0 0 -40px;
-        -webkit-animation:spin 1s linear infinite;
-        -moz-animation:spin 1s linear infinite;
-        animation:spin 1s linear infinite;
+      align-items: center;
+      width: 80px;
+      height: 150px;
+      margin-top: 200px;
     }
     .text-height {
         width: 100%;

@@ -1,19 +1,20 @@
 .banner {
-  height: 435px;
+  height: 485px;
   justify-content: space-around;
   background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), image-url("banner.jpg");
   background-size: cover;
   background-position: center;
   color: white;
-
+  box-shadow: 0px 0px 20px rgb(18, 34, 64 / 20%);
     h2 {
       text-align: left;
       margin: 0;
       color: white;
       padding-left: 20px;
       padding-top: 86px;
-      padding-bottom: 22px;
+      padding-bottom: 6px;
       font-weight: bold;
+      font-size: 40px;
     }
   }
 
@@ -54,7 +55,7 @@ p{
   align-items: center;
   padding: 0px 10px;
   #link-to {
-    color: #E84C4F;
+    color: $my-blue;
     text-decoration: underline;
   }
 }
@@ -62,12 +63,13 @@ p{
 .btn-home {
     background-color: #EDA245;
     color: white;
-    width: 335px;
+    width: 300px;
     border-radius: 52px;
-    height: 38px;
-    font-size: 16px;
+    height: 50px;
+    font-size: 20px;
     font-weight: bolder;
     border: 0px;
+    margin-top: 10px;
 }
 
 .search-form {
@@ -79,5 +81,8 @@ p{
   text-align: left;
   font-size: 18px;
 }
-
+.form-control-bigger {
+  height: calc(2em + 0.75rem + 2px);
+  font-size: 18px;
+}
 
