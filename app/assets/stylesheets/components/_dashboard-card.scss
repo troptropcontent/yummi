@@ -8,10 +8,11 @@
 }
 .order-card-head-infos-left{
   width: 100%;
+  padding-right: 6px;
   .container-dashboard-order{
     display: flex;
-  justify-content: space-between;
-  width: 100%;
+    justify-content: space-around;
+    width: 100%;
   }
 }
 

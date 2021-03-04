@@ -31,18 +31,20 @@
   background: white;
   border: medium solid rgba(255, 255, 255, 0.9);
   width: 300px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
   color: black;
   border-radius: 8px;
   margin: 15px;
   height: 100%;
   text-align: left;
-  border: solid 4px transparent;
+  // border: solid 4px transparent;
   &.added-to-cart {
     border: solid 4px rgb(0, 151, 0);
   }
 }
 
+.transparent {
+  border: solid 4px white;
+}
 .card-suggestion > img {
   height: 200px;
   width: 100%;
@@ -108,3 +110,13 @@
   font-size: larger;
   padding-bottom: 1px;
 }
+
+  .flex-reviews {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+  .width-auto {
+    width: 100px;
+  }
