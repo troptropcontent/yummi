@@ -12,9 +12,6 @@
     padding: 16px;
   }
 
-  .order-card-detail-btn{
-    text-align: right;
-  }
 
   #review-link {
     font-size: 14px;
@@ -35,11 +32,14 @@
 .order-card-lines {
   display: none;
   background-color: white;
-  .order-card-details-expanded-bottom{
-    display: flex;
-    justify-content: space-between;
+}
+
+.order-card-detail-btn {
+  &.active{
+    transform: scale(-1);
   }
 }
+
 
 .order-line {
   display: flex;
