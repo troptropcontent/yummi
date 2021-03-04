@@ -1,22 +1,25 @@
-<div class= "ml-2">
+<div class="chatbox">
   <h1> Your discussion with <%= @chatroom.order.lines.first.meal.user.first_name %> </h1>
-  <div id="messages" data-chatroom-id="<%= @chatroom.id %>">
+  <div class="messages" data-chatroom-id="<%= @chatroom.id %>">
     <% @chatroom.messages.each do |message| %>
       <% sender = @sender == message.user %>
       <div class="message<%=' sender' if sender  %>" id="message-<%= message.id %>">
-        <i class="author">
-          <span><%= message.user.first_name %></span>
-          <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-        </i>
-        <p><%= message.content %></p>
+        <div>
+          <i class="author">
+            <span><%= message.user.first_name %></span>
+            <small><%= message.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+          </i>
+          <p><%= message.content %></p>
+        </div>
       </div>
     <% end %>
   </div>
 <%= console %>
-  <%= simple_form_for [ @chatroom, @message ] do |f| %>
-    <div class="type-zone">
-      <%= f.input :content, label: false, input_html: { placeholder: "Message ##{@chatroom.name}", class: "input"}  %>
-      <%= f.submit "Send", class: "send-btn" %> 
-    </div>
-  <% end %>
+  <form class="" id="new_message" novalidate="novalidate" action="http://localhost:3000/chatrooms/<%= @chatroom.id %>/messages" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="hkdFS4nRYsxEv6dqr1zD2IbP/Tmoxh9ViS21SPSrtE0/VZY+r6GkVw3pacwww+4HJ2wU5jNTUCLKOhLdU795MA==">
+      <div class="type-zone">
+        <input class="form-control string optional input" placeholder="Message #" type="text" name="message[content]" id="message_content">
+        <input type="submit" name="commit" value="Send" class="send-btn" data-disable-with="Send"> 
+      </div>
+  </form>
 </div>
+
