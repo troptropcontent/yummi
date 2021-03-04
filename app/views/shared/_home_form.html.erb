@@ -3,7 +3,7 @@
   <p class="mb-1 p-homepage">Where?</p>
   <%= text_field_tag :home_address,
     params[:home_address] || session[:home_address] || current_user&.home_address,
-    class: "form-control mb-4",
+    class: "form-control mb-4 form-control-bigger",
     id:"address"
   %>
   <ul class= "results">
@@ -12,9 +12,10 @@
   <p class="mb-1 p-homepage">When?</p>
   <%= text_field_tag :day,
     params[:day] || "#{1.day.from_now.to_date} 20:00",
-    class: "form-control flatpickr datepicker search-form"
+    class: "form-control flatpickr datepicker search-form form-control-bigger"
   %>
   <br>
   <center><%= submit_tag "Let's get yummi food!", class: "btn-home" %></center>
 <% end %>
+
 

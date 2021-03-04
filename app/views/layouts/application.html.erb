@@ -23,7 +23,9 @@
   </head>
 
   <body>
-    <%= image_tag 'yummi.svg', id: "position-logo" %>
+    <% if action_name != "homepage" %>
+      <%= image_tag 'YummiV4.png', id: "position-logo" %>
+    <% end %>
 
     <%= render 'shared/flashes' %>
 
@@ -35,7 +37,7 @@
 
 
       <% if action_name != "homepage" || controller_name != "pages" %>
-        <%= render 'shared/navbar' %>        
+        <%= render 'shared/navbar' %>
 
       <% end %>
     </div>
