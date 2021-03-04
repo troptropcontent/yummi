@@ -15,7 +15,7 @@
               <div class="flex-confirmed p-0">
                 <div class="width-button">
                 <a href="#" data-value="-1" class="increment" data-line-id=<%=line.id%>>-</a>
-                <p class="line_quantity" data-line-id=<%=line.id%> data-meal-price-cents=<%=line.meal.price_cents%> id="quantity_line_<%=line.id%>">
+                <p class="line_quantity" data-actual-quantity=<%=line.quantity%>  data-line-id=<%=line.id%> id="quantity_line_<%=line.id%>">
                   <%= line.quantity %>
                 </p>
                 <a href="#" data-value="+1" class="increment" data-line-id=<%=line.id%>>+</a>
@@ -25,7 +25,7 @@
                 <%= line.meal.name %>
               </p>
               <div class="price">
-                <p class="line_price" id="price_line_<%=line.id%>" >
+                <p class="line_price" id="price_line_<%=line.id%>" data-meal-price-cents=<%=line.meal.price_cents%> data-amount-cents=<%=line.meal.price_cents%> >
                   <%= line.meal.price_cents.fdiv(100) %>
                 </p>
                 <p class="line_price_currency" id="currency_line_<%=line.id%>" >&nbsp€</p>     
@@ -41,8 +41,9 @@
         <div class="total">
           <p> Subtotal </p>
         </div>
-        <div class="total">
-          <p class="total_price m-0" id='subtotal-amount' data-amount-cents=<%= total_lines%>><%= total_lines.fdiv(100) %> €</p>
+        <div class="total-amount">
+          <p class="total_price m-0" id='subtotal-amount' data-amount-cents=<%= total_lines%>><%= total_lines.fdiv(100) %></p>
+          <p class="total_price_currency" >&nbsp€</p>
         </div>
       </div>
 
@@ -65,7 +66,6 @@
         <% distance_between_delivery_address_and_chef = Geocoder::Calculations.distance_between(delivery_coordinates,chef.coordinates) %>
         <% delivery_fee_cents = (distance_between_delivery_address_and_chef*(0.9)*100).round %>
         <div class="delivery">
-          <%= console  %>
           <p><%= delivery_address %></p>
         </div>
         <div class="click-and-collect">

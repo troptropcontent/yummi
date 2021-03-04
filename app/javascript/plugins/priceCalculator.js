@@ -1,84 +1,77 @@
-// const priceCalculator = () => {
-//   const checkOutData = document.querySelector(".checkout-data")
-//   if (checkOutData) {
-//     const lineQuantity = document.getElementById("line_quantity");
-//     lineQuantity.addEventListener("change",(event)=>{
-//       console.log(event.target.value)
-//       const price = document.querySelector(".price");
-//       const price_data = price.dataset.price;
-//       const newPrice = price_data/100*event.target.value;
-//       console.log(newPrice);
-//       price.innerText = newPrice;
-//     })
-//   }
-// }
-
     const changeLineQuantity = () => {
-
-      const linesPrices = document.querySelectorAll(".line_price");
-      const total_price = document.querySelector(".total_price");
-
-
-
-
-
-
-
-      const incrementers = document.querySelectorAll(".increment");
-      if (incrementers) {incrementers.forEach(increment => {
-            increment.addEventListener("click",(event)=>{
+      
+      const incrementers = document.querySelectorAll(".increment")
+        if (incrementers) {
+          incrementers.forEach(incrementer => {
+            incrementer.addEventListener("click", (event)=>{
               event.preventDefault();
-              console.log(event.target.dataset.lineId)
-              const quantityText = document.getElementById(`quantity_line_${event.target.dataset.lineId}`)
-              const linePrice = document.getElementById(`price_line_${event.target.dataset.lineId}`)
-              const quantityInput = document.getElementById(`quantity_input_line_${event.target.dataset.lineId}`)
-              console.log(quantityText.innerText)
-              const actualQuantity = parseInt(quantityText.innerText)
-              const actualPrice = linePrice.innerText
-              const unitPrice = quantityText.dataset.mealPriceCents
-              console.log(unitPrice)
-              console.log(actualPrice)
-              const newQuantity = actualQuantity+parseInt(event.target.dataset.value)
-              console.log(newQuantity)
-              quantityText.innerText = newQuantity
-              linePrice.innerText = Math.round((parseFloat(actualPrice)+(parseInt((event.target.dataset.value)*unitPrice)/100))*100)/100
-              console.log("parseInt(event.target.dataset.value)*unitPrice" + parseInt(event.target.dataset.value)*unitPrice)
-              console.log("parseInt(event.target.dataset.value)" + parseInt(event.target.dataset.value))
-              console.log("unitPrice" + unitPrice)
-              quantityInput.value = newQuantity
-              const actualTotal = total_price.dataset.amountCents
-              const totalexcludingDelivery = parseInt(actualTotal)+(parseInt(event.target.dataset.value)*unitPrice)
-              total_price.innerText = totalexcludingDelivery/100
-              console.log(quantityText.innerText === quantityInput.value )
-              const deliveryFee = document.getElementById("delivery_fee_amount_cents")
-              const deliveryFeeAmount = parseInt(deliveryFee.dataset.amountCents)
-              console.log(actualTotal)
-              console.log(actualTotal*100)
-              console.log(parseInt(event.target.dataset.value))
-              console.log(unitPrice)
-              const totalIncludingDelivery = totalexcludingDelivery + deliveryFeeAmount
-              const stripeBtn = document.getElementById("stripe-button")
-              console.log(stripeBtn)
-              console.log(totalexcludingDelivery)
-              console.log(totalIncludingDelivery)
-              stripeBtn.dataset.amount = totalIncludingDelivery
-              const stripeButton = document.getElementById("stripe-btn")
-              console.log(stripeButton)
-              console.log(stripeButton.innerHTML)
+              console.log(event)
+              const lineId = incrementer.dataset.lineId;
+              const lineQty = document.getElementById(`quantity_line_${lineId}`);
+              const inputQty = document.getElementById(`quantity_input_line_${lineId}`);
+              const linePrice = document.getElementById(`price_line_${lineId}`);
+              const lineSubtotal = document.getElementById('subtotal-amount');
+              const lineTotal = document.getElementById('total_line_amount_cents');
+              const unitPrice = parseInt(linePrice.dataset.mealPriceCents)
+              const actualPrice = parseInt(linePrice.dataset.amountCents)
+              const actualQuantity = parseInt(lineQty.dataset.actualQuantity)
+              // delivery mode is either delivery or C&C so querySelector is OK
+              const deliveryMode = document.querySelector('input[name="order[delivery_type]"]:checked').value;
+              // increment value is either +1 or -1
+              const incrementValue = parseInt(event.target.dataset.value);
+              // calculer le nouveaux prix
+              const incrementedPrice = actualPrice+(unitPrice*incrementValue)
+              linePrice.dataset.amountCents = incrementedPrice
+              linePrice.innerText = incrementedPrice/100
+              //calculer la nouvelle quantoty
+              const incrementedQuantity = actualQuantity + incrementValue
+              lineQty.dataset.actualQuantity = incrementedQuantity
+              lineQty.innerText = incrementedQuantity;
+              // mettre a jour la quantité dns l'input cache de la ligne modifiee
+              inputQty.value = incrementedQuantity;
+              // mettre a jour les totaux
+              updateTotals()
             });
           });
-
         };
-      }
-// function openNav() {
-//   if (document.getElementById("myNav")) {
-//     document.getElementById("myNav").style.display = "block";
-//   };
-// }
+      };
 
-/* Close */
+      const updatedSubtotal = () => {
+        const priceLines = document.querySelectorAll(".line_price");
+        let subtotal = 0; 
+        priceLines.forEach(priceLine => {
+          const lineTotal = parseInt(priceLine.dataset.amountCents)
+          subtotal += lineTotal
+        });
+        return subtotal
+      };
+
+      const updateTotals = () => {
+        const lineSubtotal = document.getElementById('subtotal-amount');
+        const lineTotal = document.getElementById('total_line_amount_cents');
+        const deliveryMode = document.querySelector('input[name="order[delivery_type]"]:checked').value;
+        const deliveryFeeLine = document.getElementById('delivery_fee_amount_cents');
+        const deliveryFee = parseInt(deliveryFeeLine.dataset.amountCents);
+        const deliveryModeInput = document.getElementById("delivery-type");
+        const deliveryFeeInput = document.getElementById("delivery-fee");
+        const stripeBtn = document.getElementById("stripe-button");
+        const actualDeliveryFee = deliveryMode === "Delivery" ? deliveryFee : 0;
+        // update subtotal
+        deliveryFeeLine.innerText = actualDeliveryFee/100
+        lineSubtotal.dataset.amountCents = updatedSubtotal();
+        lineSubtotal.innerText = (lineSubtotal.dataset.amountCents)/100;
+        lineTotal.dataset.amountCents = updatedSubtotal()+actualDeliveryFee;
+        lineTotal.innerText = (lineTotal.dataset.amountCents)/100;
+        // update deliveryMode input
+        deliveryModeInput.value = deliveryMode;
+        deliveryFeeInput.value = deliveryFee;
+        // update the stripe btn amount for form submission
+        stripeBtn.dataset.amount = lineTotal.dataset.amountCents;
+      };
 
 
 
 export {changeLineQuantity};
+export {updatedSubtotal};
+export {updateTotals};
 
