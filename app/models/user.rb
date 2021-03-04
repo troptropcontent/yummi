@@ -24,6 +24,11 @@ class User < ApplicationRecord
     return self.distance_from([chef.latitude,chef.longitude]).round(2) if self.distance_from([chef.latitude,chef.longitude])
     return 5
   end
+
+  def coordinates
+    return [latitude,longitude]
+  end
+  
   
   # add geocoder to translate address into coordinates
   geocoded_by :home_address
