@@ -50,12 +50,12 @@
       <% end %>
       <% if params[:course].present? && params[:course].include?("2") && params[:course] != ""%>
         <div class="search-query">
-          <p><%= Course.find("#{params[:course][1]}").name %></p>
+          <p><%= Course.find("#{params[:course].first}").name %></p>
         </div>
       <% end %>
       <% if params[:course].present? && params[:course].include?("3") && params[:course] != ""%>
         <div class="search-query">
-          <p><%= Course.find("#{params[:course].last}").name %></p>
+          <p><%= Course.find("#{params[:course].first}").name %></p>
         </div>
       <% end %>
   </div>
@@ -85,7 +85,7 @@
               <div><div class="tag-show-card"><p><%= meal.cuisine %></p></div></div>
             </div>
             <div class="display-column">
-              <h3>By <%= meal.user.full_name %></h3>
+              <h3><%= meal.user.full_name %></h3>
               <% if meal.user.rating_average != nil %>
                 <%= image_tag 'star.svg' %>
                 <h3 id="flex-grow"><%= number_to_human  meal.user.rating_average %>/5</h3>

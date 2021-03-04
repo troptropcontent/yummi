@@ -9,4 +9,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  h1 {
+    font-size: 42px;
+    font-weight: bolder;
+    margin: 0px;
+  }
+  p {
+    font-size: 14px;
+    font-weight: bolder;
+  }
 }
