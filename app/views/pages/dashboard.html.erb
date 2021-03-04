@@ -32,7 +32,6 @@
                     <p><%= order.price_cents.fdiv(100) if order.price_cents %>€</p>
                     <p><%= order.random_delivery_date %></p>
                   </div>
-
                 </div>
   <!--               <div class="order-card-head-infos-right">
                   <i class="far fa-comments"></i>
@@ -52,6 +51,22 @@
                       <a type="button" id="review-link" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Leave a review</a>
                     </div>
                   <% end %>
+                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-footer">
+                      <div class="modal-body">
+                        <%= render "reviews/new", order: order %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
                 <div class="order-card-detail-btn" >
                   <center><a href="" data-order-id="<%= order.id %>">
                     <i class="fas fa-chevron-down"></i>
@@ -102,29 +117,13 @@
                 </div>
   <!-- Expandable details end-->
   <!-- Modal -->
-              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-footer">
-                      <div class="modal-body">
-                        <%= render 'reviews/new', order: order %>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
             </div>
             </div>
           </div>
         <% end %>
       <% end %>
     </div>
-
     <%# <footer class="mt-3">
       <ul class="flex flex-column">
         <li class="d-flex justify-content-between"><i>Subtotal</i> <i>$98.00</i></li>
