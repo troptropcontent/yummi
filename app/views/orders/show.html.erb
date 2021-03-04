@@ -12,7 +12,7 @@
               <%= f.simple_fields_for line do |l| %>
                   <%= l.input :quantity ,:as => :hidden, input_html: { name: "line_#{line.id}", id: "quantity_input_line_#{line.id}", class: "quantity-input"} %>
               <% end %>
-              <div class="flex-confirmed">
+              <div class="flex-confirmed p-0">
                 <div class="width-button">
                 <a href="#" data-value="-1" class="increment" data-line-id=<%=line.id%>>-</a>
                 <p class="line_quantity" data-line-id=<%=line.id%> data-meal-price-cents=<%=line.meal.price_cents%> id="quantity_line_<%=line.id%>">
@@ -42,12 +42,12 @@
           <p> Subtotal </p>
         </div>
         <div class="total">
-          <p class="total_price" id='subtotal-amount' data-amount-cents=<%= total_lines%>><%= total_lines.fdiv(100) %> €</p>
+          <p class="total_price m-0" id='subtotal-amount' data-amount-cents=<%= total_lines%>><%= total_lines.fdiv(100) %> €</p>
         </div>
       </div>
 
       <div>
-        <%= f.input :delivery_type, class: 'center-delivery',
+        <%= f.input :delivery_type, class: 'center-delivery pl-0 pt-0 ml-0',
                     as: :radio_buttons,
                     collection_wrapper_tag: 'div',
                     collection_wrapper_class: 'delivery-wrapper',

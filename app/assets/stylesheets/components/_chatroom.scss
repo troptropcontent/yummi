@@ -1,17 +1,33 @@
+.chatbox{
+  height: calc(100% - 80px);
+  display: flex;
+  flex-direction: column;
+  .messages{
+    flex-grow: 1;
+  }
+}
 .message{
-  
-  width: fit-content;
-  background-color: $my-brown;
-  margin: 0 0 0 2px;
+  width: 100%;
+  margin: 0 0 5px 0;
   border-radius: 5px;
   padding: 0 10px ;
-
+  display: flex;
+  justify-content: flex-start;
+  div{
+    padding: 5px;
+    border-radius: 0 5px 5px 5px;
+    background-color: rgba(194, 73, 20, 0.3);
+  }
 }
 
 .sender{  
   text-align: right;
-  align-items: flex-end;
-  background-color: $my-beige
+  justify-content: flex-end;
+  div{
+    border-radius: 5px 0 5px 5px;
+    background-color: rgba(249, 224, 174, 0.3)
+  }
+  
 }
 
 
