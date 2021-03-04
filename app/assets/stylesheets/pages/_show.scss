@@ -1,10 +1,12 @@
 .show-banner {
-  margin: 10px 0px;
   justify-content: space-around;
   background-size: cover;
   background-position: center;
   color: white;
   top: 0;
+  img {
+    width: 100%;
+  }
 }
  .container-show {
     h1 {
