@@ -24,7 +24,6 @@
 
 // police charactere
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Varela+Round&display=swap');
-@import url('https://creatypestudio.co/cervanttis/');
 @font-face {
   font-family: "Open Sans";
   src: url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2"),
@@ -41,7 +40,7 @@ legend {
   color: $my-blue;
   font-family: $body-font;
   padding: 10px;
-  font-size: 16px;
+  font-size: 20px;
   margin: 10px;
 }
 
@@ -51,17 +50,17 @@ h1, h2, h3, h4, h5, h6, a{
 }
 
 h1 {
-  font-size: 24px;
+  font-size: 28px;
 }
 
 p {
   color: gray;
   font-family: $body-font;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 a {
-  font-size: 14px;
+  font-size: 18px;
   color: $my-blue;
   font-family: $body-font;
 }
@@ -70,7 +69,7 @@ a {
   position: absolute;
   top: 10px;
   left: 10px;
-  width: 45px;
+  width: 12px;
 }
 
 

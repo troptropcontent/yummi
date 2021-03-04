@@ -14,30 +14,30 @@
 
       <%= text_field_tag :query,
         params[:query],
-        class: "form-control mb-3",
+        class: "form-control mb-3 form-control-bigger",
         placeholder: "You can type a dish here"
       %>
 
       <%= text_field_tag :chef,
         params[:chef],
-        class: "form-control mb-3",
+        class: "form-control mb-3 form-control-bigger",
         placeholder: "You can type a chef here"
       %>
 
       <%= text_field_tag :day,
         params[:day],
-        class: "form-control datepicker mb-3",
+        class: "form-control datepicker mb-3 form-control-bigger",
         placeholder: "You can type a date here"
       %>
-      <p class="mb-1">You can add a price range:</p>
+      <p class="mb-1">Add a price range:</p>
       <%= text_field_tag :price,
         params[:price],
         class: "js-range-slider-price color-orange mb-5"
       %>
-      <p class="mb-1">You can add an address:</p>
+      <p class="mb-1">Add an address:</p>
       <%= text_field_tag :home_address,
         params[:home_address],
-        class: "form-control mb-3",
+        class: "form-control mb-3 form-control-bigger",
         id:"address",
         placeholder: "What is your delivery address?"
       %>
@@ -73,7 +73,7 @@
       <% end %>
       <br>
 
-      <%= submit_tag "Search", class: "btn btn-primary mt-5 mb-5" %>
+      <%= submit_tag "Search", class: "btn btn-primary mt-5 mb-5 btn-home" %>
       <br>
     <% end %>
    </div>

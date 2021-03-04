@@ -15,7 +15,6 @@
   <ul>
     <% @meals.each do |meal| %>
     <li>
-
       <div class="card-suggestion-home" style="background-image: url(<%= cl_image_path meal.photo.key, height: 320, width: 300, crop: :fill %>);">
         <div class="card-suggestion-infos-home">
           <%= link_to meal_path(meal), id: 'link' do %>
@@ -25,7 +24,7 @@
                 <div><div class="tag-show-card"><p><%= meal.cuisine %></p></div></div>
               </div>
               <div class="display-column">
-                <h3>By <%= meal.user.full_name %></h3>
+                <h3><%= meal.user.full_name %></h3>
                 <% if meal.user.rating_average != nil %>
                   <%= image_tag 'star.svg' %>
                   <h3 id="flex-grow"><%= number_to_human  meal.user.rating_average %>/5</h3>
