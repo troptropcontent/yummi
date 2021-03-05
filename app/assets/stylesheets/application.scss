@@ -73,6 +73,11 @@ a {
   width: 12px;
 }
 
+input[type=text], input[type=button] {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+}
+
 
 
 
