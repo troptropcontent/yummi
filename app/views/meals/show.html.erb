@@ -61,7 +61,7 @@
       <div class="reviews-user-infos">
         <% if review.user.photo.attached? %>
           <%= cl_image_tag review.user.photo.key, class: "review-user avatar-bordered" %>
-        <% end %>
+        <% end %>                 <
         <ul id="flex-grow-review">
           <li><%= review.user.first_name %></li>
           <li id="date"><%= review.created_at.strftime("%B") %></li>
