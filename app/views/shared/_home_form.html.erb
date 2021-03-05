@@ -2,9 +2,10 @@
 
   <p class="mb-1 p-homepage">Where?</p>
   <%= text_field_tag :home_address,
-    params[:home_address] || current_user&.home_address || session[:home_address],
+    params[:home_address] || current_user&.home_address || session[:home_address] || "Parvis Notre-Dame — Place Jean-Paul II, Parvis Notre-Dame, Paris, 75004, France",
     class: "form-control mb-4 form-control-bigger",
-    id:"address"
+    id:"address",
+    autocomplete: "off"
   %>
 
   <ul class= "results">
@@ -13,7 +14,8 @@
   <p class="mb-1 p-homepage">When?</p>
   <%= text_field_tag :day,
     params[:day] || "#{1.day.from_now.to_date} 20:00",
-    class: "form-control flatpickr datepicker search-form form-control-bigger"
+    class: "form-control flatpickr datepicker search-form form-control-bigger",
+    autocomplete: "off"
   %>
   <br>
   <center><%= submit_tag "Let's get yummi food!", class: "btn-home" %></center>
