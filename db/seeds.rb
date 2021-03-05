@@ -24,6 +24,9 @@ require 'json'
 
 # methods
 
+# / que des plats de 27 charactere max
+# / chaque plat avec une note
+
 CUISINES =  %w(italian mediterranean european american greek mexican french)
 COURSES = %w(dinner dessert appetizer)
 COURSES.each do |course| course = Course.new(name:course)
@@ -73,8 +76,10 @@ CUISINES.each do |cuisine|
         description = show.search(".dek").text.strip
         photo = show.search(".photo-wrap").search("source").first.attribute("srcset").value
         p photo
-
-        if tag == "recipe" && description.length > 0
+        puts "Name already taken : #{(meals.find{|meal| meal.name == name} == nil)}"
+        puts "Lenghth name : #{name.length < 26}"
+        if tag == "recipe" && description.length > 0 && (meals.find{|meal| meal.name == name} == nil)
+           
           new_meal = Meal.new({
             cuisine: cuisine,
             name: name,
@@ -85,6 +90,7 @@ CUISINES.each do |cuisine|
           new_meal.photo.attach(io: file, filename: Faker::Alphanumeric.alpha(number: 10), content_type: 'image/png')
           new_meal.courses = [course]
           meals << new_meal
+          puts "adding #{new_meal.name} to meals"
         end
       end
       puts "Done with #{course.name}s of #{cuisine} cuisine."
@@ -104,7 +110,14 @@ def scrap(url)
 end
 
 puts "Start seeding"
-meals = scrap_from_epicurious(1, 2, 1)
+meals = scrap_from_epicurious(5, 10, 5)
+CUISINES.each do |cuisine|
+  puts "For #{cuisine} : "
+  meals_for_this_cuisine = meals.select{|meal| meal.cuisine == cuisine}
+  COURSES.each do |course|
+  puts "Number of #{course}s : #{meals_for_this_cuisine.select{|meal| meal.courses.first == course}.count}"
+  end
+end
 
 def random_restaurant
   file      = File.open("#{pwd}/db/RestaurantsParis.xml")
@@ -128,7 +141,7 @@ end
 
 
 CUISINES.each do |cuisine|
-  1.times do
+  4.times do
     puts "Creation of a chef for #{cuisine} cuisine"
     place = random_restaurant()
     new_user = User.new
@@ -151,44 +164,45 @@ CUISINES.each do |cuisine|
     puts "saving to the chef 1 starter 2 main courses and 1 dessert"
     diners = meals.select{|meal| meal.cuisine == cuisine}.reject{|meal| meal.id}.select{|meal| meal.courses.first == Course.find(1)}
     diner = diners.first
-    diner.user = new_user
-    diner.save!
-    puts diner.name
+    diner.user = new_user if diner
+    diner.save! if diner
+    puts diner.name if diner
     diners = meals.select{|meal| meal.cuisine == cuisine}.reject{|meal| meal.id}.select{|meal| meal.courses.first == Course.find(1)}
     diner = diners.first
-    diner.user = new_user
-    diner.save!
-    puts diner.name
+    diner.user = new_user if diner
+    diner.save! if diner
+    puts diner.name if diner
     desserts = meals.select{|meal| meal.cuisine == cuisine}.reject{|meal| meal.id}.select{|meal| meal.courses.first == Course.find(2)}
     dessert = desserts.first
-    dessert.user = new_user
-    dessert.save!
-    puts dessert.name
+    dessert.user = new_user if dessert
+    dessert.save! if dessert
+    puts dessert.name if dessert 
     appetizers = meals.select{|meal| meal.cuisine == cuisine}.reject{|meal| meal.id}.select{|meal| meal.courses.first == Course.find(3)}
     appetizer = appetizers.first
-    appetizer.user = new_user
-    appetizer.save!
-    puts appetizer.name
+    appetizer.user = new_user if appetizer
+    appetizer.save! if appetizer
+    puts appetizer.name if appetizer
   end
 end
 
 # creation of order and reviews
-sample_review = %w(disgusting, bad, ok, good, amazing)
+sample_review = %w(disgusting bad ok good amazing)
 remaining_users = User.all
 # selection of one user
-4.times do
+all_Meals = Meal.all
+all_Meals.each do |meal|
   client = User.all.sample
   # reject cet user de la liste des user et sauver cette nouvelle liste dans une variable
-  remaining_users = remaining_users.reject{|user| user == client}
-  chef = remaining_users.sample
+  # remaining_users = remaining_users.reject{|user| user == client}
+  # chef = remaining_users.sample
   # prendre un meal de cet user
-  lines = []
-  choosen_meal = chef.meals.sample
-  lines << choosen_meal
+  # lines = []
+  # choosen_meal = chef.meals.sample
+  # lines << choosen_meal
   # rajouter eventuellement un other course
-  other_courses = chef.meals.reject{|meal| meal == choosen_meal}
-  other_course = other_courses.sample
-  lines << other_course
+  # other_courses = chef.meals.reject{|meal| meal == choosen_meal}
+  # other_course = other_courses.sample
+  # lines << other_course
   # create an order avec random date et random number
   order = Order.new
   order.user = client
@@ -196,18 +210,23 @@ remaining_users = User.all
   order.status = "Paid"
   order.save!
   quantity = (6..12).to_a.sample
-  lines.each do |meal|
-    new_line = Line.new
-    new_line.quantity = quantity
-    new_line.meal = meal
-    new_line.order = order
-    new_line.save!
-  end
+  new_line = Line.new
+  new_line.quantity = quantity
+  new_line.meal = meal
+  new_line.order = order
+  new_line.save!
+  # lines.each do |meal|
+  #   new_line = Line.new
+  #   new_line.quantity = quantity
+  #   new_line.meal = meal
+  #   new_line.order = order
+  #   new_line.save!
+  # end
   # ajouter une review
   review = Review.new
-  rating = (1..5).to_a.sample
-  content = sample_review[rating]
-  review.rating = rating-1
+  rating = (3..5).to_a.sample
+  content = sample_review[rating -1]
+  review.rating = rating
   review.content = content
   review.order = order
   review.user = client
