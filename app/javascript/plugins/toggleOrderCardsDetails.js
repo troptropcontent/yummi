@@ -6,7 +6,7 @@ const toggleOrderCardsDetails = () => {
       showDetailsBtn.addEventListener("click", (event)=>{
         event.preventDefault();
         console.log(event)
-        const orderId = event.path[1].dataset.orderId;
+        const orderId = event.target.parentElement.dataset.orderId;
         const orderLine = document.getElementById(`order-lines-${orderId}`);
         console.log(orderId)
         orderLine.classList.toggle("d-block");
