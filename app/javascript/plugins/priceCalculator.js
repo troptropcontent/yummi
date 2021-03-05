@@ -30,7 +30,7 @@
               // mettre a jour la quantité dns l'input cache de la ligne modifiee
               inputQty.value = incrementedQuantity;
               // mettre a jour les totaux
-              updateTotals()
+              updateTotals();
             });
           });
         };
